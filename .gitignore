@@ -3,6 +3,6 @@
 .DS_Store
 .temp
 node_modules
-dist
+packages/**/dist
 .env
 .env.*

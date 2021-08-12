@@ -1,19 +1,18 @@
 {
     "name": "@sui/menu",
-        "description": "Headless Vue components for web development.",
-        "version": "1.0.0-beta.1",
-        "homepage": "https://sui.sgroup.com",
-        "keywords": [
-            "sui",
-            "headless"
-        ],
-        "license": "MIT",
-        "files": [
-            "src",
-            "dist"
-        ],
-        "dependencies": {
+    "description": "Headless Vue components for web development.",
+    "version": "1.0.0-beta.1",
+    "homepage": "https://sui.sgroup.com",
+    "keywords": [
+        "sui",
+        "headless"
+    ],
+    "license": "MIT",
+    "files": [
+        "src",
+        "dist"
+    ],
+    "dependencies": {
 
-        }
     }
 }
