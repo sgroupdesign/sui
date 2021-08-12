@@ -1,0 +1,20 @@
+{
+    "name": "@sui/tailwind-base",
+    "description": "Tailwind v2 base preset.",
+    "version": "1.0.0-beta.1",
+    "homepage": "https://sui.sgroup.com.au",
+    "main": "src/index.js",
+    "keywords": [
+        "sui",
+        "tailwind"
+    ],
+    "license": "MIT",
+    "files": [
+        "src",
+        "dist"
+    ],
+    "dependencies": {
+        "@tailwindcss/forms": "^0.3.3",
+        "@tailwindcss/line-clamp": "^0.2.1"
+    }
+}

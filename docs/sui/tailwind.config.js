@@ -1,8 +1,9 @@
-const baseConfig = require('../../../base-craft3-vite/tailwind.config.js');
 const path = require('path');
 
 module.exports = {
-    ...baseConfig,
+    presets: [
+        require('@sui/tailwind-base'),
+    ],
 
     purge: {
         content: [

@@ -26,6 +26,7 @@
         "vue-raw-pre": "^1.0.5"
     },
     "dependencies": {
-        "@sui/alert": "file:packages/alert"
+        "@sui/alert": "file:packages/alert",
+        "@sui/tailwind-base": "file:packages/tailwind-base"
     }
 }
