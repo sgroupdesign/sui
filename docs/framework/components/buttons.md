@@ -74,7 +74,7 @@ A button with the `.loading` class can show a loading indicator. This will hide 
 <code-preview body-id="buttons-example-loading" heading="Loading">
     <button class="btn btn-primary" :class="{ 'loading': buttonLoadingState }" @click.prevent="toggleButtonLoading">Click me!</button>
 
-    <script>
+    <\script>
     export default {
         data() {
             return {
@@ -88,5 +88,5 @@ A button with the `.loading` class can show a loading indicator. This will hide 
             },
         },
     };
-    </script>
+    <\/script>
 </code-preview>

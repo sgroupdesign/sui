@@ -132,6 +132,7 @@ export default {
             initialized: false,
             resizing: false,
             width: '100%',
+            previewHtml: '',
             activeSnippet: 'html',
             snippets: [],
         };
@@ -145,7 +146,15 @@ export default {
 
     created() {
         if (this.$slots.default) {
-            const snippet = this.$slots.default()[0].children[0].children;
+            let snippet = this.$slots.default()[0].children[0].children;
+
+            // Hack to allow `<script>` in slots, which normally aren't allowed.
+            // Show it in code, but not on render.
+            this.previewHtml = snippet.replace(/<\\script>((.|\n)*)/gm, '');
+
+            // Also - did you know browsers have an issue with `script` end tags as a string!?
+            // eslint-disable-next-line
+            snippet = snippet.replace(/<\\script>/gm, '<script>').replace(/<\\\/script>/gm, '<\/script>');
 
             this.snippets.push({
                 language: 'html', snippet,
@@ -257,8 +266,6 @@ export default {
         },
 
         getIframeSource() {
-            const snippet = this.getActiveSnippetCode();
-
             /* eslint-disable */
             return `<!doctype html>
             <meta charset="utf-8">
@@ -269,7 +276,7 @@ export default {
             <body id="${this.bodyId}" class="antialiased font-sans bg-gray-200 overflow-hidden">
                 <div id="demo-app" class="bg-white">
                     <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-                        <div class="mx-auto">${this.getActiveSnippetCode()}</div>
+                        <div class="mx-auto">${this.previewHtml}</div>
                     </div>
                 </div>
             </body>`;
