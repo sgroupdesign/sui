@@ -1,0 +1,1 @@
+import{o as e,c as t,b as r}from"./app.60fc63aa.js";const a='{"title":"Slide Over","description":"","frontmatter":{},"relativePath":"components/slide-over.md","lastUpdated":1628739869308}',l={},n=[r("h1",null,"Slide Over",-1)];l.render=function(r,a,l,o,d,i){return e(),t("div",null,n)};export{a as __pageData,l as default};

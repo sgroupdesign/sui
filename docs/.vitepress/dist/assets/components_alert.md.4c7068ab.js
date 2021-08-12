@@ -1,0 +1,1 @@
+import{o as t,c as e,b as a}from"./app.60fc63aa.js";const r='{"title":"Alert","description":"","frontmatter":{},"relativePath":"components/alert.md","lastUpdated":1628739856850}',l={},n=[a("h1",null,"Alert",-1)];l.render=function(a,r,l,o,s,d){return t(),e("div",null,n)};export{r as __pageData,l as default};
