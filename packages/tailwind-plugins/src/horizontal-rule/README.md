@@ -1,0 +1,3 @@
+# Horizontal Rule
+
+Refer to full [S.UI docs](https://sui.sgroup.com.au/framework/components/horizontal-rule.html).

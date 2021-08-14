@@ -19,7 +19,7 @@
 
 const plugin = require('tailwindcss/plugin');
 
-const transformProperties = require('./utils/transformProperties');
+const transformProperties = require('../utils/transformProperties');
 
 module.exports = plugin(({ addComponents, theme, e }) => {
     const heading = theme('heading', {});
