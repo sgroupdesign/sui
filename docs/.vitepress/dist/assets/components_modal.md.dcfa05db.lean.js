@@ -1,0 +1,1 @@
+import{o as t,c as a,b as o}from"./app.59018588.js";const e='{"title":"Modal","description":"","frontmatter":{},"relativePath":"components/modal.md","lastUpdated":1628739863974}',l={},n=[o("h1",null,"Modal",-1)];l.render=function(o,e,l,r,d,s){return t(),a("div",null,n)};export{e as __pageData,l as default};
