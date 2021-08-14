@@ -5,7 +5,7 @@ const _ = require('lodash');
 // ================================================
 
 const colorsConfig = require('tailwindcss/colors');
-delete colorsConfig['lightBlue']; // Temp fix until Tailwind 3.0, otherwise produces warning
+delete colorsConfig.lightBlue; // Temp fix until Tailwind 3.0, otherwise produces warning
 
 
 // ================================================
@@ -83,7 +83,7 @@ for (let i = 0; i <= 100; i += 5) {
 // ================================================
 // presets: [
 //     require('@sui/tailwind-base'),
-//     
+//
 //     Or by passing a config object
 //     require('@sui/tailwind-base')({
 //         screens: { xs: 520 },

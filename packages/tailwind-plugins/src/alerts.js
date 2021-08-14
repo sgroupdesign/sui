@@ -34,7 +34,7 @@ module.exports = plugin(({ addComponents, theme, e }) => {
     const alert = theme('alert');
 
     Object.entries(alert).forEach(([index, props]) => {
-        const key = index === 'DEFAULT' ? '' : '-' + index;
+        const key = index === 'DEFAULT' ? '' : `-${index}`;
 
         // Output all classes and their props. `.alert` and `.alert-primary`, etc.
         components[`.${e(`alert${key}`)}`] = props;
@@ -49,7 +49,7 @@ module.exports = plugin(({ addComponents, theme, e }) => {
 
             // Generate defaults for all colours
             Object.entries(colors).forEach(([key, value]) => {
-                let colorKey = key + '.500';
+                let colorKey = `${key}.500`;
 
                 // Special handling for some colours.
                 if (['transparent', 'current', 'black', 'white'].includes(key)) {
@@ -57,7 +57,7 @@ module.exports = plugin(({ addComponents, theme, e }) => {
                 }
 
                 themedAlerts[key] = {
-                    backgroundColor: theme('textColor.' + colorKey),
+                    backgroundColor: theme(`textColor.${colorKey}`),
                     color: theme('textColor.white'),
                 };
             });
@@ -76,5 +76,5 @@ module.exports = plugin(({ addComponents, theme, e }) => {
                 ...themedAlerts,
             };
         },
-    }
+    },
 });

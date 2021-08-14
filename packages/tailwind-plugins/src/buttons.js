@@ -16,7 +16,7 @@
 //             primary: {
 //                 color: theme('textColor.white'),
 //                 textTransform: 'uppercase',
-                
+
 //                 // Use `focus` or `hover` as shortcuts
 //                 hover: {
 //                     borderColor: theme('borderColor.white'),
@@ -45,7 +45,7 @@ module.exports = plugin(({ addComponents, theme, e }) => {
     const button = theme('button');
 
     Object.entries(button).forEach(([index, props]) => {
-        const key = index === 'DEFAULT' ? '' : '-' + index;
+        const key = index === 'DEFAULT' ? '' : `-${index}`;
 
         // Check if we're using short-hand hover/focus attributes, which would be invalid
         const hoverStyles = props.hover;
@@ -74,8 +74,8 @@ module.exports = plugin(({ addComponents, theme, e }) => {
 
             // Generate defaults for all colours
             Object.entries(colors).forEach(([key, value]) => {
-                let colorKey = key + '.500';
-                let colorHoverKey = key + '.600';
+                let colorKey = `${key}.500`;
+                let colorHoverKey = `${key}.600`;
 
                 // Special handling for some colours.
                 if (['transparent', 'current', 'black', 'white'].includes(key)) {
@@ -163,5 +163,5 @@ module.exports = plugin(({ addComponents, theme, e }) => {
                 ...themedButtons,
             };
         },
-    }
+    },
 });

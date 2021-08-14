@@ -26,9 +26,7 @@ module.exports = plugin(({ addComponents, theme, e }) => {
 
     // Set .h1, .h2, .h3, .h4, .h5, .h6
     const baseSelectors = Object.entries(heading).map(([key, value]) => {
-        if (key !== 'DEFAULT') {
-            return `.${e(`h${key}`)}`;
-        }
+        return (key !== 'DEFAULT') ? `.${e(`h${key}`)}` : false;
     }).filter(Boolean).join(',\n');
 
     const components = {
@@ -39,7 +37,7 @@ module.exports = plugin(({ addComponents, theme, e }) => {
     // Per-heading definitions
     Object.entries(heading).forEach(([index, props]) => {
         // Add the same styles for richtext
-        let key = `.${e(`h${index}`)},\n.richtext ${e(`h${index}`)}`;
+        const key = `.${e(`h${index}`)},\n.richtext ${e(`h${index}`)}`;
 
         if (index !== 'DEFAULT') {
             components[key] = transformProperties(props);
