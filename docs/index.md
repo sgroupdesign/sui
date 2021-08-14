@@ -5,7 +5,7 @@ These docs cover the following:
 
 #### CSS
 - How we use and configure [Tailwind](https://tailwindcss.com/docs) as the foundation of styling projects.
-- Additional SCSS/CSS we add as part of our "S.UI" framework, for common helpers and utilities.
+- What our S.UI framework covers, how to use and extend it, for common helpers, utilities and plugins.
 
 #### Components
 - HTML, Twig, JS Vue-based examples of common UI components used on sites. Complete with preview and easy copy-paste!

@@ -1,7 +1,9 @@
 # Alerts
+[`@sui/tailwind-plugins/alert`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/alert.js)
+
 Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 
-::: tip
+::: tip 
 Be sure to check out our [Alert Component](/components/alert) for more interactivity.
 :::
 
@@ -14,27 +16,48 @@ Be sure to check out our [Alert Component](/components/alert) for more interacti
         A simple secondary alert—check it out!
     </div>
 
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-green" role="alert">
         A simple success alert—check it out!
     </div>
 
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-red" role="alert">
         A simple danger alert—check it out!
     </div>
 
-    <div class="alert alert-warning" role="alert">
+    <div class="alert alert-orange" role="alert">
         A simple warning alert—check it out!
     </div>
 
-    <div class="alert alert-info" role="alert">
+    <div class="alert alert-blue" role="alert">
         A simple info alert—check it out!
     </div>
-
-    <div class="alert alert-light" role="alert">
-        A simple light alert—check it out!
-    </div>
-
-    <div class="alert alert-dark" role="alert">
-        A simple dark alert—check it out!
-    </div>
 </code-preview>
+
+### Configuration
+Configure the `@sui/tailwind-plugins/alert` plugin using `theme` options.
+
+```js
+theme: {
+    extend: {
+        alert: (theme) => {
+            return {
+                // Styles for all alerts e.g. `.alert`.
+                DEFAULT: {
+                    marginBottom: 0,
+                },
+
+                // Override or extend any themed alerts. Provide _any_ CSS property.
+                primary: {
+                    color: theme('textColor.white'),
+                },
+
+                // Add new named items, like `.alert-success`.
+                success: {
+                    backgroundColor: theme('colors.green.300'),
+                    color: theme('textColor.white'),
+                },
+            };
+        },
+    },
+},
+```

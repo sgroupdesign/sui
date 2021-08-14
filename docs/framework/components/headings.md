@@ -1,5 +1,14 @@
 # Headings
-`.h1` through `.h6` classes are available, and should be used when styling headings. This helps keep things consistent across the site.
+[`@sui/tailwind-plugins/headings`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/headings.js)
+
+`.h1` through `.h6` classes are available, and should be used when styling headings. This helps keep things consistent across the site. Here's the defaults we apply to headings, which includes setting the:
+
+- Font family
+- Font weight
+- Leading (line height)
+- Font size
+
+We **deliberately** keep this lean as in practice setting things like margin, colour and others should be done with utility classes.
 
 <code-preview heading="Headings">
     <h1 class="h1">h1. Framework heading</h1>
@@ -9,64 +18,6 @@
     <h5 class="h5">h5. Framework heading</h5>
     <h6 class="h6">h6. Framework heading</h6>
 </code-preview>
-
-Feel free to tweak the `base/elements/headings.scss` file for your project needs. Here's the defaults we apply to headings, which includes setting the:
-
-- Font family
-- Font weight
-- Leading (line height)
-- Font size
-- Responsive font-size for breakpoints
-
-```scss
-.h1, .h2, .h3, .h4, .h5, .h6 {
-    @apply font-heading font-medium leading-tight;
-}
-
-.h1 {
-    @apply text-3xl;
-
-    @screen md {
-        @apply text-4xl;
-    }
-}
-
-.h2 {
-    @apply text-2xl;
-
-    @screen md {
-        @apply text-3xl;
-    }
-}
-
-.h3 {
-    @apply text-xl;
-
-    @screen md {
-        @apply text-2xl;
-    }
-}
-
-.h4 {
-    @apply text-lg;
-
-    @screen md {
-        @apply text-xl;
-    }
-}
-
-.h5 {
-    @apply text-base;
-
-    @screen md {
-        @apply text-lg;
-    }
-}
-
-.h6 {
-    @apply text-base;
-}
-```
 
 These classes also work on any other element for convenience.
 
@@ -78,3 +29,35 @@ These classes also work on any other element for convenience.
     <label class="h5 block">h5. Framework heading</label>
     <legend class="h6">h6. Framework heading</legend>
 </code-preview>
+
+When you want to add things like colour and different styles, you should use utility classes. While you might think _every_ `.h1` should be white, this is almost never the case.
+
+<code-preview heading="Works on any element">
+    <h2 class="h2 text-blue-500">A blue heading</h2>
+    <h2 class="h2 font-bold">A strong heading</h2>
+</code-preview>
+
+### Configuration
+Configure the `@sui/tailwind-plugins/headings` plugin using `theme` options.
+
+```js
+theme: {
+    extend: {
+        heading: (theme) => {
+            return {
+                // Styles for all heading e.g. `.h1, .h2, .h3...`.
+                DEFAULT: {
+                    fontWeight: theme('fontWeight.bold'),
+                },
+
+                // Set the `.h1` font size
+                1: {
+                    fontSize: theme('fontSize.5xl'),
+                    textTransform: 'uppercase',
+                },
+            };
+        },
+    },
+},
+```
+

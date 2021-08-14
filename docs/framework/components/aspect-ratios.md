@@ -1,4 +1,6 @@
-# Aspect Ratio
+# Aspect Ratios
+[`@sui/tailwind-plugins/aspect-ratios`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/aspect-ratios.js)
+
 Use the ratio helpers to manage the aspect ratios images, background images and external content like `<iframe>`s and `<video>`s.
 
 You can use any values to determine the width and height ratio, up to `21`. Use the `.aspect-2x4` representing the width by height value.
@@ -68,3 +70,26 @@ You might want to have a set ratio for images on desktop and tablet, but want to
         <img src="https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?auto=format&fit=crop&w=1400&q=80" class="object-center object-cover">
     </div>
 </code-preview>
+
+### Configuration
+Configure the `@sui/tailwind-plugins/aspect-ratios` plugin using `theme` options.
+
+```js
+theme: {
+    // Completely override the aspect ratios
+    aspectRatio: {
+        1: '1',
+        2: '2',
+        3: '3',
+        4: '4',
+        6: '6',
+        9: '9',
+        21: '21',
+    },
+
+    // Add responsive and hover variants
+    variants: {
+        aspectRatio: ['responsive', 'hover'],
+    },
+},
+```

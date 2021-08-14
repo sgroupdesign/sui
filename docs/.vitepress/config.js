@@ -31,27 +31,36 @@ module.exports = {
                 {
                     text: 'CSS Framework',
                     children: [
+                        { text: 'Overview', link: '/framework/overview' },
                         { text: 'Accessibility', link: '/framework/accessibility' },
-                        { text: 'Aspect Ratio', link: '/framework/aspect-ratio' },
+                        { text: 'Breakpoints', link: '/framework/breakpoints' },
                         { text: 'Colours', link: '/framework/colours' },
+                        { text: 'Layout', link: '/framework/layout' },
+                        { 
+                            text: 'Base',
+                            children: [
+                                { text: 'HTML', link: '/framework/base/html' },
+                            ],
+                        },
                         { 
                             text: 'Components',
                             children: [
                                 { text: 'Alerts', link: '/framework/components/alerts' },
+                                { text: 'Aspect Ratios', link: '/framework/components/aspect-ratios' },
                                 { text: 'Breadcrumb', link: '/framework/components/breadcrumb' },
                                 { text: 'Buttons', link: '/framework/components/buttons' },
+                                { text: 'Columns', link: '/framework/components/columns' },
                                 { text: 'Forms', link: '/framework/components/forms' },
                                 { text: 'Headings', link: '/framework/components/headings' },
                                 { text: 'Horizontal Rule', link: '/framework/components/hr' },
                                 { text: 'Icons', link: '/framework/components/icons' },
                                 { text: 'Images', link: '/framework/components/images' },
+                                { text: 'Lazyload', link: '/framework/components/lazyload' },
                                 { text: 'Links', link: '/framework/components/links' },
                                 { text: 'Loading', link: '/framework/components/loading' },
                                 { text: 'Rich Text', link: '/framework/components/richtext' },
                             ],
                         },
-                        { text: 'Layout', link: '/framework/layout' },
-                        { text: 'Lazyload', link: '/framework/lazyload' },
                     ],
                 },
                 {

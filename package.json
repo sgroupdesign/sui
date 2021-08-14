@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "@sui/alert": "file:packages/alert",
-        "@sui/tailwind-base": "file:packages/tailwind-base"
+        "@sui/tailwind-base": "file:packages/tailwind-base",
+        "@sui/tailwind-plugins": "file:packages/tailwind-plugins"
     }
 }

@@ -1,4 +1,6 @@
 # Images
+[`@sui/tailwind-plugins/images`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/images.js)
+
 Images are responsive by default.
 
 <code-preview heading="Images">
@@ -6,7 +8,7 @@ Images are responsive by default.
 </code-preview>
 
 ## Background Images
-Images can be applied to background of elements, and there are helper classes to make this easier for you. Typically, these implementations should combine with lazyloading. These also require the use of [aspect ratio helpers](/framework/aspect-ratio) or a fixed height.
+Images can be applied to background of elements, and there are helper classes to make this easier for you. Typically, these implementations should combine with lazyloading. These also require the use of [aspect ratio helpers](/framework/components/aspect-ratios) or a fixed height.
 
 ### Cover
 Using `.img-cover` will fill the image to the container dimensions.

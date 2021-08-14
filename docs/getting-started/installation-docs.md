@@ -1,4 +1,4 @@
-# Docs Build
+# Installation (Docs)
 These docs use [VitePress](https://vitepress.vuejs.org), which offers crazy-fast ⚡️ development, and bundles all this documentation into a static site. All documenation is written in Markdown files (in `docs`), which is then converted to a static site for deployment.
 
 This guide will cover how to edit these docs. These steps are **not** required for using S.UI in your web projects.
@@ -97,8 +97,3 @@ npm run docs:watch
 ```
 
 Using the `watch` command, the secondary Vite process (which is building the S.UI CSS/JS) will watch for any changes you make to the Markdown files, and re-compile automatically, ensuring it scans all files to purge (or include) appropriate CSS. This will also be the case for when you want to include any `@sui` JS components.
-
-#### Setting the `base-craft` path
-In order for this to work, we need to reference the `craft-base` repository. This is so we're not duplicating our CSS and Tailwind config for the docs. Ideally, you could set this with `.env` variables, but that's not possible with ES6 importing.
-
-Instead, we have hard-coded the path `../base-craft3-vite` relative to **this** project root. If you do not have the `base-craft` repository cloned here, you can use a symlink (alias) to create this directory that points to wherever you cloned it.

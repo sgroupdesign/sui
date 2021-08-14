@@ -1,4 +1,6 @@
 # Lazyload
+[`@sui/tailwind-plugins/lazyload`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/lazyload.js)
+
 We encorporate [Lazysizes](https://github.com/aFarkas/lazysizes) for best-in-class lazyloading. You should use this for any image or background element below the fold for best page performance.
 
 All that's required is adding a `.lazyload` class on an image, and changing the `src` attribute to `data-src`. To further improve this, we've added a fade transition on images so they fade in on-load.

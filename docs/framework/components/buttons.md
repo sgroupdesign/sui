@@ -1,4 +1,6 @@
 # Buttons
+[`@sui/tailwind-plugins/buttons`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/buttons.js)
+
 The `.btn` class can be added to any element to display it as a button. However, care must be taken when applying to any elements outside of `<button>` and `<input type="button">` to ensure that rendering is consistent across different browsers.
 
 When using button classes on any non-semantic element for example `<a>` or `<div>` that are used to trigger in-page functionality (like collapsing content), rather than linking to new pages or sections within the current page, these links should be given the `role="button"` attribute to appropriately convey their purpose to assistive technologies such as screen readers.
@@ -28,9 +30,9 @@ The framework provides serveral predefined button styles, each serving its own p
 <code-preview body-id="buttons-example" heading="Theme">
     <button class="btn btn-primary">Primary</button>
     <button class="btn btn-secondary">Secondary</button>
-    <button class="btn btn-success">Success</button>
-    <button class="btn btn-danger">Danger</button>
-    <button class="btn btn-warning">Warning</button>
+    <button class="btn btn-green">Success</button>
+    <button class="btn btn-red">Danger</button>
+    <button class="btn btn-orange">Warning</button>
 </code-preview>
 
 Buttons also have a distinct hover and focus state. The focus state uses a "ring" for accessibility.
@@ -90,3 +92,48 @@ A button with the `.loading` class can show a loading indicator. This will hide 
     };
     <\/script>
 </code-preview>
+
+### Configuration
+Configure the `@sui/tailwind-plugins/buttons` plugin using `theme` options.
+
+```js
+theme: {
+    extend: {
+        button: (theme) => {
+            return {
+                // Styles for all buttons e.g. `.btn`.
+                DEFAULT: {
+                    paddingLeft: theme('padding.4'),
+                    paddingRight: theme('padding.4'),
+                },
+
+                // Override or extend any themed buttons. Provide _any_ CSS property.
+                primary: {
+                    color: theme('textColor.white'),
+                    textTransform: 'uppercase',
+
+                    // Change the hover and focus states
+                    hover: {
+                        borderColor: theme('borderColor.white'),
+                        backgroundColor: theme('backgroundColor.white'),
+                        color: theme('colors.white'),
+                    },
+
+                    focus: {
+                        borderColor: theme('borderColor.white'),
+                        backgroundColor: theme('backgroundColor.white'),
+                        color: theme('colors.white'),
+                    },
+                },
+
+                // Add new named items, like `.btn-outline`.
+                outline: {
+                    backgroundColor: 'transparent',
+                    color: theme('textColor.primary.500'),
+                    borderColor: theme('borderColor.primary.500'),
+                },
+            };
+        },
+    },
+},
+```
