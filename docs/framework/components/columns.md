@@ -1,5 +1,5 @@
 # Columns
-[`@sui/tailwind-plugins/columns`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/columns.js)
+[`@sui/tailwind-plugins/columns`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/columns)
 
 Our grid system is a tiny layer of flexbox utilities, combined with Tailwind's [width classes](https://tailwindcss.com/docs/width). We add `.row` and `.col` classes, which adds:
 

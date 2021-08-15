@@ -1,5 +1,5 @@
 # Breadcrumb
-[`@sui/tailwind-plugins/breadcrumb`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/breadcrumb.js)
+[`@sui/tailwind-plugins/breadcrumb`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/breadcrumb)
 
 Since breadcrumbs provide a navigation, it’s a good idea to add a meaningful label such as `aria-label="breadcrumb"` to describe the type of navigation provided in the `<nav>` element, as well as applying an `aria-current="page"` to the last item of the set to indicate that it represents the current page.
 

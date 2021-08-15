@@ -1,5 +1,5 @@
 # Headings
-[`@sui/tailwind-plugins/headings`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/headings.js)
+[`@sui/tailwind-plugins/headings`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/headings)
 
 `.h1` through `.h6` classes are available, and should be used when styling headings. This helps keep things consistent across the site. Here's the defaults we apply to headings, which includes setting the:
 

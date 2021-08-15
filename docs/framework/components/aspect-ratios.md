@@ -1,5 +1,5 @@
 # Aspect Ratios
-[`@sui/tailwind-plugins/aspect-ratios`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/aspect-ratios.js)
+[`@sui/tailwind-plugins/aspect-ratios`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/aspect-ratios)
 
 Use the ratio helpers to manage the aspect ratios images, background images and external content like `<iframe>`s and `<video>`s.
 

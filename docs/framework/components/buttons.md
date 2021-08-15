@@ -1,5 +1,5 @@
 # Buttons
-[`@sui/tailwind-plugins/buttons`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/buttons.js)
+[`@sui/tailwind-plugins/buttons`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/buttons)
 
 The `.btn` class can be added to any element to display it as a button. However, care must be taken when applying to any elements outside of `<button>` and `<input type="button">` to ensure that rendering is consistent across different browsers.
 

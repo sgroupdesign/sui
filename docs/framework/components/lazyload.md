@@ -1,5 +1,5 @@
 # Lazyload
-[`@sui/tailwind-plugins/lazyload`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/lazyload.js)
+[`@sui/tailwind-plugins/lazyload`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/lazyload)
 
 We encorporate [Lazysizes](https://github.com/aFarkas/lazysizes) for best-in-class lazyloading. You should use this for any image or background element below the fold for best page performance.
 

@@ -1,5 +1,5 @@
 # Icons
-[`@sui/tailwind-plugins/icons`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/icons.js)
+[`@sui/tailwind-plugins/icons`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/icons)
 
 Icons should always be SVGs (no icon fonts here!), and by default, they take up 100% of the width and height of the containing element. This allows you to control to size of the svg without having to directly modify the SVG file.
 

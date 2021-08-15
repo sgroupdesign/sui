@@ -1,5 +1,5 @@
 # HTML
-[`@sui/tailwind-plugins/bae`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/base.js)
+[`@sui/tailwind-plugins/base`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/base)
 
 We provide an extremely minimal, yet opinionated base (on top of Tailwind's [preflight](https://tailwindcss.com/docs/preflight)).
 
