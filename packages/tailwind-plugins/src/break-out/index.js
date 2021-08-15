@@ -17,7 +17,7 @@ module.exports = plugin(({ addComponents, addBase }) => {
 
     // Add a class to the `<html>` to prevent overflow.
     addBase({
-        html: {
+        body: {
             overflowX: 'hidden',
         },
     });
