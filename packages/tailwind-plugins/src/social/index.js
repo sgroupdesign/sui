@@ -10,17 +10,25 @@ const plugin = require('tailwindcss/plugin');
 module.exports = plugin(({ addComponents, theme }) => {
     const social = {
         facebook: '#537bbd',
-        google: '#444749',
         twitter: '#78cdf0',
         linkedin: '#1e88c9',
-        instagram: '#696a6a',
+        instagram: '#eb4b54',
         youtube: '#e9654b',
+        pinterest: '#e60122',
     };
 
     const components = {};
 
     Object.entries(social).forEach(([key, value]) => {
-        components[`.social-${key}`] = {
+        components[`.text-social-${key}`] = {
+            color: value,
+
+            '&:hover': {
+                color: `color(${value} shade(10%))`,
+            },
+        };
+
+        components[`.bg-social-${key}`] = {
             backgroundColor: value,
 
             '&:hover': {

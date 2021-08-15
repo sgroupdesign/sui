@@ -36,7 +36,6 @@ export default class MobileNav {
 
     initMobileNav() {
         document.querySelectorAll(this.openSelector).forEach((element) => {
-            console.log(element)
             element.addEventListener('click', (e) => {
                 this.classElement.classList.add(this.activeClass);
 
