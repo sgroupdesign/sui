@@ -174,6 +174,14 @@ module.exports = function(overrides = {}) {
                     md: '2rem',
                 },
             },
+
+            groupVariants: {
+                // Add a `mobile-nav-open` group variant - `html.mobile-nav-open .mobile-nav-open:*`
+                'mobile-nav-open': {
+                    groupSelector: 'mobile-nav-open',
+                    groupPrefix: 'html',
+                },
+            },
         },
 
         // Setup our `mobile-nav-open` group variant to be used on a few variants, by default
@@ -183,14 +191,6 @@ module.exports = function(overrides = {}) {
                 display: ['mobile-nav-open'],
                 translate: ['mobile-nav-open'],
                 visibility: ['mobile-nav-open'],
-            },
-        },
-
-        groupVariants: {
-            // Add a `mobile-nav-open` group variant - `html.mobile-nav-open .mobile-nav-open:*`
-            'mobile-nav-open': {
-                groupSelector: 'mobile-nav-open',
-                groupPrefix: 'html',
             },
         },
 

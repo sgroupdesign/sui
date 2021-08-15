@@ -5,6 +5,9 @@ import 'lazysizes/plugins/unveilhooks/ls.unveilhooks';
 
 import { Alert } from '@sui/alert';
 
+import MobileNav from '../../../packages/mobile-nav/src/index';
+
+
 import './style.scss';
 
 createApp({
@@ -26,5 +29,9 @@ createApp({
                 this.buttonLoadingState = false;
             }, 2000);
         }
+    },
+
+    mounted() {
+        new MobileNav();
     },
 }).mount('#demo-app');

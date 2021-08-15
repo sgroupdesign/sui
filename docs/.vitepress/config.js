@@ -35,6 +35,7 @@ module.exports = {
                         { text: 'Accessibility', link: '/framework/accessibility' },
                         { text: 'Breakpoints', link: '/framework/breakpoints' },
                         { text: 'Colours', link: '/framework/colours' },
+                        { text: 'Group Variants', link: '/framework/group-variants' },
                         { text: 'Layout', link: '/framework/layout' },
                         { 
                             text: 'Base',
@@ -68,7 +69,7 @@ module.exports = {
                     children: [
                         { text: 'Alert', link: '/components/alert' },
                         { text: 'Modal', link: '/components/modal' },
-                        { text: 'Slide Over', link: '/components/slide-over' },
+                        { text: 'Mobile Nav', link: '/components/mobile-nav' },
                         { text: 'Dropdown', link: '/components/dropdown' },
                         { text: 'Tabs', link: '/components/tabs' },
                     ],

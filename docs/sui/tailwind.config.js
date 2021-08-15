@@ -11,4 +11,20 @@ module.exports = {
             path.resolve(__dirname, '../**/*.md'),
         ],
     },
+
+    theme: {
+        extend: {
+            groupVariants: {
+                'accordion-open': {
+                    groupSelector: 'open',
+                },
+            },
+        },
+    },
+
+    variants: {
+        extend: {
+            display: ['accordion-open'],
+        },
+    },
 };
