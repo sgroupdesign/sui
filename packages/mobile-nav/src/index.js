@@ -7,6 +7,7 @@
 // `openSelector` | `String` | `[data-mobile-nav-open]` | The selector string for all open triggers (supports multiple)
 // `closeSelector` | `String` | `[data-mobile-nav-close]` | The selector string for all close triggers (supports multiple)
 // `activeClass` | `String` | `mobile-nav-open` | The class to toggle on the `<html>` element when clicked.
+// `classElement` | `HTMLElement` | `document.documentElement` | The element the active class should be applied to.
 // `enableScrollLock` | `Boolean` | `true` | Whether to lock scrolling when triggered.
 // `scrollLockElement` | `HTMLElement` | `document.body` | The element scroll-locking should apply to.
 // `scrollLockOptions` | `Object` | `{ reserveScrollBarGap: true }` | Settings for the `body-scroll-lock` package.
@@ -19,6 +20,7 @@ export default class MobileNav {
         this.openSelector = '[data-mobile-nav-open]';
         this.closeSelector = '[data-mobile-nav-close]';
         this.activeClass = 'mobile-nav-open';
+        this.classElement = document.documentElement;
         this.enableBodyScrollLock = true;
         this.scrollLockElement = document.body;
 
@@ -34,8 +36,9 @@ export default class MobileNav {
 
     initMobileNav() {
         document.querySelectorAll(this.openSelector).forEach((element) => {
+            console.log(element)
             element.addEventListener('click', (e) => {
-                document.documentElement.classList.add(this.activeClass);
+                this.classElement.classList.add(this.activeClass);
 
                 // Handle aria attribute, but only for the open button
                 this.setAria(true);
@@ -48,7 +51,7 @@ export default class MobileNav {
 
         document.querySelectorAll(this.closeSelector).forEach((element) => {
             element.addEventListener('click', (e) => {
-                document.documentElement.classList.remove(this.activeClass);
+                this.classElement.classList.remove(this.activeClass);
 
                 // Handle aria attribute, but only for the open button
                 this.setAria(false);
