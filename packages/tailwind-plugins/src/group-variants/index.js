@@ -9,12 +9,12 @@ module.exports = plugin(({ addVariant, config, e }) => {
 
     Object.entries(groupVariants).forEach(([key, value]) => {
         const groupingSelector = key;
-        const groupSelector = value.groupSelector;
+        const { groupSelector } = value;
         const groupPrefix = value.groupPrefix ?? '';
         const groupSuffix = value.groupSuffix ?? '';
 
         if (!groupSelector) {
-            return console.error(key + ': You must provide a value for `groupSelector`.');
+            return console.error(`${key}: You must provide a value for \`groupSelector\`.`);
         }
 
         addVariant(key, ({ modifySelectors, separator }) => {

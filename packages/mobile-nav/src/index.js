@@ -21,7 +21,7 @@ export default class MobileNav {
         this.activeClass = 'mobile-nav-open';
         this.enableBodyScrollLock = true;
         this.scrollLockElement = document.body;
-        
+
         this.scrollLockOptions = {
             reserveScrollBarGap: true,
         };
