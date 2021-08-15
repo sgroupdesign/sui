@@ -63,7 +63,7 @@ for (let i = 1; i <= 400; i++) {
 const zIndexConfig = {};
 
 for (let i = -10; i <= 10; i++) {
-    zIndexConfig[i] = i;
+    zIndexConfig[i] = `${i}`;
 }
 
 
@@ -74,7 +74,7 @@ for (let i = -10; i <= 10; i++) {
 const opacityConfig = {};
 
 for (let i = 0; i <= 100; i += 5) {
-    opacityConfig[i] = i / 100;
+    opacityConfig[i] = `${i / 100}`;
 }
 
 
