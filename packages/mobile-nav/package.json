@@ -1,18 +1,10 @@
 {
     "name": "@sui/mobile-nav",
-    "description": "Headless Vue components for web development.",
     "version": "1.0.0-beta.1",
-    "homepage": "https://sui.sgroup.com.au",
-    "keywords": [
-        "sui",
-        "headless"
-    ],
+    "main": "src/index.js",
     "license": "MIT",
-    "files": [
-        "src",
-        "dist"
-    ],
+    "repository": "https://github.com/sgroupdesign/sui-vue",
     "dependencies": {
-
+        "body-scroll-lock": "^3.1.5"
     }
 }
