@@ -12,6 +12,12 @@ module.exports = plugin.withOptions((options = {}) => {
         const fontRenderingFix = options.fontRenderingFix ?? true;
 
         const base = {
+            // Prevents CSS transitions from firing on page-load. Removed via JS
+            // https://css-tricks.com/transitions-only-after-page-load/
+            '.preload *': {
+                transition: 'none !important',
+            },
+
             // Vue.js hiding content initially
             '[v-cloak]': {
                 display: 'none !important',
