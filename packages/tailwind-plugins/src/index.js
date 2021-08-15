@@ -6,6 +6,7 @@ module.exports = {
     breakOut: require('./break-out'),
     buttons: require('./buttons'),
     columns: require('./columns'),
+    groupVariants: require('./group-variants'),
     headings: require('./headings'),
     horizontalRule: require('./horizontal-rule'),
     icons: require('./icons'),
