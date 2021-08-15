@@ -82,6 +82,12 @@ module.exports = {
                         { text: 'Pagination', link: '/stencils/pagination' },
                     ],
                 },
+                {
+                    text: 'Resources',
+                    children: [
+                        { text: 'Vendor Packages', link: '/resources/vendor' },
+                    ],
+                },
             ],
         },
         codeLanguages: {
