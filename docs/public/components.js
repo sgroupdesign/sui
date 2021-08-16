@@ -15397,21 +15397,85 @@ function initDev() {
 {
   initDev();
 }
-var Alert = {
-  emits: ["close"],
-  data() {
-    return {
-      isOpen: true
-    };
-  },
-  methods: {
-    setClose() {
-      this.isOpen = false;
-      this.$emit("close");
+var SuiAlert = {
+  name: "SuiAlert",
+  props: {
+    tagName: {
+      type: String,
+      default: "div"
+    },
+    dismissible: {
+      type: Boolean,
+      default: true
+    },
+    show: {
+      type: Boolean,
+      default: false
+    },
+    timeout: {
+      type: Number,
+      default: void 0
     }
   },
+  data() {
+    return {
+      proxyShow: this.show
+    };
+  },
   render() {
-    return h("div", {}, ["WOOOOOOO."]);
+    const $close = this.$slots.close ? this.$slots.close() : [
+      h("svg", {
+        fill: "currentColor",
+        xmlns: "http://www.w3.org/2000/svg",
+        viewBox: "0 0 20 20",
+        "aria-hidden": true
+      }, [
+        h("path", {
+          "clip-rule": "evenodd",
+          "fill-rule": "evenodd",
+          d: "M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+        })
+      ])
+    ];
+    let $button = [];
+    if (this.dismissible) {
+      $button = h("button", {
+        type: "button",
+        onClick: this.hide
+      }, [$close]);
+    }
+    return h(this.tagName, [this.$slots.default(), $button]);
+  },
+  watch: {
+    show(show) {
+      this.proxyShow = show;
+    },
+    proxyShow(value) {
+      this.$emit("update:show", value);
+      if (this.proxyShow) {
+        this.$emit("shown");
+        if (this.timeout) {
+          this.initTimeout();
+        }
+      } else {
+        this.$emit("hidden");
+      }
+    }
+  },
+  mounted() {
+    if (this.proxyShow && this.timeout) {
+      this.initTimeout();
+    }
+  },
+  methods: {
+    initTimeout() {
+      setTimeout(() => {
+        this.hide();
+      }, this.timeout);
+    },
+    hide() {
+      this.proxyShow = false;
+    }
   }
 };
 function _toConsumableArray(arr) {
@@ -16455,13 +16519,6 @@ body {
 	border-style: solid;
 	border-width: 1px;
 }
-.alert-lime {
-	background-color: #ecfccb;
-	color: #3f6212;
-	border-color: #d9f99d;
-	border-style: solid;
-	border-width: 1px;
-}
 .alert-orange {
 	background-color: #ffedd5;
 	color: #9a3412;
@@ -17163,6 +17220,22 @@ body {
 	margin-top: auto;
 	margin-bottom: auto;
 }
+.-mx-1\\.5 {
+	margin-left: -0.375rem;
+	margin-right: -0.375rem;
+}
+.-my-1\\.5 {
+	margin-top: -0.375rem;
+	margin-bottom: -0.375rem;
+}
+.-mx-1 {
+	margin-left: -0.25rem;
+	margin-right: -0.25rem;
+}
+.-my-1 {
+	margin-top: -0.25rem;
+	margin-bottom: -0.25rem;
+}
 .mb-3 {
 	margin-bottom: 0.75rem;
 }
@@ -17775,6 +17848,9 @@ body {
 .pt-2 {
 	padding-top: 0.5rem;
 }
+.pl-3 {
+	padding-left: 0.75rem;
+}
 .text-left {
 	text-align: left;
 }
@@ -17915,6 +17991,10 @@ body {
 .text-green-800 {
 	--tw-text-opacity: 1;
 	color: rgba(22, 101, 52, var(--tw-text-opacity));
+}
+.text-green-500 {
+	--tw-text-opacity: 1;
+	color: rgba(34, 197, 94, var(--tw-text-opacity));
 }
 .underline {
 	text-decoration: underline;
@@ -18199,6 +18279,11 @@ body {
 	background-color: rgba(233, 213, 255, var(--tw-bg-opacity));
 }
 
+.hover\\:bg-green-100:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(220, 252, 231, var(--tw-bg-opacity));
+}
+
 .hover\\:text-gray-600:hover {
 	--tw-text-opacity: 1;
 	color: rgba(82, 82, 91, var(--tw-text-opacity));
@@ -18227,6 +18312,25 @@ body {
 .focus\\:outline-none:focus {
 	outline: 2px solid transparent;
 	outline-offset: 2px;
+}
+
+.focus\\:ring-2:focus {
+	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.focus\\:ring-green-600:focus {
+	--tw-ring-opacity: 1;
+	--tw-ring-color: rgba(22, 163, 74, var(--tw-ring-opacity));
+}
+
+.focus\\:ring-offset-2:focus {
+	--tw-ring-offset-width: 2px;
+}
+
+.focus\\:ring-offset-green-50:focus {
+	--tw-ring-offset-color: #f0fdf4;
 }
 
 .focus-visible\\:ring-2:focus-visible {
@@ -20190,7 +20294,7 @@ body {
 }`;
 createApp({
   components: {
-    Alert
+    SuiAlert
   },
   data() {
     return {

@@ -20,7 +20,9 @@ function prefixSelector(prefix, selector) {
     }).processSync(selector);
 }
 
-module.exports = plugin(({ addVariant, theme, config, e }) => {
+module.exports = plugin(({
+    addVariant, theme, config, e,
+}) => {
     const groupVariants = theme('groupVariants');
 
     Object.entries(groupVariants).forEach(([key, value]) => {
@@ -37,7 +39,7 @@ module.exports = plugin(({ addVariant, theme, config, e }) => {
             const parser = selectorParser((selectors) => {
                 selectors.walkClasses((sel) => {
                     const element = selectorParser().astSync(prefixSelector(config.prefix, `${groupPrefix}.${groupSelector}${groupSuffix} `));
-                    
+
                     sel.value = `${groupingSelector}${separator}${sel.value}`;
                     sel.parent.insertBefore(sel, element);
                 });
