@@ -16,7 +16,7 @@ Be sure to check out our [Alert Component](/components/alert) for more interacti
         A simple secondary alert—check it out!
     </div>
 
-    <div class="alert alert-green" role="alert">
+    <div class="alert alert-emerald" role="alert">
         A simple success alert—check it out!
     </div>
 

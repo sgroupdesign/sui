@@ -49,16 +49,23 @@ module.exports = plugin(({ addComponents, theme, e }) => {
 
             // Generate defaults for all colours
             Object.entries(colors).forEach(([key, value]) => {
-                let colorKey = `${key}.500`;
+                let backgroundColor = `${key}.100`;
+                let color = `${key}.800`;
+                let borderColor = `${key}.200`;
 
                 // Special handling for some colours.
                 if (['transparent', 'current', 'black', 'white'].includes(key)) {
-                    colorKey = key;
+                    backgroundColor = key;
+                    color = key;
+                    borderColor = key;
                 }
 
                 themedAlerts[key] = {
-                    backgroundColor: theme(`textColor.${colorKey}`),
-                    color: theme('textColor.white'),
+                    backgroundColor: theme(`backgroundColor.${backgroundColor}`),
+                    color: theme(`textColor.${color}`),
+                    borderColor: theme(`borderColor.${borderColor}`),
+                    borderStyle: 'solid',
+                    borderWidth: '1px',
                 };
             });
 

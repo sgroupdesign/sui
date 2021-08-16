@@ -15570,7 +15570,6 @@ class MobileNav {
   }
   initMobileNav() {
     document.querySelectorAll(this.openSelector).forEach((element) => {
-      console.log(element);
       element.addEventListener("click", (e) => {
         this.classElement.classList.add(this.activeClass);
         this.setAria(true);
@@ -16429,28 +16428,60 @@ body {
 	padding-bottom: 0.75rem;
 }
 .alert-red {
-	background-color: #ef4444;
-	color: #fff;
+	background-color: #fee2e2;
+	color: #991b1b;
+	border-color: #fecaca;
+	border-style: solid;
+	border-width: 1px;
 }
 .alert-green {
-	background-color: #22c55e;
-	color: #fff;
+	background-color: #dcfce7;
+	color: #166534;
+	border-color: #bbf7d0;
+	border-style: solid;
+	border-width: 1px;
 }
 .alert-blue {
-	background-color: #3b82f6;
-	color: #fff;
+	background-color: #dbeafe;
+	color: #1e40af;
+	border-color: #bfdbfe;
+	border-style: solid;
+	border-width: 1px;
+}
+.alert-emerald {
+	background-color: #d1fae5;
+	color: #065f46;
+	border-color: #a7f3d0;
+	border-style: solid;
+	border-width: 1px;
+}
+.alert-lime {
+	background-color: #ecfccb;
+	color: #3f6212;
+	border-color: #d9f99d;
+	border-style: solid;
+	border-width: 1px;
 }
 .alert-orange {
-	background-color: #f97316;
-	color: #fff;
+	background-color: #ffedd5;
+	color: #9a3412;
+	border-color: #fed7aa;
+	border-style: solid;
+	border-width: 1px;
 }
 .alert-primary {
-	background-color: #5A67D8;
-	color: #fff;
+	background-color: #C4C8F1;
+	color: #242956;
+	border-color: #A9B0EB;
+	border-style: solid;
+	border-width: 1px;
 }
 .alert-secondary {
-	background-color: #319795;
-	color: #fff;
+	background-color: #D4E9E9;
+	color: #143D3D;
+	border-color: #ABD5D4;
+	border-style: solid;
+	border-width: 1px;
 }
 .aspect {
 	position: relative;
