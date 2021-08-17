@@ -1,0 +1,1 @@
+import{o as t,c as o,d as n}from"./app.a3b816ba.js";const r='{"title":"Dropdown","description":"","frontmatter":{},"relativePath":"components/dropdown.md","lastUpdated":1628739859596}',a={},d=[n("h1",null,"Dropdown",-1)];a.render=function(n,r,a,e,p,s){return t(),o("div",null,d)};export{r as __pageData,a as default};
