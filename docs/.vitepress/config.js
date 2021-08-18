@@ -68,10 +68,13 @@ module.exports = {
                     text: 'Components',
                     children: [
                         { text: 'Alert', link: '/components/alert' },
+                        { text: 'Listbox', link: '/components/listbox' },
                         { text: 'Modal', link: '/components/modal' },
                         { text: 'Mobile Nav', link: '/components/mobile-nav' },
-                        { text: 'Dropdown', link: '/components/dropdown' },
+                        { text: 'Switch', link: '/components/switch' },
                         { text: 'Tabs', link: '/components/tabs' },
+                        { text: 'Menu', link: '/components/menu' },
+                        { text: 'Radio Groups', link: '/components/radio-groups' },
                     ],
                 },
                 {

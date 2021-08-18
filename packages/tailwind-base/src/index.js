@@ -181,16 +181,22 @@ module.exports = function(overrides = {}) {
                     groupSelector: 'mobile-nav-open',
                     groupPrefix: 'html',
                 },
+
+                // Add a `search-open` group variant - `html.search-open .search-open:*`
+                'search-open': {
+                    groupSelector: 'search-open',
+                    groupPrefix: 'html',
+                },
             },
         },
 
         // Setup our `mobile-nav-open` group variant to be used on a few variants, by default
         variants: {
             extend: {
-                opacity: ['mobile-nav-open'],
-                display: ['mobile-nav-open'],
-                translate: ['mobile-nav-open'],
-                visibility: ['mobile-nav-open'],
+                opacity: ['mobile-nav-open', 'search-open'],
+                display: ['mobile-nav-open', 'search-open'],
+                translate: ['mobile-nav-open', 'search-open'],
+                visibility: ['mobile-nav-open', 'search-open'],
             },
         },
 

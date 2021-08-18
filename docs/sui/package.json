@@ -14,5 +14,13 @@
         "tailwindcss": "^2.2.7",
         "vite": "^2.4.4",
         "vue": "^3.0.5"
+    },
+    "dependencies": {
+        "@headlessui/vue": "^1.4.0",
+        "@sui/alert": "file:../../packages/alert",
+        "@sui/menu": "file:../../packages/menu",
+        "@sui/switch": "file:../../packages/switch",
+        "@sui/tailwind-base": "file:../../packages/tailwind-base",
+        "@sui/tailwind-plugins": "file:../../packages/tailwind-plugins"
     }
 }
