@@ -123,6 +123,11 @@ export default {
             type: String,
             default: '',
         },
+
+        snippet: {
+            type: String,
+            default: '',
+        },
     },
 
     data() {
@@ -160,10 +165,21 @@ export default {
                 language: 'html', snippet,
             });
         }
+
+        // Handle passing in a template. If we can get this working better, probably the preferred approach
+        // as opposed to slots, so that the inner code isn't parsed with Vue before it should in the iframe.
+        if (this.snippet) {
+            this.previewHtml = this.snippet;
+
+            this.snippets.push({
+                language: 'html', snippet: this.snippet,
+            });
+        }
     },
 
     mounted() {
         this.initialized = true;
+
 
         this.setIframeHeight();
     },

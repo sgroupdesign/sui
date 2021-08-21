@@ -1,0 +1,1 @@
+import{o as t,c as a,d as e}from"./app.38875e75.js";const s='{"title":"Tabs","description":"","frontmatter":{},"relativePath":"components/tabs.md","lastUpdated":1629439914662}',n={},r=[e("h1",null,"Tabs",-1)];n.render=function(e,s,n,o,d,l){return t(),a("div",null,r)};export{s as __pageData,n as default};

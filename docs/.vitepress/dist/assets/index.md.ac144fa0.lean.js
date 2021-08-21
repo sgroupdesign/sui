@@ -1,0 +1,1 @@
+import{o as e,c as o,a}from"./app.38875e75.js";const r='{"title":"S.UI - Framework for web projects","description":"","frontmatter":{},"relativePath":"index.md","lastUpdated":1629439914668}',t={},s=[a('',9)];t.render=function(a,r,t,n,i,l){return e(),o("div",null,s)};export{r as __pageData,t as default};
