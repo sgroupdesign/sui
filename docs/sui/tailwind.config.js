@@ -7,7 +7,7 @@ module.exports = {
 
     purge: {
         content: [
-            path.resolve(__dirname, '../.vitepress/**/*.{vue,js}'),
+            path.resolve(__dirname, '../.vitepress/theme/**/*.{vue,js}'),
             path.resolve(__dirname, '../**/*.md'),
         ],
     },
@@ -19,12 +19,6 @@ module.exports = {
                     groupSelector: 'open',
                 },
             },
-        },
-    },
-
-    variants: {
-        extend: {
-            display: ['accordion-open'],
         },
     },
 };

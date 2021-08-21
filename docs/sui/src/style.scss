@@ -1,4 +1,5 @@
 @tailwind base;
+@tailwind screens;
 @tailwind components;
 @tailwind utilities;
 
@@ -95,4 +96,8 @@
 
 #listbox-example .mx-auto {
     width: 15rem;
+}
+
+#forms-example .mx-auto {
+    width: 30rem;
 }
