@@ -190,16 +190,6 @@ module.exports = function(overrides = {}) {
             },
         },
 
-        // Setup our `mobile-nav-open` group variant to be used on a few variants, by default
-        variants: {
-            extend: {
-                opacity: ['mobile-nav-open', 'search-open'],
-                display: ['mobile-nav-open', 'search-open'],
-                translate: ['mobile-nav-open', 'search-open'],
-                visibility: ['mobile-nav-open', 'search-open'],
-            },
-        },
-
         // ================================================
         // Ensure you document all plugins in use
         // ================================================
@@ -221,6 +211,7 @@ module.exports = function(overrides = {}) {
             require('@sui/tailwind-plugins/break-out'),
             require('@sui/tailwind-plugins/buttons'),
             require('@sui/tailwind-plugins/columns'),
+            require('@sui/tailwind-plugins/forms'),
             require('@sui/tailwind-plugins/group-variants'),
             require('@sui/tailwind-plugins/headings'),
             require('@sui/tailwind-plugins/horizontal-rule'),

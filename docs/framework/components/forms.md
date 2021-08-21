@@ -1,179 +1,166 @@
 # Forms
+[`@sui/tailwind-plugins/forms`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/forms)
 
+We use [tailwindcss-forms](https://github.com/tailwindlabs/tailwindcss-forms) as a reset for form styling. This give you a good head-start for styling forms forms from a non-opinionated base.
 
-TODO
+<code-preview body-id="forms-example" heading="Unstyled forms">
+    <div class="grid grid-cols-1 gap-6">
+        <label class="block">
+            <span class="text-gray-700">Full name</span>
+            <input type="text" class="mt-1 block w-full" placeholder="">
+        </label>
+        
+        <label class="block">
+            <span class="text-gray-700">Email address</span>
+            <input type="email" class="mt-1 block w-full" placeholder="john@example.com">
+        </label>
+        
+        <label class="block">
+            <span class="text-gray-700">When is your event?</span>
+            <input type="date" class="mt-1 block w-full">
+        </label>
 
+        <label class="block">
+            <span class="text-gray-700">What type of event is it?</span>
+            
+            <select class="block w-full mt-1">
+                <option>Corporate event</option>
+                <option>Wedding</option>
+                <option>Birthday</option>
+                <option>Other</option>
+            </select>
+        </label>
 
-Forms provide the most common control styles used in forms, including input, textarea, select, checkbox, radio and switch.
+        <label class="block">
+            <span class="text-gray-700">Additional details</span>
+            <textarea class="mt-1 block w-full" rows="3"></textarea>
+        </label>
 
-### Input
-
-<div class="sui-example">
-    <div class="form-group">
-        <label class="form-label" for="input-example-1-1">Name</label>
-        <input class="form-input" id="input-example-1-1" placeholder="Name" type="text">
-    </div>
-    <div class="form-group">
-        <label class="form-label" for="input-example-1-2">Email</label>
-        <input class="form-input" id="input-example-1-2" placeholder="Email" type="email">
-    </div>
-</div>
-
-``` html
-<div class="form-group">
-    <label class="form-label" for="input-example-1">Name</label>
-    <input class="form-input" id="input-example-1" placeholder="Name" type="text">
-</div>
-```
-
-#### Types
-
-<div class="sui-example">
-    <div class="form-group">
-        <div class="col w-1/4">
-            <label class="form-label" for="input-example-8">Email</label>
-        </div>
-        <div class="col w-3/4">
-            <input class="form-input" id="input-example-8" placeholder="Email" type="email">
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col w-1/4">
-            <label class="form-label" for="input-example-9">URL</label>
-        </div>
-        <div class="col w-3/4">
-            <input class="form-input" id="input-example-9" placeholder="URL" type="url">
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col w-1/4">
-            <label class="form-label" for="input-example-10">Search</label>
-        </div>
-        <div class="col w-3/4">
-            <input class="form-input" id="input-example-10" placeholder="Search" type="search">
+        <div class="block">
+            <div class="mt-2">
+                <div>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" checked="">
+                        <span class="ml-2">Email me news and special offers</span>
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <div class="col w-1/4">
-            <label class="form-label" for="input-example-11">Tel</label>
-        </div>
-        <div class="col w-3/4">
-            <input class="form-input" id="input-example-11" placeholder="Tel" type="tel">
-        </div>
+</code-preview>
+
+When you want custom styling for your forms, you can use a collection of `.form-*` classes.
+
+## Form label
+Across the board, use the `.form-label` class for styling the label of a form control.
+
+<code-preview body-id="forms-example" heading="Form label">
+    <div class="mb-3">
+        <label class="form-label" for="input-example-1">Text</label>
+        <input class="form-control" id="input-example-1" placeholder="Text" type="text">
     </div>
-    <div class="form-group">
-        <div class="col w-1/4">
-            <label class="form-label" for="input-example-12">Password</label>
-        </div>
-        <div class="col w-3/4">
-            <input class="form-input" id="input-example-12" placeholder="Password" type="password">
-        </div>
+</code-preview>
+
+## Form text
+Form text should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies—such as screen readers—will announce this form text when the user focuses or enters the control.
+
+<code-preview body-id="forms-example" heading="Form text">
+    <label for="inputPassword5" class="form-label">Password</label>
+    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+    <div id="passwordHelpBlock" class="form-text">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</div>
+</code-preview>
+
+## Inputs
+Use the `.form-control` class on any input.
+
+<code-preview body-id="forms-example" heading="Form inputs">
+    <div class="mb-3">
+        <label class="form-label" for="input-example-1">Text</label>
+        <input class="form-control" id="input-example-1" placeholder="Text" type="text">
     </div>
-    <div class="form-group">
-        <div class="col w-1/4">
-            <label class="form-label" for="input-example-13">Number</label>
-        </div>
-        <div class="col w-3/4">
-            <input class="form-input" id="input-example-13" placeholder="00" type="number">
-        </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="input-example-8">Email</label>
+        <input class="form-control" id="input-example-8" placeholder="Email" type="email">
     </div>
-    <div class="form-group">
-        <div class="col w-1/4">
-            <label class="form-label" for="input-example-14">Date</label>
-        </div>
-        <div class="col w-3/4">
-            <input class="form-input" id="input-example-14" type="date">
-        </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="input-example-9">URL</label>
+        <input class="form-control" id="input-example-9" placeholder="URL" type="url">
     </div>
-    <div class="form-group">
-        <div class="col w-1/4">
-            <label class="form-label" for="input-example-15">Color</label>
-        </div>
-        <div class="col w-3/4">
-            <input class="form-input" id="input-example-15" type="color">
-        </div>
+    
+    <div class="mb-3">
+        <label class="form-label" for="input-example-10">Search</label>
+        <input class="form-control" id="input-example-10" placeholder="Search" type="search">
     </div>
-    <div class="form-group">
-        <div class="col w-1/4">
-            <label class="form-label" for="input-example-16">File</label>
-        </div>
-        <div class="col w-3/4">
-            <input class="form-input" id="input-example-16" type="file">
-        </div>
+    
+    <div class="mb-3">
+        <label class="form-label" for="input-example-11">Tel</label>
+        <input class="form-control" id="input-example-11" placeholder="Tel" type="tel">
     </div>
-</div>
-
-
-``` html
-<input class="form-input" id="input-example-8" placeholder="Email" type="email">
-<input class="form-input" id="input-example-9" placeholder="URL" type="url">
-<input class="form-input" id="input-example-10" placeholder="Search" type="search">
-<input class="form-input" id="input-example-11" placeholder="Tel" type="tel">
-<input class="form-input" id="input-example-12" placeholder="Password" type="password">
-<input class="form-input" id="input-example-13" placeholder="00" type="number">
-<input class="form-input" id="input-example-14" type="date">
-<input class="form-input" id="input-example-15" type="color">
-<input class="form-input" id="input-example-16" type="file">
-```
-
-
-#### Sizing
-
-<div class="sui-example">
-    <div class="form-group">
-        <label class="form-label" for="input-example-2-1">Small</label>
-        <input class="form-input input-sm" id="input-example-2-1" placeholder="Small" type="text">
+    
+    <div class="mb-3">
+        <label class="form-label" for="input-example-12">Password</label>
+        <input class="form-control" id="input-example-12" placeholder="Password" type="password">
     </div>
-    <div class="form-group">
-        <label class="form-label" for="input-example-2-2">Normal</label>
-        <input class="form-input" id="input-example-2-2" placeholder="Normal" type="text">
+    
+    <div class="mb-3">
+        <label class="form-label" for="input-example-13">Number</label>
+        <input class="form-control" id="input-example-13" placeholder="00" type="number">
     </div>
-    <div class="form-group">
-        <label class="form-label" for="input-example-2-3">Large</label>
-        <input class="form-input input-lg" id="input-example-2-3" placeholder="Large" type="text">
+    
+    <div class="mb-3">
+        <label class="form-label" for="input-example-14">Date</label>
+        <input class="form-control" id="input-example-14" type="date">
     </div>
-</div>
+</code-preview>
 
+<code-preview body-id="forms-example" heading="File input">
+    <div class="mb-3">
+        <label for="formFile" class="form-label">Default file input example</label>
+        <input class="form-control" type="file" id="formFile">
+    </div>
+</code-preview>
 
-``` html
-<div class="form-group">
-    <label class="form-label" for="input-example-2-1">Small</label>
-    <input class="form-input input-sm" id="input-example-2-1" placeholder="Small" type="text">
-</div>
+<code-preview body-id="forms-example" heading="Color input">
+    <div class="mb-3">
+        <label for="exampleColorInput" class="form-label">Color picker</label>
+        <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+    </div>
+</code-preview>
 
-<div class="form-group">
-    <label class="form-label" for="input-example-2-2">Normal</label>
-    <input class="form-input" id="input-example-2-2" placeholder="Normal" type="text">
-</div>
+### Disabled
+Add the `disabled` attribute on an input to give it a grayed out appearance and remove pointer events.
 
-<div class="form-group">
-    <label class="form-label" for="input-example-2-3">Large</label>
-    <input class="form-input input-lg" id="input-example-2-3" placeholder="Large" type="text">
-</div>
-```
+<code-preview body-id="forms-example" heading="Disabled">
+    <div class="mb-3">
+        <input class="form-control" type="text" placeholder="Disabled input" disabled>
+    </div>
+</code-preview>
 
+### Readonly
+Add the `readonly` attribute on an input to prevent modification of the input’s value.
 
-### Textarea
+<code-preview body-id="forms-example" heading="Readonly">
+    <div class="mb-3">
+        <input class="form-control" type="text" value="Readonly input" readonly>
+    </div>
+</code-preview>
 
-<div class="sui-example">
-    <div class="form-group">
+## Textarea
+
+<code-preview body-id="forms-example" heading="Form textarea">
+    <div class="mb-3">
         <label class="form-label" for="input-example-3">Message</label> 
-        <textarea class="form-input" id="input-example-3" placeholder="Textarea" rows="3"></textarea>
+        <textarea class="form-control" id="input-example-3" placeholder="Textarea" rows="3"></textarea>
     </div>
-</div>
+</code-preview>
 
-``` html
-<div class="form-group">
-    <label class="form-label" for="input-example-3">Message</label> 
-    <textarea class="form-input" id="input-example-3" placeholder="Textarea" rows="3"></textarea>
-</div>
-```
+## Select
+Custom `<select>` menus need only a custom class, `.form-select` to trigger the custom styles. Custom styles are limited to the `<select>`’s initial appearance and cannot modify the `<option>`s due to browser limitations.
 
-
-### Select
-
-<div class="sui-example">
-    <div class="form-group">
+<code-preview body-id="forms-example" heading="Form selects">
+    <div class="mb-3">
         <select class="form-select">
             <option>Choose an option</option>
             <option>Slack</option>
@@ -181,7 +168,8 @@ Forms provide the most common control styles used in forms, including input, tex
             <option>Hipchat</option>
         </select>
     </div>
-    <div class="form-group">
+
+    <div class="mb-3">
         <select class="form-select" multiple>
             <option>Choose an option</option>
             <option>Slack</option>
@@ -189,759 +177,179 @@ Forms provide the most common control styles used in forms, including input, tex
             <option>Hipchat</option>
         </select>
     </div>
-</div>
+</code-preview>
 
-``` html
-<div class="form-group">
-    <select class="form-select">
-        <option>Choose an option</option>
-        <option>Slack</option>
-        <option>Skype</option>
-        <option>Hipchat</option>
-    </select>
-</div>
+## Checkbox
+Use the `.form-check-input` and `.form-check-label` for both radio and checkbox inputs.
 
-<div class="form-group">
-    <select class="form-select" multiple>
-        <option>Choose an option</option>
-        <option>Slack</option>
-        <option>Skype</option>
-        <option>Hipchat</option>
-    </select>
-</div>
-```
+<code-preview body-id="forms-example" heading="Form checkbox">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
+    </div>
+    
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+        <label class="form-check-label" for="flexCheckChecked">Checked checkbox</label>
+    </div>
+</code-preview>
 
-#### Sizing
+## Radio
 
-<div class="sui-example">
-    <div class="form-group">
-        <select class="form-select select-sm">
-            <option>Choose an option</option>
-            <option>Slack</option>
-            <option>Skype</option>
-            <option>Hipchat</option>
+<code-preview body-id="forms-example" heading="Form radio">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">Default radio</label>
+    </div>
+    
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+        <label class="form-check-label" for="flexRadioDefault2">Default checked radio</label>
+    </div>
+</code-preview>
+
+### Inline
+Group checkboxes or radios on the same horizontal row by adding `.form-check-inline` to any `.form-check`.
+
+<code-preview body-id="forms-example" heading="Inline checkbox and radio">
+    <div class="mb-3">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+            <label class="form-check-label" for="inlineCheckbox1">1</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+            <label class="form-check-label" for="inlineCheckbox2">2</label>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+            <label class="form-check-label" for="inlineRadio1">1</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">2</label>
+        </div>
+    </div>
+</code-preview>
+
+## Floating labels
+Wrap a pair of `<input class="form-control">` and `<label>` elements in `.form-floating` to enable floating labels. A placeholder is required on each `<input>` as our method of CSS-only floating labels uses the `:placeholder-shown` pseudo-element. Also note that the `<input>` must come first so we can utilize a sibling selector (e.g., `~`).
+
+<code-preview body-id="forms-example" heading="Floating label">
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+    </div>
+
+    <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+    </div>
+</code-preview>
+
+When there’s a value already defined, `<label>`s will automatically adjust to their floated position.
+
+<code-preview body-id="forms-example" heading="Floating label with an existing value">
+    <form class="form-floating">
+        <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="test@example.com">
+        <label for="floatingInputValue">Input with value</label>
+    </form>
+</code-preview>
+
+### Textareas
+By default, `<textarea>`s with `.form-control` will be the same height as `<input>`s.
+
+<code-preview body-id="forms-example" heading="Floating label textarea">
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+        <label for="floatingTextarea">Comments</label>
+    </div>
+</code-preview>
+
+To set a custom height on your `<textarea>`, do not use the `rows` attribute. Instead, set an explicit `height` (either inline or via custom CSS).
+
+<code-preview body-id="forms-example" heading="Floating label textarea height">
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+        <label for="floatingTextarea2">Comments</label>
+    </div>
+</code-preview>
+
+### Selects
+Other than `.form-control`, floating labels are only available on `.form-select`s. They work in the same way, but unlike `<input>`s, they’ll always show the `<label>` in its floated state. Selects with `size` and `multiple` are not supported.
+
+<code-preview body-id="forms-example" heading="Floating label select">
+    <div class="form-floating">
+        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
         </select>
+
+        <label for="floatingSelect">Works with selects</label>
     </div>
-    <div class="form-group">
-        <select class="form-select">
-            <option>Choose an option</option>
-            <option>Slack</option>
-            <option>Skype</option>
-            <option>Hipchat</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <select class="form-select select-lg">
-            <option>Choose an option</option>
-            <option>Slack</option>
-            <option>Skype</option>
-            <option>Hipchat</option>
-        </select>
-    </div>
-</div>
-
-``` html
-<div class="form-group">
-    <select class="form-select select-sm">
-        <option>Choose an option</option>
-        <option>Slack</option>
-        <option>Skype</option>
-        <option>Hipchat</option>
-    </select>
-</div>
-
-<div class="form-group">
-    <select class="form-select">
-        <option>Choose an option</option>
-        <option>Slack</option>
-        <option>Skype</option>
-        <option>Hipchat</option>
-    </select>
-</div>
-
-<div class="form-group">
-    <select class="form-select select-lg">
-        <option>Choose an option</option>
-        <option>Slack</option>
-        <option>Skype</option>
-        <option>Hipchat</option>
-    </select>
-</div>
-```
-
-
-### Radio
-
-<div class="sui-example">
-    <div class="form-group">
-        <label class="form-label">Gender</label>
-        <div class="form-radio input-sm">
-            <input checked id="customRadio1-1" name="gender-1" type="radio">
-            <label class="form-check-label" for="customRadio1-1">Male</label>
-        </div>
-        <div class="form-radio input-sm">
-            <input id="customRadio1-2" name="gender-1" type="radio">
-            <label class="form-check-label" for="customRadio1-2">Female</label>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="form-label">Gender</label>
-        <div class="form-radio">
-            <input checked id="customRadio2-1" name="gender-2" type="radio">
-            <label class="form-check-label" for="customRadio2-1">Male</label>
-        </div>
-        <div class="form-radio">
-            <input id="customRadio2-2" name="gender-2" type="radio">
-            <label class="form-check-label" for="customRadio2-2">Female</label>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="form-label">Gender</label>
-        <div class="form-radio input-lg">
-            <input checked id="customRadio3-1" name="gender-3" type="radio">
-            <label class="form-check-label" for="customRadio3-1">Male</label>
-        </div>
-        <div class="form-radio input-lg">
-            <input id="customRadio3-2" name="gender-3" type="radio">
-            <label class="form-check-label" for="customRadio3-2">Female</label>
-        </div>
-    </div>
-</div>
-
-``` html
-<div class="form-group">
-    <label class="form-label">Gender</label>
-
-    <div class="form-radio">
-        <input checked id="customRadio1" name="gender" type="radio">
-        <label class="form-check-label" for="customRadio1">Male</label>
-    </div>
-
-    <div class="form-radio">
-        <input id="customRadio2" name="gender" type="radio">
-        <label class="form-check-label" for="customRadio2">Female</label>
-    </div>
-</div>
-```
-
-### Checkbox
-
-<div class="sui-example">
-    <div class="form-group">
-        <div class="form-checkbox input-sm">
-            <input id="customCheck1-1" type="checkbox">
-            <label class="form-check-label" for="customCheck1-1">Remember me</label>
-        </div>
-        <div class="form-checkbox input-sm">
-            <input checked id="customCheck1-2" type="checkbox">
-            <label class="form-check-label" for="customCheck1-2">Remember me</label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="form-checkbox">
-            <input id="customCheck2-1" type="checkbox">
-            <label class="form-check-label" for="customCheck2-1">Remember me</label>
-        </div>
-        <div class="form-checkbox">
-            <input checked id="customCheck2-2" type="checkbox">
-            <label class="form-check-label" for="customCheck2-2">Remember me</label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="form-checkbox input-lg">
-            <input id="customCheck3-1" type="checkbox">
-            <label class="form-check-label" for="customCheck3-1">Remember me</label>
-        </div>
-        <div class="form-checkbox input-lg">
-            <input checked id="customCheck3-2" type="checkbox">
-            <label class="form-check-label" for="customCheck3-2">Remember me</label>
-        </div>
-    </div>
-</div>
-
-``` html
-<div class="form-group">
-    <div class="form-checkbox">
-        <input id="customCheck1" type="checkbox">
-        <label class="form-check-label" for="customCheck1">Remember me</label>
-    </div>
-
-    <div class="form-checkbox">
-        <input checked id="customCheck2" type="checkbox">
-        <label class="form-check-label" for="customCheck2">Remember me</label>
-    </div>
-</div>
-```
-
-
-### Switch 
-
-<div class="sui-example">
-    <div class="form-group">
-        <div class="form-switch input-sm">
-            <input id="customSwitch1-1" type="checkbox">
-            <label class="form-check-label" for="customSwitch1-1">Send me emails with news and tips</label>
-        </div>
-        <div class="form-switch input-sm">
-            <input checked id="customSwitch1-2" type="checkbox">
-            <label class="form-check-label" for="customSwitch1-2">Send me emails with news and tips</label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="form-switch">
-            <input id="customSwitch2-1" type="checkbox">
-            <label class="form-check-label" for="customSwitch2-1">Send me emails with news and tips</label>
-        </div>
-        <div class="form-switch">
-            <input checked id="customSwitch2-2" type="checkbox">
-            <label class="form-check-label" for="customSwitch2-2">Send me emails with news and tips</label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="form-switch input-lg">
-            <input id="customSwitch3-1" type="checkbox">
-            <label class="form-check-label" for="customSwitch3-1">Send me emails with news and tips</label>
-        </div>
-        <div class="form-switch input-lg">
-            <input checked id="customSwitch3-2" type="checkbox">
-            <label class="form-check-label" for="customSwitch3-2">Send me emails with news and tips</label>
-        </div>
-    </div>
-</div>
-
-``` html
-<div class="form-group">
-    <div class="form-switch">
-        <input id="customSwitch1" type="checkbox">
-        <label class="form-check-label" for="customSwitch1">Send me emails with news and tips</label>
-    </div>
-
-    <div class="form-switch">
-        <input checked id="customSwitch2" type="checkbox">
-        <label class="form-check-label" for="customSwitch2">Send me emails with news and tips</label>
-    </div>
-</div>
-```
-
-
-## Layout
-
-### Form Groups
-
-<div class="sui-example">
-    <div class="form-group">
-        <label for="formGroupExampleInput">Example label</label>
-        <input class="form-input" id="formGroupExampleInput" placeholder="Example input" type="text">
-    </div>
-    <div class="form-group">
-        <label for="formGroupExampleInput2">Another label</label>
-        <input class="form-input" id="formGroupExampleInput2" placeholder="Another input" type="text">
-    </div>
-</div>
-
-``` html
-<div class="form-group">
-    <label for="formGroupExampleInput">Example label</label>
-    <input class="form-input" id="formGroupExampleInput" placeholder="Example input" type="text">
-</div>
-
-<div class="form-group">
-    <label for="formGroupExampleInput2">Another label</label>
-    <input class="form-input" id="formGroupExampleInput2" placeholder="Another input" type="text">
-</div>
-```
-
-
-## Form grid
-
-<div class="sui-example">
-    <div class="row">
-        <div class="col">
-            <input class="form-input" placeholder="First name" type="text">
-        </div>
-        <div class="col">
-            <input class="form-input" placeholder="Last name" type="text">
-        </div>
-    </div>
-</div>
-
-``` html
-<div class="row">
-    <div class="col">
-        <input class="form-input" placeholder="First name" type="text">
-    </div>
-
-    <div class="col">
-        <input class="form-input" placeholder="Last name" type="text">
-    </div>
-</div>
-```
-
-## Form row
-
-<div class="sui-example">
-    <div class="form-row">
-        <div class="col">
-            <input class="form-input" placeholder="First name" type="text">
-        </div>
-        <div class="col">
-            <input class="form-input" placeholder="Last name" type="text">
-        </div>
-    </div>
-</div>
-
-``` html
-<div class="form-row">
-    <div class="col">
-        <input class="form-input" placeholder="First name" type="text">
-    </div>
-
-    <div class="col">
-        <input class="form-input" placeholder="Last name" type="text">
-    </div>
-</div>
-```
-
-## Horizontal form
-
-<div class="sui-example">
-    <div class="form-group row">
-        <label class="col w-2/12 col-form-label" for="inputEmail3">Email</label>
-        <div class="col w-10/12">
-            <input class="form-input" id="inputEmail3" placeholder="Email" type="email">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col w-2/12 col-form-label" for="inputPassword3">Password</label>
-        <div class="col w-10/12">
-            <input class="form-input" id="inputPassword3" placeholder="Password" type="password">
-        </div>
-    </div>
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label col w-2/12 pt-0">Radios</legend>
-            <div class="col w-10/12">
-                <div class="form-radio">
-                    <input id="gridRadios1" type="radio">
-                    <label class="form-check-label" for="gridRadios1">First radio</label>
-                </div>
-                <div class="form-radio">
-                    <input id="gridRadios2" type="radio">
-                    <label class="form-check-label" for="gridRadios2">Second radio</label>
-                </div>
-                <div class="form-radio disabled">
-                    <input id="gridRadios3" type="radio">
-                    <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
-                </div>
-            </div>
-        </div>
-    </fieldset>
-    <div class="form-group row">
-        <div class="col w-2/12">Checkbox</div>
-        <div class="col w-10/12">
-            <div class="form-checkbox">
-                <input id="gridCheck1" type="checkbox">
-                <label class="form-check-label" for="gridCheck1">Remember me</label>
-            </div>
-        </div>
-    </div>
-    <div class="form-group row">
-        <div class="col w-10/12">
-            <button class="btn btn-primary" type="submit">Sign in</button>
-        </div>
-    </div>
-</div>
-
-``` html
-<div class="form-group row">
-    <label class="col w-2/12 col-form-label" for="inputEmail3">Email</label>
-
-    <div class="col w-10/12">
-        <input class="form-input" id="inputEmail3" placeholder="Email" type="email">
-    </div>
-</div>
-
-<div class="form-group row">
-    <label class="col w-2/12 col-form-label" for="inputPassword3">Password</label>
-
-    <div class="col w-10/12">
-        <input class="form-input" id="inputPassword3" placeholder="Password" type="password">
-    </div>
-</div>
-
-<fieldset class="form-group">
-    <div class="row">
-        <legend class="col-form-label col w-2/12 pt-0">Radios</legend>
-
-        <div class="col w-10/12">
-            <div class="form-radio">
-                <input id="gridRadios1" type="radio">
-                <label class="form-check-label" for="gridRadios1">First radio</label>
-            </div>
-
-            <div class="form-radio">
-                <input id="gridRadios2" type="radio">
-                <label class="form-check-label" for="gridRadios2">Second radio</label>
-            </div>
-
-            <div class="form-radio disabled">
-                <input id="gridRadios3" type="radio">
-                <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
-            </div>
-        </div>
-    </div>
-</fieldset>
-
-<div class="form-group row">
-    <div class="col w-2/12">Checkbox</div>
-
-    <div class="col w-10/12">
-        <div class="form-checkbox">
-            <input id="gridCheck1" type="checkbox">
-            <label class="form-check-label" for="gridCheck1">Remember me</label>
-        </div>
-    </div>
-</div>
-
-<div class="form-group row">
-    <div class="col w-10/12">
-        <button class="btn btn-primary" type="submit">Sign in</button>
-    </div>
-</div>
-```
-
-
-## Inline forms
-
-<div class="sui-example">
-    <form class="form-inline">
-        <div class="form-group">
-            <div class="form-radio">
-                <input checked id="inlineRadio1" type="radio">
-                <label class="form-check-label" for="inlineRadio1">Male</label>
-            </div>
-            <div class="form-radio">
-                <input id="inlineRadio2" type="radio">
-                <label class="form-check-label" for="inlineRadio2">Female</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="form-checkbox">
-                <input id="inlineCheck1" type="checkbox">
-                <label class="form-check-label" for="inlineCheck1">Checkbox 1</label>
-            </div>
-            <div class="form-checkbox">
-                <input checked id="inlineCheck2" type="checkbox">
-                <label class="form-check-label" for="inlineCheck2">Checkbox 2</label>
-            </div>
-        </div>
-    </form>
-</div>
-
-``` html
-<form class="form-inline">
-    <div class="form-group">
-        <div class="form-radio">
-            <input checked id="inlineRadio1" type="radio">
-            <label class="form-check-label" for="inlineRadio1">Male</label>
-        </div>
-
-        <div class="form-radio">
-            <input id="inlineRadio2" type="radio">
-            <label class="form-check-label" for="inlineRadio2">Female</label>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="form-checkbox">
-            <input id="inlineCheck1" type="checkbox">
-            <label class="form-check-label" for="inlineCheck1">Checkbox 1</label>
-        </div>
-
-        <div class="form-checkbox">
-            <input checked id="inlineCheck2" type="checkbox">
-            <label class="form-check-label" for="inlineCheck2">Checkbox 2</label>
-        </div>
-    </div>
-</form>
-```
-
-
-<div class="sui-example">
-    <form class="form-inline">
-        <label class="sr-only" for="inlineFormInputName2">Name</label>
-        <input class="form-input" id="inlineFormInputName2" placeholder="Jane Doe" type="text">
-        <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
-        <div class="input-group">
-            <input class="form-input" id="inlineFormInputGroupUsername2" placeholder="Username" type="text">
-        </div>
-        <div class="form-checkbox">
-            <input class="form-check-input" id="inlineFormCheck" type="checkbox">
-            <label class="form-check-label" for="inlineFormCheck">Remember me</label>
-        </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
-    </form>
-</div>
-
-``` html
-<form class="form-inline">
-    <label class="sr-only" for="inlineFormInputName2">Name</label>
-    <input class="form-input" id="inlineFormInputName2" placeholder="Jane Doe" type="text">
-    <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
-
-    <div class="input-group">
-        <input class="form-input" id="inlineFormInputGroupUsername2" placeholder="Username" type="text">
-    </div>
-
-    <div class="form-checkbox">
-        <input class="form-check-input" id="inlineFormCheck" type="checkbox">
-        <label class="form-check-label" for="inlineFormCheck">Remember me</label>
-    </div>
-
-    <button class="btn btn-primary" type="submit">Submit</button>
-</form>
-```
-
-## Help text
-
-<div class="sui-example">
-    <label for="inputPassword5">Password</label>
-    <input aria-describedby="passwordHelpBlock" class="form-input" id="inputPassword5" type="password">
-    <small class="block mt-1 text-gray-600" id="passwordHelpBlock">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</small>
-</div>
-
-
-``` html
-<label for="inputPassword5">Password</label>
-<input aria-describedby="passwordHelpBlock" class="form-input" id="inputPassword5" type="password">
-<small class="block mt-1 text-gray-600" id="passwordHelpBlock">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</small>
-```
-
-
-<div class="sui-example">
-    <form class="form-inline">
-        <div class="form-group">
-            <label for="inputPassword6">Password</label>
-            <input aria-describedby="passwordHelpInline" class="form-input" id="inputPassword6" type="password">
-            <small class="text-gray-600" id="passwordHelpInline">Must be 8-20 characters long.</small>
-        </div>
-    </form>
-</div>
-
-
-``` html
-<form class="form-inline">
-    <div class="form-group">
-        <label for="inputPassword6">Password</label>
-        <input aria-describedby="passwordHelpInline" class="form-input" id="inputPassword6" type="password">
-        <small class="text-gray-600" id="passwordHelpInline">Must be 8-20 characters long.</small>
-    </div>
-</form>
-```
-
-
-You can use the `.loading` class for loading or posting state.
-
-<div class="sui-example">
-    <div class="form-row row">
-        <div class="col w-4/12">
-            <div class="has-icon-right">
-                <input class="form-input input-sm" placeholder="Name" type="text"><i class="form-icon loading"></i>
-            </div>
-        </div>
-        <div class="col w-4/12">
-            <div class="has-icon-right">
-                <input class="form-input" placeholder="Name" type="text"><i class="form-icon loading"></i>
-            </div>
-        </div>
-        <div class="col w-4/12">
-            <div class="has-icon-right">
-                <input class="form-input input-lg" placeholder="Name" type="text"><i class="form-icon loading"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-``` html
-<div class="form-row row">
-    <div class="col w-4/12">
-        <div class="has-icon-right">
-            <input class="form-input input-sm" placeholder="Name" type="text"><i class="form-icon loading"></i>
-        </div>
-    </div>
-
-    <div class="col w-4/12">
-        <div class="has-icon-right">
-            <input class="form-input" placeholder="Name" type="text"><i class="form-icon loading"></i>
-        </div>
-    </div>
-
-    <div class="col w-4/12">
-        <div class="has-icon-right">
-            <input class="form-input input-lg" placeholder="Name" type="text"><i class="form-icon loading"></i>
-        </div>
-    </div>
-</div>
-```
-
-## Validation
-
-<div class="sui-example">
-    <div class="form-row">
-        <div class="col w-4/12 mb-3">
-            <label for="validationServer01">First name</label>
-            <input class="form-input is-valid" id="validationServer01" placeholder="First name" required="" type="text" value="Mark">
-            <div class="valid-feedback">Looks good!</div>
-        </div>
-        <div class="col w-4/12 mb-3">
-            <label for="validationServer02">Last name</label>
-            <input class="form-input is-valid" id="validationServer02" placeholder="Last name" required="" type="text" value="Otto">
-            <div class="valid-feedback">Looks good!</div>
-        </div>
-        <div class="col w-4/12 mb-3">
-            <label for="validationServerUsername">Username</label>
-            <input aria-describedby="inputGroupPrepend3" class="form-input is-invalid" id="validationServerUsername" placeholder="Username" required="" type="text">
-            <div class="invalid-feedback">Please choose a username.</div>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="col w-1/2 mb-3">
-            <label for="validationServer03">City</label>
-            <input class="form-input is-invalid" id="validationServer03" placeholder="City" required="" type="text">
-            <div class="invalid-feedback">Please provide a valid city.</div>
-        </div>
-        <div class="col w-1/4 mb-3">
-            <label for="validationServer04">State</label>
-            <input class="form-input is-invalid" id="validationServer04" placeholder="State" required="" type="text">
-            <div class="invalid-feedback">Please provide a valid state.</div>
-        </div>
-        <div class="col w-1/4 mb-3">
-            <label for="validationServer05">Zip</label>
-            <input class="form-input is-invalid" id="validationServer05" placeholder="Zip" required="" type="text">
-            <div class="invalid-feedback">Please provide a valid zip.</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="form-checkbox">
-            <input class="form-check-input is-invalid" id="invalidCheck3" required="" type="checkbox" value="">
-            <label class="form-check-label" for="invalidCheck3">Agree to terms and conditions</label>
-            <div class="invalid-feedback">You must agree before submitting.</div>
-        </div>
-    </div>
-    <button class="btn btn-primary" type="submit">Submit form</button>
-</div>
-
-``` html
-<div class="form-row">
-    <div class="col w-4/12 mb-3">
-        <label for="validationServer01">First name</label>
-        <input class="form-input is-valid" id="validationServer01" placeholder="First name" required="" type="text" value="Mark">
-        <div class="valid-feedback">Looks good!</div>
-    </div>
-
-    <div class="col w-4/12 mb-3">
-        <label for="validationServer02">Last name</label>
-        <input class="form-input is-valid" id="validationServer02" placeholder="Last name" required="" type="text" value="Otto">
-        <div class="valid-feedback">Looks good!</div>
-    </div>
-
-    <div class="col w-4/12 mb-3">
-        <label for="validationServerUsername">Username</label>
-        <input aria-describedby="inputGroupPrepend3" class="form-input is-invalid" id="validationServerUsername" placeholder="Username" required="" type="text">
-        <div class="invalid-feedback">Please choose a username.</div>
-    </div>
-</div>
-
-<div class="form-row">
-    <div class="col w-1/2 mb-3">
-        <label for="validationServer03">City</label>
-        <input class="form-input is-invalid" id="validationServer03" placeholder="City" required="" type="text">
-        <div class="invalid-feedback">Please provide a valid city.</div>
-    </div>
-
-    <div class="col w-1/4 mb-3">
-        <label for="validationServer04">State</label>
-        <input class="form-input is-invalid" id="validationServer04" placeholder="State" required="" type="text">
-        <div class="invalid-feedback">Please provide a valid state.</div>
-    </div>
-
-    <div class="col w-1/4 mb-3">
-        <label for="validationServer05">Zip</label>
-        <input class="form-input is-invalid" id="validationServer05" placeholder="Zip" required="" type="text">
-        <div class="invalid-feedback">Please provide a valid zip.</div>
-    </div>
-</div>
-
-<div class="form-group">
-    <div class="form-checkbox">
-        <input class="form-check-input is-invalid" id="invalidCheck3" required="" type="checkbox" value="">
-        <label class="form-check-label" for="invalidCheck3">Agree to terms and conditions</label>
-        <div class="invalid-feedback">You must agree before submitting.</div>
-    </div>
-</div>
-
-<button class="btn btn-primary" type="submit">Submit form</button>
-```
-
-
-<div class="sui-example">
-    <form>
-        <div class="form-checkbox">
-            <input class="is-invalid" id="customControlValidation1" required="" type="checkbox">
-            <label class="form-check-label" for="customControlValidation1">Check this custom checkbox</label>
-            <div class="invalid-feedback">Example invalid feedback text</div>
-        </div>
-        <div class="form-radio">
-            <input class="is-invalid" id="customControlValidation2" name="radio-stacked" required="" type="radio">
-            <label class="form-check-label" for="customControlValidation2">Toggle this custom radio</label>
-        </div>
-        <div class="form-radio">
-            <input class="is-invalid" id="customControlValidation3" name="radio-stacked" required="" type="radio">
-            <label class="form-check-label" for="customControlValidation3">Or toggle this other custom radio</label>
-            <div class="invalid-feedback">More example invalid feedback text</div>
-        </div>
-        <div class="form-group">
-            <select class="is-invalid form-select" required="">
-                <option value="">Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-            <div class="invalid-feedback">
-                Example invalid custom select feedback
-            </div>
-        </div>
-    </form>
-</div>
-
-``` html
-<div class="form-checkbox">
-    <input class="is-invalid" id="customControlValidation1" required="" type="checkbox">
-    <label class="form-check-label" for="customControlValidation1">Check this custom checkbox</label>
-    <div class="invalid-feedback">Example invalid feedback text</div>
-</div>
-
-<div class="form-radio">
-    <input class="is-invalid" id="customControlValidation2" name="radio-stacked" required="" type="radio">
-    <label class="form-check-label" for="customControlValidation2">Toggle this custom radio</label>
-</div>
-
-<div class="form-radio">
-    <input class="is-invalid" id="customControlValidation3" name="radio-stacked" required="" type="radio">
-    <label class="form-check-label" for="customControlValidation3">Or toggle this other custom radio</label>
-    <div class="invalid-feedback">More example invalid feedback text</div>
-</div>
-
-<div class="form-group">
-    <select class="is-invalid form-select" required="">
-        <option value="">Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-
-    <div class="invalid-feedback">
-        Example invalid custom select feedback
-    </div>
-</div>
+</code-preview>
+
+
+### Configuration
+Configure the `@sui/tailwind-plugins/forms` plugin using `theme` options.
+
+```js
+theme: {
+    extend: {
+        forms: (theme) => {
+            return {
+                // BASE STYLES
+                // Set the primary colour for form-focus border/ring and the checked state for checkboxes and radios.
+                // This is applicable to the base (whether you use the form classes or not).
+                primaryColor: theme('colors.red.500'),
+
+                // COMPONENT STYLES
+                // Styles for form labels
+                label: {
+                    marginBottom: theme('margin.4'),
+                    fontWeight: theme('fontWeight.bold'),
+                },
+
+                // Styles for form text
+                text: {
+                    fontSize: theme('fontSize.xs'),
+                },
+
+                // Styles for form inputs and selects
+                control: {
+                    padding: `theme('padding.6') theme('padding.4')`,
+                },
+
+                // Styles for form checkboxes and radios
+                check: {
+                    paddingLeft: theme('padding.6'),
+                },
+
+                // Styles for form checkboxes and radios inputs
+                checkInput: {
+                    // Change for just checkboxes
+                    '&[type=checkbox]': {
+                        borderRadius: theme('borderRadius.DEFAULT'),
+                    },
+
+                    // Change for just radios
+                    '&[type=radio]': {
+                        borderRadius: theme('borderRadius.full'),
+                    },
+                },
+
+                // Styles for floating labels
+                formFloating: {
+
+                },
+            };
+        },
+    },
+},
 ```
