@@ -6,3 +6,4 @@ node_modules
 packages/**/dist
 .env
 .env.*
+.idea
