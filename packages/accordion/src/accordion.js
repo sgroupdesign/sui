@@ -1,5 +1,12 @@
 import {
-    defineComponent, h, inject, onMounted, provide, ref,
+    computed,
+    defineComponent,
+    h,
+    inject,
+    onMounted,
+    provide,
+    ref,
+    watchEffect,
 } from 'vue';
 import { useId } from './use-id';
 
@@ -9,6 +16,23 @@ export const Accordion = defineComponent({
     setup(_, { slots }) {
         const items = ref([]);
         const activeItemIndex = ref(null);
+
+        const calculateItemIndex = (focus, id) => {
+            const index = items.value.findIndex((item) => { return item.id === id; }) ?? 0;
+
+            switch (focus) {
+                case 'First':
+                    return 0;
+                case 'Last':
+                    return items.value.length - 1;
+                case 'Next':
+                    return index !== items.value.length - 1 ? index + 1 : 0;
+                case 'Prev':
+                    return index !== 0 ? index - 1 : items.value.length - 1;
+                default:
+                    return 0;
+            }
+        };
 
         const api = {
             items,
@@ -28,42 +52,10 @@ export const Accordion = defineComponent({
 
                 item.state = 'Closed';
             },
-            goToFirstItem() {
-                const [item] = items.value;
+            goToItem(focus, id) {
+                const index = calculateItemIndex(focus, id);
 
-                document.getElementById(`${item.id}-button`).focus();
-            },
-            goToLastItem() {
-                const [item] = [...items.value].reverse();
-
-                document.getElementById(`${item.id}-button`).focus();
-            },
-            goToNextItem(id) {
-                const index = items.value.findIndex((item) => { return item.id === id; });
-
-                if (index === items.value.length - 1) {
-                    const [item] = items.value;
-                    document.getElementById(`${item.id}-button`).focus();
-                    return;
-                }
-
-                const item = items.value[index + 1];
-
-                console.log(item);
-
-                document.getElementById(`${item.id}-button`).focus();
-            },
-            goToPrevItem(id) {
-                const index = items.value.findIndex((item) => { return item.id === id; });
-
-                if (index === 0) {
-                    const [item] = [...items.value].reverse();
-                    document.getElementById(`${item.id}-button`).focus();
-                    return;
-                }
-
-                const item = items.value[index - 1];
-                document.getElementById(`${item.id}-button`).focus();
+                activeItemIndex.value = index;
             },
             registerItem(item) {
                 items.value.push(item);
@@ -107,20 +99,40 @@ export const AccordionButton = defineComponent({
     setup(_, { slots }) {
         const api = inject('AccordionContext', null);
         const id = inject('id', null);
+        const button = ref();
+
+        const active = computed(() => {
+            return api.activeItemIndex !== null
+                ? api.items.value[api.activeItemIndex.value]?.id === id
+                : false;
+        });
+
+        watchEffect(() => {
+            if (!active.value) { return; }
+            button.value.focus();
+        });
 
         const handleKeyUp = (event) => {
             switch (event.key) {
                 case 'ArrowUp':
-                    api.goToPrevItem(id);
+                    event.preventDefault();
+                    event.stopPropagation();
+                    api.goToItem('Prev', id);
                     break;
                 case 'ArrowDown':
-                    api.goToNextItem(id);
+                    event.preventDefault();
+                    event.stopPropagation();
+                    api.goToItem('Next', id);
                     break;
                 case 'Home':
-                    api.goToFirstItem();
+                    event.preventDefault();
+                    event.stopPropagation();
+                    api.goToItem('First');
                     break;
                 case 'End':
-                    api.goToLastItem();
+                    event.preventDefault();
+                    event.stopPropagation();
+                    api.goToItem('Last');
                     break;
                 default:
             }
@@ -131,6 +143,7 @@ export const AccordionButton = defineComponent({
                 'button',
                 {
                     id: `${id}-button`,
+                    ref: button,
                     onClick: () => {
                         api.getItemState(id) === 'Open'
                             ? api.closeItem(id)
