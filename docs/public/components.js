@@ -13369,7 +13369,7 @@ const AccordionItem = defineComponent({
     provide("active", active);
     return () => {
       return h("div", {}, slots.default({
-        active
+        active: active.value
       }));
     };
   }

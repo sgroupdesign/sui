@@ -94,7 +94,7 @@ export const AccordionItem = defineComponent({
 
         return () => {
             return h('div', {}, slots.default({
-                active,
+                active: active.value,
             }));
         };
     },

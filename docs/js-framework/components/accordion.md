@@ -7,7 +7,7 @@ Show and hide content in collapsable containers.
     <sui-accordion>
         <sui-accordion-item v-slot="{ active }">
             <sui-accordion-button class="flex justify-between w-full px-3 py-2 my-2 font-medium text-sm rounded-md hover:text-gray-700" :class="[active ? 'bg-gray-200 text-gray-700' : 'bg-gray-100 text-gray-500']">
-                <h3>Item 1 {{ active }}</h3>
+                <h3>Item 1</h3>
 
                 <span class="icon w-6 h-6" :class="active ? 'transform rotate-180' : ''">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
