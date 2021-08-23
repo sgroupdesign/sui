@@ -1,4 +1,4 @@
-const _ = require('lodash');
+const defaultsDeep = require('lodash/defaultsDeep');
 
 // ================================================
 // Colors - default Tailwind (extended) colors
@@ -92,7 +92,7 @@ for (let i = 0; i <= 100; i += 5) {
 
 module.exports = function(overrides = {}) {
     // Setup default config, but allow project-defined overrides
-    const config = _.defaultsDeep(overrides, {
+    const config = defaultsDeep(overrides, {
         screens: {
             // Our default breakpoints
             xs: 520, sm: 640, md: 768, lg: 1024, xl: 1280, '2xl': 1536,

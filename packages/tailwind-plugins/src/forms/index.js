@@ -2,7 +2,7 @@
 // Forms
 // ==========================================================================
 
-const _ = require('lodash');
+const defaultsDeep = require('lodash/defaultsDeep');
 const plugin = require('tailwindcss/plugin');
 
 module.exports = plugin(({ addComponents, addBase, theme }) => {
@@ -35,20 +35,20 @@ module.exports = plugin(({ addComponents, addBase, theme }) => {
     });
 
     const components = {
-        '.form-label': _.defaultsDeep(formLabel, {
+        '.form-label': defaultsDeep(formLabel, {
             marginBottom: theme('margin.2'),
             display: 'inline-block',
         }),
 
         // Help text
-        '.form-text': _.defaultsDeep(formText, {
+        '.form-text': defaultsDeep(formText, {
             marginTop: theme('margin.1'),
             fontSize: theme('fontSize.sm'),
             color: theme('colors.gray.600'),
         }),
 
         // General inputs
-        '.form-control, .form-select': _.defaultsDeep(formControl, {
+        '.form-control, .form-select': defaultsDeep(formControl, {
             display: 'block',
             width: '100%',
             borderColor: theme('colors.gray.300'),
@@ -105,7 +105,7 @@ module.exports = plugin(({ addComponents, addBase, theme }) => {
         }),
 
         // Color inputs
-        '.form-control-color': _.defaultsDeep(formControlColor, {
+        '.form-control-color': defaultsDeep(formControlColor, {
             width: theme('spacing.12'),
             height: theme('spacing.11'),
             padding: theme('padding.1'),
@@ -123,7 +123,7 @@ module.exports = plugin(({ addComponents, addBase, theme }) => {
         }),
 
         // Checkboxes & Radios
-        '.form-check': _.defaultsDeep(formCheck, {
+        '.form-check': defaultsDeep(formCheck, {
             display: 'block',
             minHeight: '1.5rem',
             paddingLeft: theme('padding.4'),
@@ -135,7 +135,7 @@ module.exports = plugin(({ addComponents, addBase, theme }) => {
             },
         }),
 
-        '.form-check-input': _.defaultsDeep(formCheckInput, {
+        '.form-check-input': defaultsDeep(formCheckInput, {
             marginTop: theme('margin.1'),
             borderColor: theme('colors.gray.300'),
 
@@ -153,13 +153,13 @@ module.exports = plugin(({ addComponents, addBase, theme }) => {
         }),
 
         // Inline Checkboxes & Radios
-        '.form-check-inline': _.defaultsDeep(formCheckInline, {
+        '.form-check-inline': defaultsDeep(formCheckInline, {
             display: 'inline-block',
             marginRight: theme('margin.4'),
         }),
 
         // Floating labels
-        '.form-floating': _.defaultsDeep(formFloating, {
+        '.form-floating': defaultsDeep(formFloating, {
             position: 'relative',
 
             '> .form-control, > .form-select': {
