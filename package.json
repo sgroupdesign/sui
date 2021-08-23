@@ -1,6 +1,5 @@
 {
     "private": true,
-    "name": "sui",
     "workspaces": [
         "docs",
         "packages/*"
