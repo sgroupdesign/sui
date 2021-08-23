@@ -81,17 +81,25 @@ An individual, collapsable item in the `Accordion`.
 
 | Prop | Type | Default | Description
 | - | - | - | -
-| `tagName` | `String` | `div` | The element the `Accordion` should render as.
+| `tagName` | `String` | `div` | The element the `AccordionItem` should render as.
+
+| Slot Prop | Type | Description
+| - | - | -
+| `active` | `Boolean` | Whether or not the accordion item is open.
 
 
 ### AccordionButton
-The trigger component that toggles an `Accordion`.
+The trigger component that toggles an `AccordionItem`.
 
 | Prop | Type | Default | Description
 | - | - | - | -
-| `tagName` | `String` | `div` | The element the `Accordion` should render as.
+| `tagName` | `String` | `button` | The element the `AccordionButton` should render as.
 
 
 ### AccordionPanel
-This component contains the contents of your `Accordion`.
+This component contains the contents of your `AccordionItem`.
+
+| Prop | Type | Default | Description
+| - | - | - | -
+| `tagName` | `String` | `section` | The element the `AccordionItem` should render as.
 
