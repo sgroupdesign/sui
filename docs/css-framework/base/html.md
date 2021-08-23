@@ -1,5 +1,5 @@
 # HTML
-[`@sui/tailwind-plugins/base`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/base)
+[`@sgroup/tailwind-plugins/base`](https://github.com/sgroupdesign/sui/blob/main/packages/tailwind-plugins/src/base)
 
 We provide an extremely minimal, yet opinionated base (on top of Tailwind's [preflight](https://tailwindcss.com/docs/preflight)).
 
@@ -17,12 +17,12 @@ text-rendering: 'optimizelegibility';
 ```
 
 ### Configuration
-Configure the `@sui/tailwind-plugins/base` plugin with options.
+Configure the `@sgroup/tailwind-plugins/base` plugin with options.
 
  ```js
 module.exports = {
     plugins: [
-        require('@sui/tailwind-plugins/base')({
+        require('@sgroup/tailwind-plugins/base')({
             fontRenderingFix: true,
         }),
     ],

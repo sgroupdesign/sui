@@ -1,5 +1,5 @@
 # Loading
-[`@sui/tailwind-plugins/loading`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/loading)
+[`@sgroup/tailwind-plugins/loading`](https://github.com/sgroupdesign/sui/blob/main/packages/tailwind-plugins/src/loading)
 
 Loading indicator is used for loading or updating. You can add the `.loading` class to a container for loading status.
 

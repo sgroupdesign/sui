@@ -1,15 +1,15 @@
 # Mobile Nav
-[`@sui/mobile-nav`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/mobile-nav)
+[`@sgroup/mobile-nav`](https://github.com/sgroupdesign/sui/blob/main/packages/mobile-nav)
 
 The mobile nav component is a vanilla JS component that aims to do a single thing - toggle a class on the `<html>` element, to let other components on the page control how the mobile menu should be shown. It's this hands-off approach that allows each project to use this component, withough being opinionated at all. 
 
 Despite it being a glorified "class-toggler" - there are some handy utilities specifically for mobile menus.
 
 ## Usage
-Import the `@sui/mobile-nav` module, and call its constructor.
+Import the `@sgroup/mobile-nav` module, and call its constructor.
 
 ```js
-import MobileNav from '@sui/mobile-nav';
+import MobileNav from '@sgroup/mobile-nav';
 
 new MobileNav({
     // ....

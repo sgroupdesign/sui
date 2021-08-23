@@ -4,7 +4,7 @@ These docs use [VitePress](https://vitepress.vuejs.org), which offers crazy-fast
 This guide will cover how to edit these docs. These steps are **not** required for using S.UI in your web projects.
 
 ## Getting started
-Clone the [sui-vue](https://github.com/sgroupdesign/sui-vue) repository to your computer, open a terminal in the root of this folder and run:
+Clone the [sui](https://github.com/sgroupdesign/sui) repository to your computer, open a terminal in the root of this folder and run:
 
 ```sh
 npm install
@@ -79,10 +79,10 @@ Apart from a little Tailwind goodness to wrap the slots' provided code, we're im
 
 In order for this to happen, we have a nested module in `docs/sui` that is another Vite project, that compiles CSS/JS and adds them to VitePress' `public` folder as static assets, which are included in each `iframe` document. Just like the S.UI framework used on a project, we use Tailwind and JIT processing to keep this lean and fast.
 
-The `sui/src/components.js` file is very simple, pulling in all `@sui` JS components, and the S.UI CSS (which includes Tailwind), in almost the exact same manner as we would for a web project.
+The `sui/src/components.js` file is very simple, pulling in all `@sgroup` JS components, and the S.UI CSS (which includes Tailwind), in almost the exact same manner as we would for a web project.
 
 ### Rebuilding
-One critical point is that due to Tailwind's purge, we'll periodically need to rebuild the CSS used in `iframe`'s, as we add new examples. Similarly, when we add new `@sui` JS components, we'll always want them available to code preview's. In order for this to happen, we need to rebuild the "S.UI framework" for these components to use.
+One critical point is that due to Tailwind's purge, we'll periodically need to rebuild the CSS used in `iframe`'s, as we add new examples. Similarly, when we add new `@sgroup` JS components, we'll always want them available to code preview's. In order for this to happen, we need to rebuild the "S.UI framework" for these components to use.
 
 Fortunately, this is straightforward with the following `npm` commands:
 
@@ -96,4 +96,4 @@ You'll find yourself commonly going for the `docs:watch` option which is the bes
 npm run docs:watch
 ```
 
-Using the `watch` command, the secondary Vite process (which is building the S.UI CSS/JS) will watch for any changes you make to the Markdown files, and re-compile automatically, ensuring it scans all files to purge (or include) appropriate CSS. This will also be the case for when you want to include any `@sui` JS components.
+Using the `watch` command, the secondary Vite process (which is building the S.UI CSS/JS) will watch for any changes you make to the Markdown files, and re-compile automatically, ensuring it scans all files to purge (or include) appropriate CSS. This will also be the case for when you want to include any `@sgroup` JS components.

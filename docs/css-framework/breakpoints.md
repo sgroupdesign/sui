@@ -34,12 +34,12 @@ We include some additional utilities for breakpoints:
 </code-preview>
 
 ## Configuration
-You can customise the breakpoints your project uses by configuring the `@sui/tailwind-base` preset.
+You can customise the breakpoints your project uses by configuring the `@sgroup/tailwind-base` preset.
 
  ```js
 module.exports = {
     presets: [
-        require('@sui/tailwind-base')({
+        require('@sgroup/tailwind-base')({
             screens: {
                 // Custom breakpoints for your project
                 xs: 480, sm: 640, md: 768, lg: 1024,

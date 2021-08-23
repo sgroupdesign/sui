@@ -31,7 +31,7 @@ As you can see, you can also use [SCSS](https://sass-lang.com/guide). The `style
 }
 ```
 
-If you've written a component that you think might be re-usable, [tell us about it](https://github.com/sgroupdesign/sui-vue/issues).
+If you've written a component that you think might be re-usable, [tell us about it](https://github.com/sgroupdesign/sui/issues).
 
 Any third-party related like plugins should be placed in `vendor`.
 
@@ -52,7 +52,7 @@ The below becomes the entirety of our `tailwind.config.js` file for a web projec
 ```js
 module.exports = {
     presets: [
-        require('@sui/tailwind-base'),
+        require('@sgroup/tailwind-base'),
     ],
 };
 ```
@@ -70,7 +70,7 @@ The best part of using a preset is that anything you define in your project's `t
 ```js
 module.exports = {
     presets: [
-        require('@sui/tailwind-base'),
+        require('@sgroup/tailwind-base'),
     ],
 
     theme: {
@@ -98,7 +98,7 @@ module.exports = {
 
 Here, despite configuration existing for `zIndex` and `colors.primary` in the preset these will be merged with our configuration. You can also completely override anything defined in the preset like you normally would, moving rules outside of `theme.extend`.
 
-Through this package, we can continue to update this preset as we grow. Projects need only run `npm update` to get the latest and greatest changes. Take a look at the [@sui/tailwind-base](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-base/src/index.js) package for all it does.
+Through this package, we can continue to update this preset as we grow. Projects need only run `npm update` to get the latest and greatest changes. Take a look at the [@sgroup/tailwind-base](https://github.com/sgroupdesign/sui/blob/main/packages/tailwind-base/src/index.js) package for all it does.
 
 #### Preset configuration
 You can provide an object to the preset to override some settings.
@@ -106,7 +106,7 @@ You can provide an object to the preset to override some settings.
  ```js
 module.exports = {
     presets: [
-        require('@sui/tailwind-base')({
+        require('@sgroup/tailwind-base')({
             screens: {
                 // Custom breakpoints for your project
                 xs: 480, sm: 640, md: 768, lg: 1024,

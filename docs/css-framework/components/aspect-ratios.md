@@ -1,5 +1,5 @@
 # Aspect Ratios
-[`@sui/tailwind-plugins/aspect-ratios`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/aspect-ratios)
+[`@sgroup/tailwind-plugins/aspect-ratios`](https://github.com/sgroupdesign/sui/blob/main/packages/tailwind-plugins/src/aspect-ratios)
 
 Use the ratio helpers to manage the aspect ratios images, background images and external content like `<iframe>`s and `<video>`s.
 
@@ -72,7 +72,7 @@ You might want to have a set ratio for images on desktop and tablet, but want to
 </code-preview>
 
 ### Configuration
-Configure the `@sui/tailwind-plugins/aspect-ratios` plugin using `theme` options.
+Configure the `@sgroup/tailwind-plugins/aspect-ratios` plugin using `theme` options.
 
 ```js
 theme: {

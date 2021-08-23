@@ -1,5 +1,5 @@
 # Alert
-[`@sui/alert`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/alert)
+[`@sgroup/alert`](https://github.com/sgroupdesign/sui/blob/main/packages/alert)
 
 Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 
@@ -31,10 +31,10 @@ const alertExample1 = `
 </script>
 
 ## Installation
-To get started, install `@sui/alert` via npm:
+To get started, install `@sgroup/alert` via npm:
 
 ```sh
-npm install @sui/alert
+npm install @sgroup/alert
 ```
 
 ## Basic example
@@ -56,7 +56,7 @@ Ensure you change the `components` definition to include `Sui` as a prefix, as s
 </template>
 
 <script>
-import { Alert, AlertClose } from '@sui/alert';
+import { Alert, AlertClose } from '@sgroup/alert';
 
 export default {
     components: {

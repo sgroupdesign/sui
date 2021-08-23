@@ -1,5 +1,5 @@
 # Links
-[`@sui/tailwind-plugins/links`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/links)
+[`@sgroup/tailwind-plugins/links`](https://github.com/sgroupdesign/sui/blob/main/packages/tailwind-plugins/src/links)
 
 Links aren't styled by default, so it's up to you to add the `.link` class.
 

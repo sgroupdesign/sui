@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     presets: [
-        require('@sui/tailwind-base'),
+        require('@sgroup/tailwind-base'),
     ],
 
     purge: {

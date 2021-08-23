@@ -1,5 +1,5 @@
 # Horizontal Rule
-[`@sui/tailwind-plugins/horizontal-rule`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/horizontal-rule)
+[`@sgroup/tailwind-plugins/horizontal-rule`](https://github.com/sgroupdesign/sui/blob/main/packages/tailwind-plugins/src/horizontal-rule)
 
 A horizontal rule is used to separate elements by a thin line. Includes top/bottom padding and a line colour. Clearly the most complicated element in the framework 🤯 .
 
@@ -8,7 +8,7 @@ A horizontal rule is used to separate elements by a thin line. Includes top/bott
 </code-preview>
 
 ### Configuration
-Configure the `@sui/tailwind-plugins/horizontal-rule` plugin using `theme` options.
+Configure the `@sgroup/tailwind-plugins/horizontal-rule` plugin using `theme` options.
 
 ```js
 theme: {

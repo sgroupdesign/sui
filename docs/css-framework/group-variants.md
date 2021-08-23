@@ -1,5 +1,5 @@
 # Group Variants
-[`@sui/tailwind-plugins/group-variants`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/group-variants/index)
+[`@sgroup/tailwind-plugins/group-variants`](https://github.com/sgroupdesign/sui/blob/main/packages/tailwind-plugins/src/group-variants/index)
 
 You should hopefully be familar with the concept of [Tailwind variants](https://tailwindcss.com/docs/configuring-variants). There are some special types of variants, which "group" functionality together. One of which is the `group-hover` variant.
 
@@ -114,7 +114,7 @@ But this relies on CSS, which we'd rather not do if we can help it, instead rely
 Let's define a custom group variant to handle this.
 
 ::: tip
-This is already part of our [@sui/tailwind-base](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-base/src/index) package.
+This is already part of our [@sgroup/tailwind-base](https://github.com/sgroupdesign/sui/blob/main/packages/tailwind-base/src/index) package.
 :::
 
 ```js

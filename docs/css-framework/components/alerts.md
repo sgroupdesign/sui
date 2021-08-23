@@ -1,5 +1,5 @@
 # Alerts
-[`@sui/tailwind-plugins/alert`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/alert)
+[`@sgroup/tailwind-plugins/alert`](https://github.com/sgroupdesign/sui/blob/main/packages/tailwind-plugins/src/alert)
 
 Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 
@@ -34,7 +34,7 @@ Be sure to check out our [Alert Component](/js-framework/components/alert) for m
 </code-preview>
 
 ### Configuration
-Configure the `@sui/tailwind-plugins/alert` plugin using `theme` options.
+Configure the `@sgroup/tailwind-plugins/alert` plugin using `theme` options.
 
 ```js
 theme: {

@@ -1,5 +1,5 @@
 # Images
-[`@sui/tailwind-plugins/images`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/images)
+[`@sgroup/tailwind-plugins/images`](https://github.com/sgroupdesign/sui/blob/main/packages/tailwind-plugins/src/images)
 
 Images are responsive by default.
 

@@ -1,5 +1,5 @@
 # Rich Text
-[`@sui/tailwind-plugins/richtext`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/richtext)
+[`@sgroup/tailwind-plugins/richtext`](https://github.com/sgroupdesign/sui/blob/main/packages/tailwind-plugins/src/richtext)
 
 When using a variety of elements inside a Rich Text (Redactor) field, we'll want to display them 'normally'. For example, Tailwind by default will not render `<ul>` items visually as a list, which is desirable in this instance. We don't have (easy) control over adding classes to these elements.
 

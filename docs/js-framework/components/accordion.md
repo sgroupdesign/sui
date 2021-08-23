@@ -1,5 +1,5 @@
 # Accordion
-[`@sui/accordion`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/accordion)
+[`@sgroup/accordion`](https://github.com/sgroupdesign/sui/blob/main/packages/accordion)
 
 Show and hide content in collapsable containers.
 
@@ -22,10 +22,10 @@ Show and hide content in collapsable containers.
 </code-preview>
 
 ## Installation
-To get started, install `@sui/accordion` via npm:
+To get started, install `@sgroup/accordion` via npm:
 
 ```sh
-npm install @sui/accordion
+npm install @sgroup/accordion
 ```
 
 ## Basic example
@@ -52,7 +52,7 @@ Ensure you change the `components` definition to include `Sui` as a prefix, as s
 </template>
 
 <script>
-import { Accordion, AccordionItem, AccordionButton, AccordionPanel } from '@sui/accordion';
+import { Accordion, AccordionItem, AccordionButton, AccordionPanel } from '@sgroup/accordion';
 
 export default {
     components: {

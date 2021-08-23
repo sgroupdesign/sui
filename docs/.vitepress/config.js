@@ -5,7 +5,7 @@ module.exports = {
     title: 'S.UI',
 
     themeConfig: {
-        repo: 'sgroupdesign/sui-vue',
+        repo: 'sgroupdesign/sui',
         docsDir: 'docs',
 
         editLinks: true,

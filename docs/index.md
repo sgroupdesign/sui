@@ -10,7 +10,7 @@ These docs cover the following:
 #### Components
 - HTML, Twig, JS Vue-based examples of common UI components used on sites. Complete with preview and easy copy-paste!
 - How we use and configure [Headless UI](https://headlessui.dev/) for dynamic components.
-- How to use JS and Vue-based [@sui/*]() components.
+- How to use JS and Vue-based [@sgroup/*]() components.
 
 #### Templates
 - Provide fully-feature Twig templates for common UI scenarios. Think a Craft Commerce cart, Blog-pagination, Page Builder, etc.

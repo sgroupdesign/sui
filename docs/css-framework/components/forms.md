@@ -1,5 +1,5 @@
 # Forms
-[`@sui/tailwind-plugins/forms`](https://github.com/sgroupdesign/sui-vue/blob/main/packages/tailwind-plugins/src/forms)
+[`@sgroup/tailwind-plugins/forms`](https://github.com/sgroupdesign/sui/blob/main/packages/tailwind-plugins/src/forms)
 
 We use [tailwindcss-forms](https://github.com/tailwindlabs/tailwindcss-forms) as a reset for form styling. This give you a good head-start for styling forms forms from a non-opinionated base.
 
@@ -297,7 +297,7 @@ Other than `.form-control`, floating labels are only available on `.form-select`
 
 
 ### Configuration
-Configure the `@sui/tailwind-plugins/forms` plugin using `theme` options.
+Configure the `@sgroup/tailwind-plugins/forms` plugin using `theme` options.
 
 ```js
 theme: {
