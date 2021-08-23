@@ -140,7 +140,7 @@ variants: {
 },
 ```
 
-Here, we're creating a `mobile-nav-open` group variant as **both** the parent and child selectors, just for convenience. Putting this into action and combining with our [Mobile Nav](/components/mobile-nav) component to toggle the class on the body element:
+Here, we're creating a `mobile-nav-open` group variant as **both** the parent and child selectors, just for convenience. Putting this into action and combining with our [Mobile Nav](/js-framework/components/mobile-nav) component to toggle the class on the body element:
 
 <code-preview body-id="mobile-menu-example" heading="Mobile menu example">
     <div class="flex justify-end items-center bg-white">

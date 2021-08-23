@@ -138,7 +138,7 @@ module.exports = {
 
 Despite these being "just CSS", we use plugins (written in JS) so they can be published as `npm` packages, which we can include in projects, and run `npm update` whenever changes are made to each component - or new ones added! Otherwise, we find ourselves manually updating CSS per-project, not knowing if the code is the latest, buggy or non-standard.
 
-For example, the [Button](/framework/components/buttons) component adds `.btn-*` classes. This component is largely the same for every project, but you still want to control things like padding, font, and colours. Other components are even more "hands-off" and don't need to be configured much, if at all from sane defaults.
+For example, the [Button](/css-framework/components/buttons) component adds `.btn-*` classes. This component is largely the same for every project, but you still want to control things like padding, font, and colours. Other components are even more "hands-off" and don't need to be configured much, if at all from sane defaults.
 
 Each plugin adds available options to configure, outlined in each component doc page. 
 

@@ -4,7 +4,7 @@
 Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 
 ::: tip 
-Be sure to check out our [Alert Component](/components/alert) for more interactivity.
+Be sure to check out our [Alert Component](/js-framework/components/alert) for more interactivity.
 :::
 
 <code-preview heading="Theme options">
