@@ -101,15 +101,21 @@ export const AccordionButton = defineComponent({
         const id = inject('id', null);
         const button = ref();
 
-        const active = computed(() => {
+        const activeItem = computed(() => {
             return api.activeItemIndex !== null
                 ? api.items.value[api.activeItemIndex.value]?.id === id
                 : false;
         });
 
         watchEffect(() => {
-            if (!active.value) { return; }
+            if (!activeItem.value) { return; }
             button.value.focus();
+        });
+
+        const active = computed(() => {
+            return api.getItemState(id) !== null
+                ? api.getItemState(id) === 'Open'
+                : false;
         });
 
         const handleKeyUp = (event) => {
@@ -145,15 +151,15 @@ export const AccordionButton = defineComponent({
                     id: `${id}-button`,
                     ref: button,
                     onClick: () => {
-                        api.getItemState(id) === 'Open'
-                            ? api.closeItem(id)
-                            : api.openItem(id);
+                        active.value ? api.closeItem(id) : api.openItem(id);
                     },
                     onKeyup: handleKeyUp,
                     'aria-controls': `${id}-panel`,
-                    'aria-expanded': api.getItemState(id) === 'Open',
+                    'aria-expanded': active.value,
                 },
-                slots.default(),
+                slots.default({
+                    active: active.value,
+                }),
             );
         };
     },
