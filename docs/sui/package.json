@@ -1,0 +1,8 @@
+{
+    "private": true,
+    "name": "sui-framework",
+    "scripts": {
+        "build": "vite build --emptyOutDir",
+        "watch": "vite build --watch --mode=watch"
+    }
+}
