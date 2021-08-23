@@ -1,11 +1,11 @@
-import { createApp } from 'vue/dist/vue.esm-bundler.js';
+import { createApp } from '../../../node_modules/vue/dist/vue.esm-bundler.js';
 
 import 'lazysizes';
 import 'lazysizes/plugins/unveilhooks/ls.unveilhooks';
 
 import { Accordion, AccordionItem, AccordionButton, AccordionPanel } from '@sui/accordion';
 import { Alert, AlertClose } from '@sui/alert';
-import MobileNav from '../../../packages/mobile-nav/src/index';
+import MobileNav from '@sui/mobile-nav';
 
 import './style.scss';
 

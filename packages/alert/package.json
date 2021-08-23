@@ -1,19 +1,7 @@
 {
     "name": "@sui/alert",
-    "description": "Headless Vue components for web development.",
     "version": "1.0.0-beta.1",
-    "homepage": "https://sui.sgroup.com.au",
     "main": "src/alert.js",
-    "keywords": [
-        "sui",
-        "headless"
-    ],
     "license": "MIT",
-    "files": [
-        "src",
-        "dist"
-    ],
-    "dependencies": {
-
-    }
+    "repository": "https://github.com/sgroupdesign/sui-vue"
 }

@@ -8,11 +8,7 @@
         "tailwindcss": ">=2.0.0"
     },
     "dependencies": {
-        "@sui/tailwind-plugins": "file:../tailwind-plugins",
         "@tailwindcss/forms": "^0.3.3",
-        "@tailwindcss/line-clamp": "^0.2.1",
-        "autoprefixer": "^10.2.0",
-        "lodash": "^4.17.21",
-        "tailwindcss": "^2.2.7"
+        "@tailwindcss/line-clamp": "^0.2.1"
     }
 }

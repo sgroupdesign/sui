@@ -13,17 +13,25 @@
         "docs:sui-build": "cd docs/sui && npm run build",
         "docs:sui-watch": "cd docs/sui && npm run watch",
         "lint": "eslint ./packages/**/*.js ./jest/**/*.js --fix",
-        "test": "jest --watchAll"
+        "test": "jest --watchAll",
+        "build:packages": "npm clean:packages && lerna changed | while read package; do rollup -c --scope $package || exit 1; done",
+        "build:allpackages": "npm clean:packages && for dir in packages/*; do package=${dir#'packages/'}; rollup -c --scope @sui/$package || exit 1; done",
+        "release": "npm build:packages && lerna publish",
+        "bootstrap": "lerna bootstrap && lerna exec npm install"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.15.0",
-        "@sui/accordion": "file:packages/accordion",
-        "@sui/alert": "file:packages/alert",
-        "@sui/tailwind-base": "file:packages/tailwind-base",
-        "@sui/tailwind-plugins": "file:packages/tailwind-plugins",
+        "@lerna/batch-packages": "^3.16.0",
+        "@lerna/filter-packages": "^3.18.0",
+        "@lerna/project": "^3.21.0",
+        "@sui/accordion": "^1.0.0-beta.1",
+        "@sui/alert": "^1.0.0-beta.1",
+        "@sui/mobile-nav": "^1.0.0-beta.1",
+        "@sui/tailwind-base": "^1.0.0-beta.1",
+        "@sui/tailwind-plugins": "^1.0.0-beta.1",
         "@vitejs/plugin-vue": "^1.3.0",
         "@vue/compiler-sfc": "^3.2.4",
-        "autoprefixer": "^10.3.1",
+        "autoprefixer": "^10.2.0",
         "body-scroll-lock": "^3.1.5",
         "eslint": "^7.32.0",
         "eslint-import-resolver-alias": "^1.1.2",
@@ -32,12 +40,14 @@
         "jest": "^26.0.1",
         "jest-diff": "^27.0.6",
         "lazysizes": "^5.3.2",
+        "lerna": "^3.22.1",
         "lodash": "^4.17.21",
         "postcss-color-function": "^4.1.0",
         "prettier": "^2.3.2",
         "prismjs": "^1.24.1",
         "sass": "^1.38.0",
         "tailwindcss": "^2.2.7",
+        "vanilla-click-outside": "^2.1.0",
         "vite": "^2.5.0",
         "vite-plugin-eslint": "^1.3.0",
         "vitepress": "^0.16.1",
@@ -47,5 +57,13 @@
         "setupFilesAfterEnv": [
             "<rootDir>/jest/matchers.js"
         ]
+    },
+    "dependencies": {
+        "@sui/accordion": "file:packages/accordion",
+        "@sui/alert": "file:packages/alert",
+        "@sui/click-toggle": "file:packages/click-toggle",
+        "@sui/mobile-nav": "file:packages/mobile-nav",
+        "@sui/tailwind-base": "file:packages/tailwind-base",
+        "@sui/tailwind-plugins": "file:packages/tailwind-plugins"
     }
 }

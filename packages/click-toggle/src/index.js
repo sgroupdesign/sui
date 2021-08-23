@@ -25,10 +25,10 @@ export default class ClickToggle {
         // Assign config from class instance to override class fields
         Object.assign(this, config);
 
-        this.initSearch();
+        this.initToggle();
     }
 
-    initSearch() {
+    initToggle() {
         if (!this.openSelector) {
             return;
         }
