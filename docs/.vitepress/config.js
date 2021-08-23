@@ -13,8 +13,8 @@ module.exports = {
         lastUpdated: 'Last Updated',
 
         algolia: {
-            appId: 'PG23BBBPPY',
-            apiKey: '7180a794e2b24f10abe0d881ce415260',
+            appId: 'NHWQY42M2B',
+            apiKey: '11d7676d7609e954d224024625484b27',
             indexName: 'sui',
         },
 
