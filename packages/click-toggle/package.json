@@ -1,9 +1,9 @@
 {
-    "name": "@sui/click-toggle",
+    "name": "@sgroup/click-toggle",
     "version": "1.0.0-beta.2",
     "main": "src/index.js",
     "license": "MIT",
-    "repository": "https://github.com/sgroupdesign/sui-vue",
+    "repository": "https://github.com/sgroupdesign/sui",
     "dependencies": {
         "vanilla-click-outside": "^2.1.0"
     },

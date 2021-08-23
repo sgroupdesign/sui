@@ -1,2 +1,2 @@
-# @sui/alert
+# @sgroup/alert
 

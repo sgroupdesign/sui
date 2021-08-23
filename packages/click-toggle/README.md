@@ -1,2 +1,2 @@
-# @sui/click-toggle
+# @sgroup/click-toggle
 

@@ -1,2 +1,2 @@
-# @sui/tailwind-base
+# @sgroup/tailwind-base
 

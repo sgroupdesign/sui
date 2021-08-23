@@ -1,2 +1,2 @@
-# @sui/accordion
+# @sgroup/accordion
 

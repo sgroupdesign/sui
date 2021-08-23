@@ -1,8 +1,8 @@
 {
-    "name": "@sui/tailwind-plugins",
+    "name": "@sgroup/tailwind-plugins",
     "version": "1.0.0-beta.2",
     "license": "MIT",
-    "repository": "https://github.com/sgroupdesign/sui-vue",
+    "repository": "https://github.com/sgroupdesign/sui",
     "exports": {
         ".": "./src/index.js",
         "./*": "./src/*/index.js"

@@ -51,11 +51,11 @@
         ]
     },
     "dependencies": {
-        "@sui/accordion": "file:packages/accordion",
-        "@sui/alert": "file:packages/alert",
-        "@sui/click-toggle": "file:packages/click-toggle",
-        "@sui/mobile-nav": "file:packages/mobile-nav",
-        "@sui/tailwind-base": "file:packages/tailwind-base",
-        "@sui/tailwind-plugins": "file:packages/tailwind-plugins"
+        "@sgroup/accordion": "file:packages/accordion",
+        "@sgroup/alert": "file:packages/alert",
+        "@sgroup/click-toggle": "file:packages/click-toggle",
+        "@sgroup/mobile-nav": "file:packages/mobile-nav",
+        "@sgroup/tailwind-base": "file:packages/tailwind-base",
+        "@sgroup/tailwind-plugins": "file:packages/tailwind-plugins"
     }
 }

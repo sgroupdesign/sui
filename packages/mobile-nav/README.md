@@ -1,2 +1,2 @@
-# @sui/mobile-nav
+# @sgroup/mobile-nav
 
