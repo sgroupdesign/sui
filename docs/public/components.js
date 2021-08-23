@@ -255,7 +255,7 @@ const camelize$1 = cacheStringFunction$2((str) => {
 const hyphenateRE = /\B([A-Z])/g;
 const hyphenate = cacheStringFunction$2((str) => str.replace(hyphenateRE, "-$1").toLowerCase());
 const capitalize$1 = cacheStringFunction$2((str) => str.charAt(0).toUpperCase() + str.slice(1));
-const toHandlerKey = cacheStringFunction$2((str) => str ? `on${capitalize$1(str)}` : ``);
+const toHandlerKey$1 = cacheStringFunction$2((str) => str ? `on${capitalize$1(str)}` : ``);
 const hasChanged$1 = (value, oldValue) => !Object.is(value, oldValue);
 const invokeArrayFns = (fns, arg) => {
   for (let i = 0; i < fns.length; i++) {
@@ -1062,7 +1062,7 @@ function markRaw$1(value) {
   def$1(value, "__v_skip", true);
   return value;
 }
-function trackRefValue(ref2) {
+function trackRefValue$1(ref2) {
   if (isTracking$1()) {
     ref2 = toRaw$1(ref2);
     if (!ref2.dep) {
@@ -1077,7 +1077,7 @@ function trackRefValue(ref2) {
     }
   }
 }
-function triggerRefValue(ref2, newVal) {
+function triggerRefValue$1(ref2, newVal) {
   ref2 = toRaw$1(ref2);
   if (ref2.dep) {
     {
@@ -1090,45 +1090,45 @@ function triggerRefValue(ref2, newVal) {
     }
   }
 }
-const convert = (val) => isObject$2(val) ? reactive$1(val) : val;
+const convert$1 = (val) => isObject$2(val) ? reactive$1(val) : val;
 function isRef$1(r) {
   return Boolean(r && r.__v_isRef === true);
 }
-function ref(value) {
-  return createRef(value);
+function ref$1(value) {
+  return createRef$1(value);
 }
 function shallowRef(value) {
-  return createRef(value, true);
+  return createRef$1(value, true);
 }
-class RefImpl {
+class RefImpl$1 {
   constructor(value, _shallow = false) {
     this._shallow = _shallow;
     this.dep = void 0;
     this.__v_isRef = true;
     this._rawValue = _shallow ? value : toRaw$1(value);
-    this._value = _shallow ? value : convert(value);
+    this._value = _shallow ? value : convert$1(value);
   }
   get value() {
-    trackRefValue(this);
+    trackRefValue$1(this);
     return this._value;
   }
   set value(newVal) {
     newVal = this._shallow ? newVal : toRaw$1(newVal);
     if (hasChanged$1(newVal, this._rawValue)) {
       this._rawValue = newVal;
-      this._value = this._shallow ? newVal : convert(newVal);
-      triggerRefValue(this, newVal);
+      this._value = this._shallow ? newVal : convert$1(newVal);
+      triggerRefValue$1(this, newVal);
     }
   }
 }
-function createRef(rawValue, shallow = false) {
+function createRef$1(rawValue, shallow = false) {
   if (isRef$1(rawValue)) {
     return rawValue;
   }
-  return new RefImpl(rawValue, shallow);
+  return new RefImpl$1(rawValue, shallow);
 }
 function triggerRef(ref2) {
-  triggerRefValue(ref2, ref2.value);
+  triggerRefValue$1(ref2, ref2.value);
 }
 function unref$1(ref2) {
   return isRef$1(ref2) ? ref2.value : ref2;
@@ -1152,7 +1152,7 @@ class CustomRefImpl {
   constructor(factory) {
     this.dep = void 0;
     this.__v_isRef = true;
-    const { get: get2, set: set2 } = factory(() => trackRefValue(this), () => triggerRefValue(this));
+    const { get: get2, set: set2 } = factory(() => trackRefValue$1(this), () => triggerRefValue$1(this));
     this._get = get2;
     this._set = set2;
   }
@@ -1193,7 +1193,7 @@ function toRef(object, key) {
   const val = object[key];
   return isRef$1(val) ? val : new ObjectRefImpl(object, key);
 }
-class ComputedRefImpl {
+class ComputedRefImpl$1 {
   constructor(getter, _setter, isReadonly2) {
     this._setter = _setter;
     this.dep = void 0;
@@ -1202,14 +1202,14 @@ class ComputedRefImpl {
     this.effect = new ReactiveEffect$1(getter, () => {
       if (!this._dirty) {
         this._dirty = true;
-        triggerRefValue(this);
+        triggerRefValue$1(this);
       }
     });
     this["__v_isReadonly"] = isReadonly2;
   }
   get value() {
     const self2 = toRaw$1(this);
-    trackRefValue(self2);
+    trackRefValue$1(self2);
     if (self2._dirty) {
       self2._dirty = false;
       self2._value = self2.effect.run();
@@ -1220,7 +1220,7 @@ class ComputedRefImpl {
     this._setter(newValue);
   }
 }
-function computed(getterOrOptions, debugOptions) {
+function computed$1(getterOrOptions, debugOptions) {
   let getter;
   let setter;
   if (isFunction$2(getterOrOptions)) {
@@ -1232,7 +1232,7 @@ function computed(getterOrOptions, debugOptions) {
     getter = getterOrOptions.get;
     setter = getterOrOptions.set;
   }
-  const cRef = new ComputedRefImpl(getter, setter, isFunction$2(getterOrOptions) || !getterOrOptions.set);
+  const cRef = new ComputedRefImpl$1(getter, setter, isFunction$2(getterOrOptions) || !getterOrOptions.set);
   if (debugOptions) {
     cRef.effect.onTrack = debugOptions.onTrack;
     cRef.effect.onTrigger = debugOptions.onTrigger;
@@ -1252,34 +1252,34 @@ const hmrDirtyComponents$1 = new Set();
 }
 const map$1 = new Map();
 function registerHMR(instance) {
-  const id = instance.type.__hmrId;
-  let record = map$1.get(id);
+  const id2 = instance.type.__hmrId;
+  let record = map$1.get(id2);
   if (!record) {
-    createRecord$1(id, instance.type);
-    record = map$1.get(id);
+    createRecord$1(id2, instance.type);
+    record = map$1.get(id2);
   }
   record.instances.add(instance);
 }
 function unregisterHMR(instance) {
   map$1.get(instance.type.__hmrId).instances.delete(instance);
 }
-function createRecord$1(id, component) {
+function createRecord$1(id2, component) {
   if (!component) {
     warn$1(`HMR API usage is out of date.
 Please upgrade vue-loader/vite/rollup-plugin-vue or other relevant dependency that handles Vue SFC compilation.`);
     component = {};
   }
-  if (map$1.has(id)) {
+  if (map$1.has(id2)) {
     return false;
   }
-  map$1.set(id, {
+  map$1.set(id2, {
     component: isClassComponent$1(component) ? component.__vccOpts : component,
     instances: new Set()
   });
   return true;
 }
-function rerender$1(id, newRender) {
-  const record = map$1.get(id);
+function rerender$1(id2, newRender) {
+  const record = map$1.get(id2);
   if (!record)
     return;
   if (newRender)
@@ -1294,8 +1294,8 @@ function rerender$1(id, newRender) {
     isHmrUpdating = false;
   });
 }
-function reload$1(id, newComp) {
-  const record = map$1.get(id);
+function reload$1(id2, newComp) {
+  const record = map$1.get(id2);
   if (!record)
     return;
   const { component, instances } = record;
@@ -1333,9 +1333,9 @@ function reload$1(id, newComp) {
   });
 }
 function tryWrap$1(fn) {
-  return (id, arg) => {
+  return (id2, arg) => {
     try {
-      return fn(id, arg);
+      return fn(id2, arg);
     } catch (e) {
       console.error(e);
       console.warn(`[HMR] Something went wrong during Vue component hot-reload. Full reload required.`);
@@ -1414,8 +1414,8 @@ function emit(instance, event, ...rawArgs) {
     const { emitsOptions, propsOptions: [propsOptions] } = instance;
     if (emitsOptions) {
       if (!(event in emitsOptions) && true) {
-        if (!propsOptions || !(toHandlerKey(event) in propsOptions)) {
-          warn$1(`Component emitted event "${event}" but it is neither declared in the emits option nor as an "${toHandlerKey(event)}" prop.`);
+        if (!propsOptions || !(toHandlerKey$1(event) in propsOptions)) {
+          warn$1(`Component emitted event "${event}" but it is neither declared in the emits option nor as an "${toHandlerKey$1(event)}" prop.`);
         }
       } else {
         const validator = emitsOptions[event];
@@ -1445,14 +1445,14 @@ function emit(instance, event, ...rawArgs) {
   }
   {
     const lowerCaseEvent = event.toLowerCase();
-    if (lowerCaseEvent !== event && props[toHandlerKey(lowerCaseEvent)]) {
+    if (lowerCaseEvent !== event && props[toHandlerKey$1(lowerCaseEvent)]) {
       warn$1(`Event "${lowerCaseEvent}" is emitted in component ${formatComponentName$1(instance, instance.type)} but the handler is registered for "${event}". Note that HTML attributes are case-insensitive and you cannot use v-on to listen to camelCase events when using in-DOM templates. You should probably use "${hyphenate(event)}" instead of "${event}".`);
     }
   }
   let handlerName;
-  let handler = props[handlerName = toHandlerKey(event)] || props[handlerName = toHandlerKey(camelize$1(event))];
+  let handler = props[handlerName = toHandlerKey$1(event)] || props[handlerName = toHandlerKey$1(camelize$1(event))];
   if (!handler && isModelListener2) {
-    handler = props[handlerName = toHandlerKey(hyphenate(event))];
+    handler = props[handlerName = toHandlerKey$1(hyphenate(event))];
   }
   if (handler) {
     callWithAsyncErrorHandling$1(handler, instance, 6, args);
@@ -1522,8 +1522,8 @@ function setCurrentRenderingInstance(instance) {
   currentScopeId$1 = instance && instance.type.__scopeId || null;
   return prev;
 }
-function pushScopeId(id) {
-  currentScopeId$1 = id;
+function pushScopeId(id2) {
+  currentScopeId$1 = id2;
 }
 function popScopeId() {
   currentScopeId$1 = null;
@@ -2100,7 +2100,7 @@ function setActiveBranch(suspense, branch) {
     updateHOCHostEl(parentComponent, el);
   }
 }
-function provide(key, value) {
+function provide$1(key, value) {
   if (!currentInstance$1) {
     {
       warn$1(`provide() can only be used inside setup().`);
@@ -2114,7 +2114,7 @@ function provide(key, value) {
     provides[key] = value;
   }
 }
-function inject(key, defaultValue, treatDefaultAsFactory = false) {
+function inject$1(key, defaultValue, treatDefaultAsFactory = false) {
   const instance = currentInstance$1 || currentRenderingInstance$1;
   if (instance) {
     const provides = instance.parent == null ? instance.vnode.appContext && instance.vnode.appContext.provides : instance.parent.provides;
@@ -2136,7 +2136,7 @@ function useTransitionState() {
     isUnmounting: false,
     leavingVNodes: new Map()
   };
-  onMounted(() => {
+  onMounted$1(() => {
     state.isMounted = true;
   });
   onBeforeUnmount(() => {
@@ -2387,7 +2387,7 @@ function getTransitionRawChildren(children, keepComment = false) {
   }
   return ret;
 }
-function defineComponent(options) {
+function defineComponent$1(options) {
   return isFunction$2(options) ? { setup: options, name: options.name } : options;
 }
 const isAsyncWrapper = (i) => !!i.type.__asyncLoader;
@@ -2442,7 +2442,7 @@ function defineAsyncComponent(source) {
       return comp;
     }));
   };
-  return defineComponent({
+  return defineComponent$1({
     name: "AsyncComponentWrapper",
     __asyncLoader: load,
     get __asyncResolved() {
@@ -2467,9 +2467,9 @@ function defineAsyncComponent(source) {
           }) : null;
         });
       }
-      const loaded = ref(false);
-      const error = ref();
-      const delayed = ref(!!delay);
+      const loaded = ref$1(false);
+      const error = ref$1();
+      const delayed = ref$1(!!delay);
       if (delay) {
         setTimeout(() => {
           delayed.value = false;
@@ -2603,7 +2603,7 @@ const KeepAliveImpl = {
         cache.set(pendingCacheKey, getInnerChild(instance.subTree));
       }
     };
-    onMounted(cacheSubtree);
+    onMounted$1(cacheSubtree);
     onUpdated(cacheSubtree);
     onBeforeUnmount(() => {
       cache.forEach((cached) => {
@@ -2701,7 +2701,7 @@ function registerKeepAliveHook(hook, type, target = currentInstance$1) {
     }
     hook();
   });
-  injectHook(type, wrappedHook, target);
+  injectHook$1(type, wrappedHook, target);
   if (target) {
     let current = target.parent;
     while (current && current.parent) {
@@ -2713,7 +2713,7 @@ function registerKeepAliveHook(hook, type, target = currentInstance$1) {
   }
 }
 function injectToKeepAliveRoot(hook, type, target, keepAliveRoot) {
-  const injected = injectHook(type, hook, keepAliveRoot, true);
+  const injected = injectHook$1(type, hook, keepAliveRoot, true);
   onUnmounted(() => {
     remove$1(keepAliveRoot[type], injected);
   }, target);
@@ -2731,7 +2731,7 @@ function resetShapeFlag(vnode) {
 function getInnerChild(vnode) {
   return vnode.shapeFlag & 128 ? vnode.ssContent : vnode;
 }
-function injectHook(type, hook, target = currentInstance$1, prepend = false) {
+function injectHook$1(type, hook, target = currentInstance$1, prepend = false) {
   if (target) {
     const hooks = target[type] || (target[type] = []);
     const wrappedHook = hook.__weh || (hook.__weh = (...args) => {
@@ -2752,22 +2752,22 @@ function injectHook(type, hook, target = currentInstance$1, prepend = false) {
     }
     return wrappedHook;
   } else {
-    const apiName = toHandlerKey(ErrorTypeStrings$1[type].replace(/ hook$/, ""));
+    const apiName = toHandlerKey$1(ErrorTypeStrings$1[type].replace(/ hook$/, ""));
     warn$1(`${apiName} is called when there is no active component instance to be associated with. Lifecycle injection APIs can only be used during execution of setup(). If you are using async setup(), make sure to register lifecycle hooks before the first await statement.`);
   }
 }
-const createHook = (lifecycle) => (hook, target = currentInstance$1) => (!isInSSRComponentSetup || lifecycle === "sp") && injectHook(lifecycle, hook, target);
-const onBeforeMount = createHook("bm");
-const onMounted = createHook("m");
-const onBeforeUpdate = createHook("bu");
-const onUpdated = createHook("u");
-const onBeforeUnmount = createHook("bum");
-const onUnmounted = createHook("um");
-const onServerPrefetch = createHook("sp");
-const onRenderTriggered = createHook("rtg");
-const onRenderTracked = createHook("rtc");
+const createHook$1 = (lifecycle) => (hook, target = currentInstance$1) => (!isInSSRComponentSetup$1 || lifecycle === "sp") && injectHook$1(lifecycle, hook, target);
+const onBeforeMount = createHook$1("bm");
+const onMounted$1 = createHook$1("m");
+const onBeforeUpdate = createHook$1("bu");
+const onUpdated = createHook$1("u");
+const onBeforeUnmount = createHook$1("bum");
+const onUnmounted = createHook$1("um");
+const onServerPrefetch = createHook$1("sp");
+const onRenderTriggered = createHook$1("rtg");
+const onRenderTracked = createHook$1("rtc");
 function onErrorCaptured(hook, target = currentInstance$1) {
-  injectHook("ec", hook, target);
+  injectHook$1("ec", hook, target);
 }
 function createDuplicateChecker() {
   const cache = Object.create(null);
@@ -2887,7 +2887,7 @@ function applyOptions(instance) {
       const set2 = !isFunction$2(opt) && isFunction$2(opt.set) ? opt.set.bind(publicThis) : () => {
         warn$1(`Write operation failed: computed property "${key}" is readonly.`);
       };
-      const c = computed({
+      const c = computed$1({
         get: get2,
         set: set2
       });
@@ -2910,7 +2910,7 @@ function applyOptions(instance) {
   if (provideOptions) {
     const provides = isFunction$2(provideOptions) ? provideOptions.call(publicThis) : provideOptions;
     Reflect.ownKeys(provides).forEach((key) => {
-      provide(key, provides[key]);
+      provide$1(key, provides[key]);
     });
   }
   if (created) {
@@ -2924,7 +2924,7 @@ function applyOptions(instance) {
     }
   }
   registerLifecycleHook(onBeforeMount, beforeMount);
-  registerLifecycleHook(onMounted, mounted);
+  registerLifecycleHook(onMounted$1, mounted);
   registerLifecycleHook(onBeforeUpdate, beforeUpdate);
   registerLifecycleHook(onUpdated, updated);
   registerLifecycleHook(onActivated, activated);
@@ -2968,12 +2968,12 @@ function resolveInjections(injectOptions, ctx, checkDuplicateProperties = NOOP$1
     let injected;
     if (isObject$2(opt)) {
       if ("default" in opt) {
-        injected = inject(opt.from || key, opt.default, true);
+        injected = inject$1(opt.from || key, opt.default, true);
       } else {
-        injected = inject(opt.from || key);
+        injected = inject$1(opt.from || key);
       }
     } else {
-      injected = inject(opt);
+      injected = inject$1(opt);
     }
     if (isRef$1(injected)) {
       if (unwrapRef) {
@@ -5626,7 +5626,7 @@ function toHandlers(obj) {
     return ret;
   }
   for (const key in obj) {
-    ret[toHandlerKey(key)] = obj[key];
+    ret[toHandlerKey$1(key)] = obj[key];
   }
   return ret;
 }
@@ -5906,15 +5906,15 @@ function validateComponentName(name, config) {
 function isStatefulComponent$1(instance) {
   return instance.vnode.shapeFlag & 4;
 }
-let isInSSRComponentSetup = false;
+let isInSSRComponentSetup$1 = false;
 function setupComponent(instance, isSSR = false) {
-  isInSSRComponentSetup = isSSR;
+  isInSSRComponentSetup$1 = isSSR;
   const { props, children } = instance.vnode;
   const isStateful = isStatefulComponent$1(instance);
   initProps(instance, props, isStateful, isSSR);
   initSlots(instance, children);
   const setupResult = isStateful ? setupStatefulComponent(instance, isSSR) : void 0;
-  isInSSRComponentSetup = false;
+  isInSSRComponentSetup$1 = false;
   return setupResult;
 }
 function setupStatefulComponent(instance, isSSR) {
@@ -6332,13 +6332,13 @@ function nextTick$1(fn) {
   const p2 = currentFlushPromise$1 || resolvedPromise$1;
   return fn ? p2.then(this ? fn.bind(this) : fn) : p2;
 }
-function findInsertionIndex$1(id) {
+function findInsertionIndex$1(id2) {
   let start = flushIndex$1 + 1;
   let end = queue$1.length;
   while (start < end) {
     const middle = start + end >>> 1;
     const middleJobId = getId$1(queue$1[middle]);
-    middleJobId < id ? start = middle + 1 : end = middle;
+    middleJobId < id2 ? start = middle + 1 : end = middle;
   }
   return start;
 }
@@ -6468,7 +6468,7 @@ function checkRecursiveUpdates$1(seen2, fn) {
     }
   }
 }
-function watchEffect(effect2, options) {
+function watchEffect$1(effect2, options) {
   return doWatch$1(effect2, null, options);
 }
 function watchPostEffect(effect2, options) {
@@ -6759,7 +6759,7 @@ function h$1(type, propsOrChildren, children) {
 const ssrContextKey = Symbol(`ssrContext`);
 const useSSRContext = () => {
   {
-    const ctx = inject(ssrContextKey);
+    const ctx = inject$1(ssrContextKey);
     if (!ctx) {
       warn$1(`Server rendering context not provided. Make sure to only call useSSRContext() conditionally in the server build.`);
     }
@@ -7021,8 +7021,8 @@ const nodeOps = {
   parentNode: (node) => node.parentNode,
   nextSibling: (node) => node.nextSibling,
   querySelector: (selector) => doc.querySelector(selector),
-  setScopeId(el, id) {
-    el.setAttribute(id, "");
+  setScopeId(el, id2) {
+    el.setAttribute(id2, "");
   },
   cloneNode(el) {
     const cloned = el.cloneNode(true);
@@ -7313,7 +7313,7 @@ function shouldSetAsProp(el, key, value, isSVG) {
   return key in el;
 }
 function defineCustomElement(options, hydate) {
-  const Comp = defineComponent(options);
+  const Comp = defineComponent$1(options);
   class VueCustomElement extends VueElement {
     constructor(initialProps) {
       super(Comp, initialProps, hydate);
@@ -7500,7 +7500,7 @@ function useCssVars(getter) {
   }
   const setVars = () => setVarsOnVNode(instance.subTree, getter(instance.proxy));
   watchPostEffect(setVars);
-  onMounted(() => {
+  onMounted$1(() => {
     const ob = new MutationObserver(setVars);
     ob.observe(instance.subTree.el.parentNode, { childList: true });
     onUnmounted(() => ob.disconnect());
@@ -7697,9 +7697,9 @@ function nextFrame(cb) {
 }
 let endId = 0;
 function whenTransitionEnds(el, expectedType, explicitTimeout, resolve2) {
-  const id = el._endId = ++endId;
+  const id2 = el._endId = ++endId;
   const resolveIfNotStale = () => {
-    if (id === el._endId) {
+    if (id2 === el._endId) {
       resolve2();
     }
   };
@@ -8318,7 +8318,7 @@ var runtimeDom = /* @__PURE__ */ Object.freeze({
   withModifiers,
   EffectScope,
   ReactiveEffect: ReactiveEffect$1,
-  computed,
+  computed: computed$1,
   customRef,
   effect,
   effectScope,
@@ -8332,7 +8332,7 @@ var runtimeDom = /* @__PURE__ */ Object.freeze({
   proxyRefs: proxyRefs$1,
   reactive: reactive$1,
   readonly: readonly$1,
-  ref,
+  ref: ref$1,
   shallowReactive,
   shallowReadonly: shallowReadonly$1,
   shallowRef,
@@ -8348,7 +8348,7 @@ var runtimeDom = /* @__PURE__ */ Object.freeze({
   normalizeProps,
   normalizeStyle: normalizeStyle$1,
   toDisplayString,
-  toHandlerKey,
+  toHandlerKey: toHandlerKey$1,
   $computed,
   $fromRefs,
   $raw,
@@ -8377,7 +8377,7 @@ var runtimeDom = /* @__PURE__ */ Object.freeze({
   createTextVNode: createTextVNode$1,
   createVNode: createVNode$1,
   defineAsyncComponent,
-  defineComponent,
+  defineComponent: defineComponent$1,
   defineEmits,
   defineExpose,
   defineProps,
@@ -8390,7 +8390,7 @@ var runtimeDom = /* @__PURE__ */ Object.freeze({
   h: h$1,
   handleError: handleError$1,
   initCustomFormatter: initCustomFormatter$1,
-  inject,
+  inject: inject$1,
   isMemoSame,
   isRuntimeOnly,
   isVNode: isVNode$1,
@@ -8403,7 +8403,7 @@ var runtimeDom = /* @__PURE__ */ Object.freeze({
   onBeforeUpdate,
   onDeactivated,
   onErrorCaptured,
-  onMounted,
+  onMounted: onMounted$1,
   onRenderTracked,
   onRenderTriggered,
   onServerPrefetch,
@@ -8411,7 +8411,7 @@ var runtimeDom = /* @__PURE__ */ Object.freeze({
   onUpdated,
   openBlock,
   popScopeId,
-  provide,
+  provide: provide$1,
   pushScopeId,
   queuePostFlushCb: queuePostFlushCb$1,
   registerRuntimeCompiler,
@@ -8436,7 +8436,7 @@ var runtimeDom = /* @__PURE__ */ Object.freeze({
   version,
   warn: warn$1,
   watch,
-  watchEffect,
+  watchEffect: watchEffect$1,
   watchPostEffect,
   watchSyncEffect,
   withAsyncContext,
@@ -10343,12 +10343,12 @@ function genFunctionPreamble(ast, context) {
 function genAssets(assets, type, { helper, push, newline, isTS }) {
   const resolver = helper(type === "filter" ? RESOLVE_FILTER : type === "component" ? RESOLVE_COMPONENT : RESOLVE_DIRECTIVE);
   for (let i = 0; i < assets.length; i++) {
-    let id = assets[i];
-    const maybeSelfReference = id.endsWith("__self");
+    let id2 = assets[i];
+    const maybeSelfReference = id2.endsWith("__self");
     if (maybeSelfReference) {
-      id = id.slice(0, -6);
+      id2 = id2.slice(0, -6);
     }
-    push(`const ${toValidAssetId(id, type)} = ${resolver}(${JSON.stringify(id)}${maybeSelfReference ? `, true` : ``})${isTS ? `!` : ``}`);
+    push(`const ${toValidAssetId(id2, type)} = ${resolver}(${JSON.stringify(id2)}${maybeSelfReference ? `, true` : ``})${isTS ? `!` : ``}`);
     if (i < assets.length - 1) {
       newline();
     }
@@ -11737,7 +11737,7 @@ const transformOn$1 = (dir, node, context, augmentor) => {
   if (arg.type === 4) {
     if (arg.isStatic) {
       const rawName = arg.content;
-      eventName = createSimpleExpression(toHandlerKey(camelize$1(rawName)), true, arg.loc);
+      eventName = createSimpleExpression(toHandlerKey$1(camelize$1(rawName)), true, arg.loc);
     } else {
       eventName = createCompoundExpression([
         `${context.helperString(TO_HANDLER_KEY)}(`,
@@ -13376,6 +13376,7 @@ const cacheStringFunction = (fn) => {
   };
 };
 const capitalize = cacheStringFunction((str) => str.charAt(0).toUpperCase() + str.slice(1));
+const toHandlerKey = cacheStringFunction((str) => str ? `on${capitalize(str)}` : ``);
 const hasChanged = (value, oldValue) => !Object.is(value, oldValue);
 const def = (obj, key, value) => {
   Object.defineProperty(obj, key, {
@@ -14068,8 +14069,67 @@ function markRaw(value) {
   def(value, "__v_skip", true);
   return value;
 }
+function trackRefValue(ref2) {
+  if (isTracking()) {
+    ref2 = toRaw(ref2);
+    if (!ref2.dep) {
+      ref2.dep = createDep();
+    }
+    {
+      trackEffects(ref2.dep, {
+        target: ref2,
+        type: "get",
+        key: "value"
+      });
+    }
+  }
+}
+function triggerRefValue(ref2, newVal) {
+  ref2 = toRaw(ref2);
+  if (ref2.dep) {
+    {
+      triggerEffects(ref2.dep, {
+        target: ref2,
+        type: "set",
+        key: "value",
+        newValue: newVal
+      });
+    }
+  }
+}
+const convert = (val) => isObject(val) ? reactive(val) : val;
 function isRef(r) {
   return Boolean(r && r.__v_isRef === true);
+}
+function ref(value) {
+  return createRef(value);
+}
+class RefImpl {
+  constructor(value, _shallow = false) {
+    this._shallow = _shallow;
+    this.dep = void 0;
+    this.__v_isRef = true;
+    this._rawValue = _shallow ? value : toRaw(value);
+    this._value = _shallow ? value : convert(value);
+  }
+  get value() {
+    trackRefValue(this);
+    return this._value;
+  }
+  set value(newVal) {
+    newVal = this._shallow ? newVal : toRaw(newVal);
+    if (hasChanged(newVal, this._rawValue)) {
+      this._rawValue = newVal;
+      this._value = this._shallow ? newVal : convert(newVal);
+      triggerRefValue(this, newVal);
+    }
+  }
+}
+function createRef(rawValue, shallow = false) {
+  if (isRef(rawValue)) {
+    return rawValue;
+  }
+  return new RefImpl(rawValue, shallow);
 }
 function unref(ref2) {
   return isRef(ref2) ? ref2.value : ref2;
@@ -14089,6 +14149,52 @@ const shallowUnwrapHandlers = {
 function proxyRefs(objectWithRefs) {
   return isReactive(objectWithRefs) ? objectWithRefs : new Proxy(objectWithRefs, shallowUnwrapHandlers);
 }
+class ComputedRefImpl {
+  constructor(getter, _setter, isReadonly2) {
+    this._setter = _setter;
+    this.dep = void 0;
+    this._dirty = true;
+    this.__v_isRef = true;
+    this.effect = new ReactiveEffect(getter, () => {
+      if (!this._dirty) {
+        this._dirty = true;
+        triggerRefValue(this);
+      }
+    });
+    this["__v_isReadonly"] = isReadonly2;
+  }
+  get value() {
+    const self2 = toRaw(this);
+    trackRefValue(self2);
+    if (self2._dirty) {
+      self2._dirty = false;
+      self2._value = self2.effect.run();
+    }
+    return self2._value;
+  }
+  set value(newValue) {
+    this._setter(newValue);
+  }
+}
+function computed(getterOrOptions, debugOptions) {
+  let getter;
+  let setter;
+  if (isFunction(getterOrOptions)) {
+    getter = getterOrOptions;
+    setter = () => {
+      console.warn("Write operation failed: computed value is readonly");
+    };
+  } else {
+    getter = getterOrOptions.get;
+    setter = getterOrOptions.set;
+  }
+  const cRef = new ComputedRefImpl(getter, setter, isFunction(getterOrOptions) || !getterOrOptions.set);
+  if (debugOptions) {
+    cRef.effect.onTrack = debugOptions.onTrack;
+    cRef.effect.onTrigger = debugOptions.onTrigger;
+  }
+  return cRef;
+}
 Promise.resolve();
 const hmrDirtyComponents = new Set();
 {
@@ -14100,23 +14206,23 @@ const hmrDirtyComponents = new Set();
   };
 }
 const map = new Map();
-function createRecord(id, component) {
+function createRecord(id2, component) {
   if (!component) {
     warn(`HMR API usage is out of date.
 Please upgrade vue-loader/vite/rollup-plugin-vue or other relevant dependency that handles Vue SFC compilation.`);
     component = {};
   }
-  if (map.has(id)) {
+  if (map.has(id2)) {
     return false;
   }
-  map.set(id, {
+  map.set(id2, {
     component: isClassComponent(component) ? component.__vccOpts : component,
     instances: new Set()
   });
   return true;
 }
-function rerender(id, newRender) {
-  const record = map.get(id);
+function rerender(id2, newRender) {
+  const record = map.get(id2);
   if (!record)
     return;
   if (newRender)
@@ -14129,8 +14235,8 @@ function rerender(id, newRender) {
     instance.update();
   });
 }
-function reload(id, newComp) {
-  const record = map.get(id);
+function reload(id2, newComp) {
+  const record = map.get(id2);
   if (!record)
     return;
   const { component, instances } = record;
@@ -14168,9 +14274,9 @@ function reload(id, newComp) {
   });
 }
 function tryWrap(fn) {
-  return (id, arg) => {
+  return (id2, arg) => {
     try {
-      return fn(id, arg);
+      return fn(id2, arg);
     } catch (e) {
       console.error(e);
       console.warn(`[HMR] Something went wrong during Vue component hot-reload. Full reload required.`);
@@ -14191,6 +14297,65 @@ function queueEffectWithSuspense(fn, suspense) {
     queuePostFlushCb(fn);
   }
 }
+function provide(key, value) {
+  if (!currentInstance) {
+    {
+      warn(`provide() can only be used inside setup().`);
+    }
+  } else {
+    let provides = currentInstance.provides;
+    const parentProvides = currentInstance.parent && currentInstance.parent.provides;
+    if (parentProvides === provides) {
+      provides = currentInstance.provides = Object.create(parentProvides);
+    }
+    provides[key] = value;
+  }
+}
+function inject(key, defaultValue, treatDefaultAsFactory = false) {
+  const instance = currentInstance || currentRenderingInstance;
+  if (instance) {
+    const provides = instance.parent == null ? instance.vnode.appContext && instance.vnode.appContext.provides : instance.parent.provides;
+    if (provides && key in provides) {
+      return provides[key];
+    } else if (arguments.length > 1) {
+      return treatDefaultAsFactory && isFunction(defaultValue) ? defaultValue.call(instance.proxy) : defaultValue;
+    } else {
+      warn(`injection "${String(key)}" not found.`);
+    }
+  } else {
+    warn(`inject() can only be used inside setup() or functional components.`);
+  }
+}
+function defineComponent(options) {
+  return isFunction(options) ? { setup: options, name: options.name } : options;
+}
+function injectHook(type, hook, target = currentInstance, prepend = false) {
+  if (target) {
+    const hooks = target[type] || (target[type] = []);
+    const wrappedHook = hook.__weh || (hook.__weh = (...args) => {
+      if (target.isUnmounted) {
+        return;
+      }
+      pauseTracking();
+      setCurrentInstance(target);
+      const res = callWithAsyncErrorHandling(hook, target, type, args);
+      unsetCurrentInstance();
+      resetTracking();
+      return res;
+    });
+    if (prepend) {
+      hooks.unshift(wrappedHook);
+    } else {
+      hooks.push(wrappedHook);
+    }
+    return wrappedHook;
+  } else {
+    const apiName = toHandlerKey(ErrorTypeStrings[type].replace(/ hook$/, ""));
+    warn(`${apiName} is called when there is no active component instance to be associated with. Lifecycle injection APIs can only be used during execution of setup(). If you are using async setup(), make sure to register lifecycle hooks before the first await statement.`);
+  }
+}
+const createHook = (lifecycle) => (hook, target = currentInstance) => (!isInSSRComponentSetup || lifecycle === "sp") && injectHook(lifecycle, hook, target);
+const onMounted = createHook("m");
 function resolveMergedOptions(instance) {
   const base = instance.type;
   const { mixins, extends: extendsOptions } = base;
@@ -14643,6 +14808,7 @@ const unsetCurrentInstance = () => {
 function isStatefulComponent(instance) {
   return instance.vnode.shapeFlag & 4;
 }
+let isInSSRComponentSetup = false;
 function getExposeProxy(instance) {
   if (instance.exposed) {
     return instance.exposeProxy || (instance.exposeProxy = new Proxy(proxyRefs(markRaw(instance.exposed)), {
@@ -14892,13 +15058,13 @@ function nextTick(fn) {
   const p2 = currentFlushPromise || resolvedPromise;
   return fn ? p2.then(this ? fn.bind(this) : fn) : p2;
 }
-function findInsertionIndex(id) {
+function findInsertionIndex(id2) {
   let start = flushIndex + 1;
   let end = queue.length;
   while (start < end) {
     const middle = start + end >>> 1;
     const middleJobId = getId(queue[middle]);
-    middleJobId < id ? start = middle + 1 : end = middle;
+    middleJobId < id2 ? start = middle + 1 : end = middle;
   }
   return start;
 }
@@ -15021,6 +15187,9 @@ function checkRecursiveUpdates(seen2, fn) {
       seen2.set(fn, count + 1);
     }
   }
+}
+function watchEffect(effect2, options) {
+  return doWatch(effect2, null, options);
 }
 const INITIAL_WATCHER_VALUE = {};
 function doWatch(source, cb, { immediate, deep, flush, onTrack, onTrigger } = EMPTY_OBJ) {
@@ -15408,6 +15577,162 @@ function initDev() {
 {
   initDev();
 }
+let id = 0;
+function generateId() {
+  return ++id;
+}
+function useId() {
+  return generateId();
+}
+const Accordion = defineComponent({
+  name: "Accordion",
+  setup(_, { slots }) {
+    const items = ref([]);
+    const activeItemIndex = ref(null);
+    const calculateItemIndex = (focus, id2) => {
+      var _a;
+      const index = (_a = items.value.findIndex((item) => {
+        return item.id === id2;
+      })) != null ? _a : 0;
+      switch (focus) {
+        case "First":
+          return 0;
+        case "Last":
+          return items.value.length - 1;
+        case "Next":
+          return index !== items.value.length - 1 ? index + 1 : 0;
+        case "Prev":
+          return index !== 0 ? index - 1 : items.value.length - 1;
+        default:
+          return 0;
+      }
+    };
+    const api = {
+      items,
+      activeItemIndex,
+      getItemState(id2) {
+        const item = items.value.find((item2) => {
+          return item2.id === id2;
+        });
+        return item ? item.state : "Closed";
+      },
+      openItem(id2) {
+        const item = items.value.find((item2) => {
+          return item2.id === id2;
+        });
+        item.state = "Open";
+      },
+      closeItem(id2) {
+        const item = items.value.find((item2) => {
+          return item2.id === id2;
+        });
+        item.state = "Closed";
+      },
+      goToItem(focus, id2) {
+        const index = calculateItemIndex(focus, id2);
+        activeItemIndex.value = index;
+      },
+      registerItem(item) {
+        items.value.push(item);
+      }
+    };
+    provide("AccordionContext", api);
+    return () => {
+      return h("div", {}, slots.default());
+    };
+  }
+});
+const AccordionItem = defineComponent({
+  name: "AccordionItem",
+  setup(_, { slots }) {
+    const api = inject("AccordionContext", null);
+    const id2 = `sui-accordion-item-${useId()}`;
+    const state = ref("Closed");
+    onMounted(() => {
+      api.registerItem({
+        id: id2,
+        state
+      });
+    });
+    provide("id", id2);
+    return () => {
+      return h("div", {}, slots.default());
+    };
+  }
+});
+const AccordionButton = defineComponent({
+  name: "AccordionButton",
+  setup(_, { slots }) {
+    const api = inject("AccordionContext", null);
+    const id2 = inject("id", null);
+    const button = ref();
+    const activeItem = computed(() => {
+      var _a;
+      return api.activeItemIndex !== null ? ((_a = api.items.value[api.activeItemIndex.value]) == null ? void 0 : _a.id) === id2 : false;
+    });
+    watchEffect(() => {
+      if (!activeItem.value) {
+        return;
+      }
+      button.value.focus();
+    });
+    const active = computed(() => {
+      return api.getItemState(id2) !== null ? api.getItemState(id2) === "Open" : false;
+    });
+    const handleKeyUp = (event) => {
+      switch (event.key) {
+        case "ArrowUp":
+          event.preventDefault();
+          event.stopPropagation();
+          api.goToItem("Prev", id2);
+          break;
+        case "ArrowDown":
+          event.preventDefault();
+          event.stopPropagation();
+          api.goToItem("Next", id2);
+          break;
+        case "Home":
+          event.preventDefault();
+          event.stopPropagation();
+          api.goToItem("First");
+          break;
+        case "End":
+          event.preventDefault();
+          event.stopPropagation();
+          api.goToItem("Last");
+          break;
+      }
+    };
+    return () => {
+      return h("button", {
+        id: `${id2}-button`,
+        ref: button,
+        onClick: () => {
+          active.value ? api.closeItem(id2) : api.openItem(id2);
+        },
+        onKeyup: handleKeyUp,
+        "aria-controls": `${id2}-panel`,
+        "aria-expanded": active.value
+      }, slots.default({
+        active: active.value
+      }));
+    };
+  }
+});
+const AccordionPanel = defineComponent({
+  name: "AccordionPanel",
+  setup(_, { slots }) {
+    const api = inject("AccordionContext", null);
+    const id2 = inject("id", null);
+    return () => {
+      return h("section", {
+        id: `${id2}-panel`,
+        hidden: api.getItemState(id2) === "Closed",
+        "aria-labelledby": `${id2}-button`
+      }, slots.default());
+    };
+  }
+});
 const AlertClose = {
   name: "AlertClose",
   inject: ["alert"],
@@ -16423,19 +16748,6 @@ body {
 	text-rendering: optimizelegibility;
 	overflow-x: hidden;
 }
-
-[type=text]:focus, [type=email]:focus, [type=url]:focus, [type=password]:focus, [type=number]:focus, [type=date]:focus, [type=datetime-local]:focus, [type=month]:focus, [type=search]:focus, [type=tel]:focus, [type=time]:focus, [type=week]:focus, [multiple]:focus, textarea:focus, select:focus {
-	--tw-ring-color: #5A67D8;
-	border-color: var(--tw-ring-color);
-}
-
-[type=checkbox], [type=radio] {
-	color: #5A67D8;
-}
-
-[type=checkbox]:focus, [type=radio]:focus {
-	--tw-ring-color: #5A67D8;
-}
 .after\\:-mt-10::after {
 	content: "";
 	margin-top: -2.5rem;
@@ -16465,13 +16777,17 @@ body {
 	--tw-bg-opacity: 1;
 	background-color: rgba(228, 228, 231, var(--tw-bg-opacity));
 }
-.hover\\:bg-purple-200:hover {
-	--tw-bg-opacity: 1;
-	background-color: rgba(233, 213, 255, var(--tw-bg-opacity));
-}
 .hover\\:bg-green-100:hover {
 	--tw-bg-opacity: 1;
 	background-color: rgba(220, 252, 231, var(--tw-bg-opacity));
+}
+.hover\\:bg-gray-50:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(250, 250, 250, var(--tw-bg-opacity));
+}
+.hover\\:bg-purple-200:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(233, 213, 255, var(--tw-bg-opacity));
 }
 .hover\\:text-gray-600:hover {
 	--tw-text-opacity: 1;
@@ -16494,6 +16810,10 @@ body {
 	clip: auto;
 	white-space: normal;
 }
+.focus\\:border-indigo-500:focus {
+	--tw-border-opacity: 1;
+	border-color: rgba(99, 102, 241, var(--tw-border-opacity));
+}
 .focus\\:outline-none:focus {
 	outline: 2px solid transparent;
 	outline-offset: 2px;
@@ -16503,15 +16823,27 @@ body {
 	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
 	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
+.focus\\:ring-1:focus {
+	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
 .focus\\:ring-green-600:focus {
 	--tw-ring-opacity: 1;
 	--tw-ring-color: rgba(22, 163, 74, var(--tw-ring-opacity));
+}
+.focus\\:ring-indigo-500:focus {
+	--tw-ring-opacity: 1;
+	--tw-ring-color: rgba(99, 102, 241, var(--tw-ring-opacity));
 }
 .focus\\:ring-offset-2:focus {
 	--tw-ring-offset-width: 2px;
 }
 .focus\\:ring-offset-green-50:focus {
 	--tw-ring-offset-color: #f0fdf4;
+}
+.focus\\:ring-offset-gray-100:focus {
+	--tw-ring-offset-color: #f4f4f5;
 }
 .focus-visible\\:ring-2:focus-visible {
 	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
@@ -16526,6 +16858,10 @@ body {
 .focus-visible\\:ring-teal-500:focus-visible {
 	--tw-ring-opacity: 1;
 	--tw-ring-color: rgba(20, 184, 166, var(--tw-ring-opacity));
+}
+.focus-visible\\:ring-white:focus-visible {
+	--tw-ring-opacity: 1;
+	--tw-ring-color: rgba(255, 255, 255, var(--tw-ring-opacity));
 }
 .focus-visible\\:ring-purple-500:focus-visible {
 	--tw-ring-opacity: 1;
@@ -17205,16 +17541,6 @@ body {
 	-moz-font-feature-settings: "liga", "kern";
 	text-rendering: optimizelegibility;
 	overflow-x: hidden;
-}
-[type=text]:focus, [type=email]:focus, [type=url]:focus, [type=password]:focus, [type=number]:focus, [type=date]:focus, [type=datetime-local]:focus, [type=month]:focus, [type=search]:focus, [type=tel]:focus, [type=time]:focus, [type=week]:focus, [multiple]:focus, textarea:focus, select:focus {
-	--tw-ring-color: #5A67D8;
-	border-color: var(--tw-ring-color);
-}
-[type=checkbox], [type=radio] {
-	color: #5A67D8;
-}
-[type=checkbox]:focus, [type=radio]:focus {
-	--tw-ring-color: #5A67D8;
 }
 @-webkit-keyframes loading {
 
@@ -17904,16 +18230,6 @@ body {
 	text-rendering: optimizelegibility;
 	overflow-x: hidden;
 }
-[type=text]:focus, [type=email]:focus, [type=url]:focus, [type=password]:focus, [type=number]:focus, [type=date]:focus, [type=datetime-local]:focus, [type=month]:focus, [type=search]:focus, [type=tel]:focus, [type=time]:focus, [type=week]:focus, [multiple]:focus, textarea:focus, select:focus {
-	--tw-ring-color: #5A67D8;
-	border-color: var(--tw-ring-color);
-}
-[type=checkbox], [type=radio] {
-	color: #5A67D8;
-}
-[type=checkbox]:focus, [type=radio]:focus {
-	--tw-ring-color: #5A67D8;
-}
 @keyframes loading {
 
 	0% {
@@ -18049,6 +18365,11 @@ body {
 
 	.sm\\:pr-4 {
 		padding-right: 1rem;
+	}
+
+	.sm\\:text-sm {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
 	}
 }
 @media (min-width: 768px) {
@@ -18665,159 +18986,6 @@ body {
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
 }
-.form-label {
-	margin-bottom: 0.5rem;
-	display: inline-block;
-}
-.form-text {
-	margin-top: 0.25rem;
-	font-size: 0.875rem;
-	color: #52525b;
-}
-.form-control, .form-select {
-	display: block;
-	width: 100%;
-	border-color: #d4d4d8;
-	border-radius: 0.375rem;
-	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
-.form-control:disabled, .form-control[readonly], .form-select:disabled, .form-select[readonly] {
-	background-color: #f4f4f5;
-}
-.form-control[type=file], .form-select[type=file] {
-	overflow: hidden;
-	border-width: 1px;
-}
-.form-control[type=file]:not(:disabled):not([readonly]), .form-select[type=file]:not(:disabled):not([readonly]) {
-	cursor: pointer;
-}
-.form-control::-webkit-file-upload-button, .form-select::-webkit-file-upload-button {
-	padding: 0.5rem 0.75rem;
-	color: #27272a;
-	margin-right: 0.75rem;
-	pointer-events: none;
-	border-color: inherit;
-	border-style: solid;
-	border-width: 0px;
-	border-inline-end-width: 1px;
-	border-radius: 0px;
-}
-.form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button, .form-select:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
-	background-color: #f4f4f5;
-}
-.form-control:hover:not(:disabled):not([readonly])::file-selector-button, .form-select:hover:not(:disabled):not([readonly])::file-selector-button {
-	background-color: #f4f4f5;
-}
-.form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button, .form-select:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
-	background-color: #f4f4f5;
-}
-.form-control-color {
-	width: 3rem;
-	height: 2.75rem;
-	padding: 0.25rem;
-	border-radius: 0.375rem;
-	border-width: 1px;
-	background-color: #fff;
-}
-.form-control-color::-moz-color-swatch {
-	border-radius: 0.25rem;
-}
-.form-control-color::-webkit-color-swatch {
-	border-radius: 0.25rem;
-}
-.form-check {
-	display: block;
-	min-height: 1.5rem;
-	padding-left: 1rem;
-	margin-bottom: 0.25rem;
-}
-.form-check .form-check-input {
-	float: left;
-	margin-left: -1.5rem;
-}
-.form-check-input {
-	margin-top: 0.25rem;
-	border-color: #d4d4d8;
-}
-.form-check-input[type=checkbox] {
-	border-radius: 0.25rem;
-}
-.form-check-input[type=radio] {
-	border-radius: 9999px;
-}
-.form-check-input:checked {
-	border-color: transparent;
-}
-.form-check-inline {
-	display: inline-block;
-	margin-right: 1rem;
-}
-.form-floating {
-	position: relative;
-}
-.form-floating > .form-control, .form-floating > .form-select {
-	height: calc(3.5rem + 2px);
-	line-height: 1.25;
-}
-.form-floating > label {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 1rem 0.75rem;
-	pointer-events: none;
-	transform-origin: 0 0;
-	transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
-	height: 100%;
-	border: 1px solid transparent;
-}
-.form-floating > .form-control {
-	padding: 1rem 0.75rem;
-}
-.form-floating > .form-control::-moz-placeholder {
-	color: transparent;
-}
-.form-floating > .form-control:-ms-input-placeholder {
-	color: transparent;
-}
-.form-floating > .form-control::placeholder {
-	color: transparent;
-}
-.form-floating > .form-control:not(:-moz-placeholder-shown) {
-	padding-top: 1.625rem;
-	padding-bottom: 0.625rem;
-}
-.form-floating > .form-control:not(:-ms-input-placeholder) {
-	padding-top: 1.625rem;
-	padding-bottom: 0.625rem;
-}
-.form-floating > .form-control:focus, .form-floating > .form-control:not(:placeholder-shown) {
-	padding-top: 1.625rem;
-	padding-bottom: 0.625rem;
-}
-.form-floating > .form-control:-webkit-autofill {
-	padding-top: 1.625rem;
-	padding-bottom: 0.625rem;
-}
-.form-floating > .form-select {
-	padding-top: 1.625rem;
-	padding-bottom: 0.625rem;
-}
-.form-floating > .form-control:not(:-moz-placeholder-shown) ~ label {
-	opacity: 0.65;
-	transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
-}
-.form-floating > .form-control:not(:-ms-input-placeholder) ~ label {
-	opacity: 0.65;
-	transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
-}
-.form-floating > .form-control:focus ~ label, .form-floating > .form-control:not(:placeholder-shown) ~ label, .form-floating > .form-select ~ label {
-	opacity: 0.65;
-	transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
-}
-.form-floating > .form-control:-webkit-autofill ~ label {
-	opacity: 0.65;
-	transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
-}
 .h1,
 .h2,
 .h3,
@@ -19077,14 +19245,14 @@ body {
 .isolate {
 	isolation: isolate;
 }
+.z-10 {
+	z-index: 10;
+}
 .z-1 {
 	z-index: 1;
 }
 .-z-10 {
 	z-index: -10;
-}
-.z-10 {
-	z-index: 10;
 }
 .order-last {
 	order: 9999;
@@ -19135,18 +19303,6 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 }
-.mx-1 {
-	margin-left: 0.25rem;
-	margin-right: 0.25rem;
-}
-.-mx-0 {
-	margin-left: 0px;
-	margin-right: 0px;
-}
-.-mx-4 {
-	margin-left: -1rem;
-	margin-right: -1rem;
-}
 .-mx-1\\.5 {
 	margin-left: -0.375rem;
 	margin-right: -0.375rem;
@@ -19162,6 +19318,18 @@ body {
 .-my-1 {
 	margin-top: -0.25rem;
 	margin-bottom: -0.25rem;
+}
+.mx-1 {
+	margin-left: 0.25rem;
+	margin-right: 0.25rem;
+}
+.-mx-0 {
+	margin-left: 0px;
+	margin-right: 0px;
+}
+.-mx-4 {
+	margin-left: -1rem;
+	margin-right: -1rem;
 }
 .-mx-6 {
 	margin-left: -1.5rem;
@@ -19207,17 +19375,26 @@ body {
 .-ml-2 {
 	margin-left: -0.5rem;
 }
+.ml-3 {
+	margin-left: 0.75rem;
+}
+.mt-1 {
+	margin-top: 0.25rem;
+}
+.mt-2 {
+	margin-top: 0.5rem;
+}
 .mr-8 {
 	margin-right: 2rem;
 }
 .mt-12 {
 	margin-top: 3rem;
 }
-.mt-2 {
-	margin-top: 0.5rem;
+.mt-0\\.5 {
+	margin-top: 0.125rem;
 }
-.ml-3 {
-	margin-left: 0.75rem;
+.mt-0 {
+	margin-top: 0px;
 }
 .mt-3 {
 	margin-top: 0.75rem;
@@ -19227,9 +19404,6 @@ body {
 }
 .mr-2 {
 	margin-right: 0.5rem;
-}
-.mt-1 {
-	margin-top: 0.25rem;
 }
 .mt-4 {
 	margin-top: 1rem;
@@ -19291,20 +19465,35 @@ body {
 .h-10 {
 	height: 2.5rem;
 }
-.h-20 {
-	height: 5rem;
+.h-5 {
+	height: 1.25rem;
 }
 .h-full {
 	height: 100%;
 }
-.h-5 {
-	height: 1.25rem;
+.h-1\\.5 {
+	height: 0.375rem;
+}
+.h-1 {
+	height: 0.25rem;
+}
+.h-\\[38px\\] {
+	height: 38px;
+}
+.h-\\[34px\\] {
+	height: 34px;
+}
+.h-20 {
+	height: 5rem;
 }
 .h-48 {
 	height: 12rem;
 }
 .h-3 {
 	height: 0.75rem;
+}
+.max-h-60 {
+	max-height: 15rem;
 }
 .w-px {
 	width: 1px;
@@ -19324,23 +19513,35 @@ body {
 .w-6 {
 	width: 1.5rem;
 }
-.w-20 {
-	width: 5rem;
+.w-5 {
+	width: 1.25rem;
+}
+.w-56 {
+	width: 14rem;
 }
 .w-screen {
 	width: 100vw;
 }
-.w-5 {
-	width: 1.25rem;
+.w-1\\.5 {
+	width: 0.375rem;
+}
+.w-1 {
+	width: 0.25rem;
+}
+.w-\\[74px\\] {
+	width: 74px;
+}
+.w-\\[34px\\] {
+	width: 34px;
+}
+.w-20 {
+	width: 5rem;
 }
 .w-3 {
 	width: 0.75rem;
 }
 .w-10 {
 	width: 2.5rem;
-}
-.w-11 {
-	width: 2.75rem;
 }
 .min-w-full {
 	min-width: 100%;
@@ -19387,6 +19588,9 @@ body {
 .origin-bottom {
 	transform-origin: bottom;
 }
+.origin-top-right {
+	transform-origin: top right;
+}
 .translate-y-0\\.5 {
 	--tw-translate-y: 0.125rem;
 	transform: var(--tw-transform);
@@ -19399,12 +19603,12 @@ body {
 	--tw-translate-x: 100%;
 	transform: var(--tw-transform);
 }
-.translate-x-6 {
-	--tw-translate-x: 1.5rem;
+.translate-x-9 {
+	--tw-translate-x: 2.25rem;
 	transform: var(--tw-transform);
 }
-.translate-x-1 {
-	--tw-translate-x: 0.25rem;
+.translate-x-0 {
+	--tw-translate-x: 0px;
 	transform: var(--tw-transform);
 }
 .rotate-180 {
@@ -19432,6 +19636,9 @@ body {
 }
 .cursor-default {
 	cursor: default;
+}
+.cursor-pointer {
+	cursor: pointer;
 }
 .cursor-help {
 	cursor: help;
@@ -19482,9 +19689,6 @@ body {
 }
 .grid-cols-6 {
 	grid-template-columns: repeat(6, minmax(0, 1fr));
-}
-.grid-cols-2 {
-	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .grid-rows-3 {
 	grid-template-rows: repeat(3, minmax(0, 1fr));
@@ -19554,6 +19758,11 @@ body {
 	margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
 	margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
 }
+.-space-y-px > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-y-reverse: 0;
+	margin-top: calc(-1px * calc(1 - var(--tw-space-y-reverse)));
+	margin-bottom: calc(-1px * var(--tw-space-y-reverse));
+}
 .space-x-0 > :not([hidden]) ~ :not([hidden]) {
 	--tw-space-x-reverse: 0;
 	margin-right: calc(0px * var(--tw-space-x-reverse));
@@ -19597,14 +19806,29 @@ body {
 .rounded {
 	border-radius: 0.25rem;
 }
-.rounded-2xl {
-	border-radius: 1rem;
-}
 .rounded-full {
 	border-radius: 9999px;
 }
+.rounded-2xl {
+	border-radius: 1rem;
+}
+.rounded-tl-md {
+	border-top-left-radius: 0.375rem;
+}
+.rounded-tr-md {
+	border-top-right-radius: 0.375rem;
+}
+.rounded-bl-md {
+	border-bottom-left-radius: 0.375rem;
+}
+.rounded-br-md {
+	border-bottom-right-radius: 0.375rem;
+}
 .border {
 	border-width: 1px;
+}
+.border-2 {
+	border-width: 2px;
 }
 .border-b {
 	border-bottom-width: 1px;
@@ -19614,6 +19838,21 @@ body {
 }
 .border-double {
 	border-style: double;
+}
+.border-gray-300 {
+	--tw-border-opacity: 1;
+	border-color: rgba(212, 212, 216, var(--tw-border-opacity));
+}
+.border-indigo-200 {
+	--tw-border-opacity: 1;
+	border-color: rgba(199, 210, 254, var(--tw-border-opacity));
+}
+.border-gray-200 {
+	--tw-border-opacity: 1;
+	border-color: rgba(228, 228, 231, var(--tw-border-opacity));
+}
+.border-transparent {
+	border-color: transparent;
 }
 .border-gray-100 {
 	--tw-border-opacity: 1;
@@ -19643,21 +19882,17 @@ body {
 	--tw-bg-opacity: 1;
 	background-color: rgba(39, 39, 42, var(--tw-bg-opacity));
 }
-.bg-purple-500 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(168, 85, 247, var(--tw-bg-opacity));
-}
-.bg-purple-100 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(243, 232, 255, var(--tw-bg-opacity));
-}
 .bg-green-50 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(240, 253, 244, var(--tw-bg-opacity));
 }
-.bg-primary-500 {
+.bg-indigo-600 {
 	--tw-bg-opacity: 1;
-	background-color: rgba(90, 103, 216, var(--tw-bg-opacity));
+	background-color: rgba(79, 70, 229, var(--tw-bg-opacity));
+}
+.bg-indigo-50 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(238, 242, 255, var(--tw-bg-opacity));
 }
 .bg-teal-900 {
 	--tw-bg-opacity: 1;
@@ -19667,13 +19902,17 @@ body {
 	--tw-bg-opacity: 1;
 	background-color: rgba(15, 118, 110, var(--tw-bg-opacity));
 }
-.bg-blue-200 {
+.bg-purple-500 {
 	--tw-bg-opacity: 1;
-	background-color: rgba(191, 219, 254, var(--tw-bg-opacity));
+	background-color: rgba(168, 85, 247, var(--tw-bg-opacity));
 }
-.bg-blue-500 {
+.bg-purple-100 {
 	--tw-bg-opacity: 1;
-	background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
+	background-color: rgba(243, 232, 255, var(--tw-bg-opacity));
+}
+.bg-primary-500 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(90, 103, 216, var(--tw-bg-opacity));
 }
 .bg-opacity-75 {
 	--tw-bg-opacity: 0.75;
@@ -19716,14 +19955,14 @@ body {
 .p-4 {
 	padding: 1rem;
 }
-.p-8 {
-	padding: 2rem;
-}
 .p-2 {
 	padding: 0.5rem;
 }
 .p-6 {
 	padding: 1.5rem;
+}
+.p-8 {
+	padding: 2rem;
 }
 .py-1 {
 	padding-top: 0.25rem;
@@ -19753,13 +19992,13 @@ body {
 	padding-left: 0px;
 	padding-right: 0px;
 }
-.py-24 {
-	padding-top: 6rem;
-	padding-bottom: 6rem;
-}
 .py-2 {
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
+}
+.py-24 {
+	padding-top: 6rem;
+	padding-bottom: 6rem;
 }
 .px-20 {
 	padding-left: 5rem;
@@ -19788,6 +20027,21 @@ body {
 .pl-4 {
 	padding-left: 1rem;
 }
+.pl-3 {
+	padding-left: 0.75rem;
+}
+.pr-10 {
+	padding-right: 2.5rem;
+}
+.pr-2 {
+	padding-right: 0.5rem;
+}
+.pr-9 {
+	padding-right: 2.25rem;
+}
+.pr-4 {
+	padding-right: 1rem;
+}
 .pt-4 {
 	padding-top: 1rem;
 }
@@ -19796,9 +20050,6 @@ body {
 }
 .pt-2 {
 	padding-top: 0.5rem;
-}
-.pl-3 {
-	padding-left: 0.75rem;
 }
 .text-left {
 	text-align: left;
@@ -19820,6 +20071,10 @@ body {
 	font-size: 0.75rem;
 	line-height: 1rem;
 }
+.text-base {
+	font-size: 1rem;
+	line-height: 1.5rem;
+}
 .text-4xl {
 	font-size: 2.25rem;
 	line-height: 2.5rem;
@@ -19827,10 +20082,6 @@ body {
 .text-xl {
 	font-size: 1.25rem;
 	line-height: 1.75rem;
-}
-.text-base {
-	font-size: 1rem;
-	line-height: 1.5rem;
 }
 .text-5xl {
 	font-size: 3rem;
@@ -19849,6 +20100,9 @@ body {
 }
 .font-semibold {
 	font-weight: 600;
+}
+.font-normal {
+	font-weight: 400;
 }
 .font-extrabold {
 	font-weight: 800;
@@ -19910,9 +20164,33 @@ body {
 	--tw-text-opacity: 1;
 	color: rgba(255, 255, 255, var(--tw-text-opacity));
 }
+.text-green-400 {
+	--tw-text-opacity: 1;
+	color: rgba(74, 222, 128, var(--tw-text-opacity));
+}
+.text-green-800 {
+	--tw-text-opacity: 1;
+	color: rgba(22, 101, 52, var(--tw-text-opacity));
+}
+.text-green-500 {
+	--tw-text-opacity: 1;
+	color: rgba(34, 197, 94, var(--tw-text-opacity));
+}
+.text-gray-700 {
+	--tw-text-opacity: 1;
+	color: rgba(63, 63, 70, var(--tw-text-opacity));
+}
 .text-indigo-600 {
 	--tw-text-opacity: 1;
 	color: rgba(79, 70, 229, var(--tw-text-opacity));
+}
+.text-indigo-900 {
+	--tw-text-opacity: 1;
+	color: rgba(49, 46, 129, var(--tw-text-opacity));
+}
+.text-indigo-700 {
+	--tw-text-opacity: 1;
+	color: rgba(67, 56, 202, var(--tw-text-opacity));
 }
 .text-purple-900 {
 	--tw-text-opacity: 1;
@@ -19922,18 +20200,6 @@ body {
 	--tw-text-opacity: 1;
 	color: rgba(168, 85, 247, var(--tw-text-opacity));
 }
-.text-green-400 {
-	--tw-text-opacity: 1;
-	color: rgba(74, 222, 128, var(--tw-text-opacity));
-}
-.text-green-800 {
-	--tw-text-opacity: 1;
-	color: rgba(22, 101, 52, var(--tw-text-opacity));
-}
-.text-gray-700 {
-	--tw-text-opacity: 1;
-	color: rgba(63, 63, 70, var(--tw-text-opacity));
-}
 .text-blue-500 {
 	--tw-text-opacity: 1;
 	color: rgba(59, 130, 246, var(--tw-text-opacity));
@@ -19941,10 +20207,6 @@ body {
 .text-red-500 {
 	--tw-text-opacity: 1;
 	color: rgba(239, 68, 68, var(--tw-text-opacity));
-}
-.text-green-500 {
-	--tw-text-opacity: 1;
-	color: rgba(34, 197, 94, var(--tw-text-opacity));
 }
 .text-pink-500 {
 	--tw-text-opacity: 1;
@@ -19973,19 +20235,16 @@ body {
 .opacity-50 {
 	opacity: 0.5;
 }
-.opacity-75 {
-	opacity: 0.75;
-}
 .shadow-sm {
 	--tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-.shadow-xl {
-	--tw-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
 .shadow-lg {
 	--tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-xl {
+	--tw-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .shadow {
@@ -20014,6 +20273,11 @@ body {
 	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
 	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
+.ring-0 {
+	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
 .ring {
 	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
 	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
@@ -20030,11 +20294,18 @@ body {
 	--tw-ring-opacity: 1;
 	--tw-ring-color: rgba(24, 24, 27, var(--tw-ring-opacity));
 }
+.ring-indigo-500 {
+	--tw-ring-opacity: 1;
+	--tw-ring-color: rgba(99, 102, 241, var(--tw-ring-opacity));
+}
 .ring-opacity-5 {
 	--tw-ring-opacity: 0.05;
 }
 .ring-opacity-0 {
 	--tw-ring-opacity: 0;
+}
+.ring-offset-2 {
+	--tw-ring-offset-width: 2px;
 }
 .ring-offset-0 {
 	--tw-ring-offset-width: 0px;
@@ -20097,6 +20368,9 @@ body {
 }
 .duration-100 {
 	transition-duration: 100ms;
+}
+.duration-75 {
+	transition-duration: 75ms;
 }
 .duration-500 {
 	transition-duration: 500ms;
@@ -20256,6 +20530,10 @@ body {
 }`;
 createApp({
   components: {
+    SuiAccordion: Accordion,
+    SuiAccordionItem: AccordionItem,
+    SuiAccordionButton: AccordionButton,
+    SuiAccordionPanel: AccordionPanel,
     SuiAlert: Alert,
     SuiAlertClose: AlertClose
   },

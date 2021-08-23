@@ -72,7 +72,7 @@ module.exports = plugin(({ addComponents, addBase, theme }) => {
 
             // Keep separate due to browser prefix
             '&::file-selector-button': {
-                padding: `theme('padding.2') theme('padding.3')`,
+                padding: 'theme(\'padding.2\') theme(\'padding.3\')',
                 color: theme('colors.gray.800'),
                 marginRight: theme('margin.3'),
                 pointerEvents: 'none',
@@ -84,7 +84,7 @@ module.exports = plugin(({ addComponents, addBase, theme }) => {
             },
 
             '&::-webkit-file-upload-button': {
-                padding: `theme('padding.2') theme('padding.3')`,
+                padding: 'theme(\'padding.2\') theme(\'padding.3\')',
                 color: theme('colors.gray.800'),
                 marginRight: theme('margin.3'),
                 pointerEvents: 'none',
@@ -171,7 +171,7 @@ module.exports = plugin(({ addComponents, addBase, theme }) => {
                 position: 'absolute',
                 top: '0',
                 left: '0',
-                padding: `theme('padding.4') theme('padding.3')`,
+                padding: 'theme(\'padding.4\') theme(\'padding.3\')',
                 pointerEvents: 'none',
                 transformOrigin: '0 0',
                 transition: 'opacity 0.1s ease-in-out, transform 0.1s ease-in-out',
@@ -184,7 +184,7 @@ module.exports = plugin(({ addComponents, addBase, theme }) => {
             },
 
             '> .form-control': {
-                padding: `theme('padding.4') theme('padding.3')`,
+                padding: 'theme(\'padding.4\') theme(\'padding.3\')',
 
                 '&::placeholder': {
                     color: 'transparent',

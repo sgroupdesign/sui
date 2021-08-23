@@ -409,6 +409,7 @@ module.exports = {
             ignores: [],
         }],
         'vue/singleline-html-element-content-newline': 'off',
+        'vue/one-component-per-file': 'off',
 
     },
 

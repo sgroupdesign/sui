@@ -8,6 +8,7 @@ import {
     ref,
     watchEffect,
 } from 'vue';
+
 import { useId } from './use-id';
 
 export const Accordion = defineComponent({
@@ -102,20 +103,19 @@ export const AccordionButton = defineComponent({
         const button = ref();
 
         const activeItem = computed(() => {
-            return api.activeItemIndex !== null
-                ? api.items.value[api.activeItemIndex.value]?.id === id
-                : false;
+            return api.activeItemIndex !== null ? api.items.value[api.activeItemIndex.value]?.id === id : false;
         });
 
         watchEffect(() => {
-            if (!activeItem.value) { return; }
+            if (!activeItem.value) {
+                return;
+            }
+
             button.value.focus();
         });
 
         const active = computed(() => {
-            return api.getItemState(id) !== null
-                ? api.getItemState(id) === 'Open'
-                : false;
+            return api.getItemState(id) !== null ? api.getItemState(id) === 'Open' : false;
         });
 
         const handleKeyUp = (event) => {
