@@ -7,7 +7,6 @@
     "useWorkspaces": false,
     "command": {
         "publish": {
-            "registry": "https://registry.npmjs.org",
             "conventionalCommits": true
         }
     }
