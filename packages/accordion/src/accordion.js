@@ -78,6 +78,9 @@ export const AccordionItem = defineComponent({
         const api = inject('AccordionContext', null);
         const id = `sui-accordion-item-${useId()}`;
         const state = ref('Closed');
+        const active = computed(() => {
+            return api.getItemState(id) !== null ? api.getItemState(id) === 'Open' : false;
+        });
 
         onMounted(() => {
             api.registerItem({
@@ -87,9 +90,12 @@ export const AccordionItem = defineComponent({
         });
 
         provide('id', id);
+        provide('active', active);
 
         return () => {
-            return h('div', {}, slots.default());
+            return h('div', {}, slots.default({
+                active,
+            }));
         };
     },
 });
@@ -100,6 +106,7 @@ export const AccordionButton = defineComponent({
     setup(_, { slots }) {
         const api = inject('AccordionContext', null);
         const id = inject('id', null);
+        const active = inject('active', null);
         const button = ref();
 
         const activeItem = computed(() => {
@@ -112,10 +119,6 @@ export const AccordionButton = defineComponent({
             }
 
             button.value.focus();
-        });
-
-        const active = computed(() => {
-            return api.getItemState(id) !== null ? api.getItemState(id) === 'Open' : false;
         });
 
         const handleKeyUp = (event) => {
@@ -157,9 +160,7 @@ export const AccordionButton = defineComponent({
                     'aria-controls': `${id}-panel`,
                     'aria-expanded': active.value,
                 },
-                slots.default({
-                    active: active.value,
-                }),
+                slots.default(),
             );
         };
     },
