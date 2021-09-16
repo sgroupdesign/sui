@@ -3,6 +3,8 @@
 // to
 // { fontSize: '2.25rem', lineHeight: '2.5rem' }
 
+// Also handles fontFamily normalisation
+
 module.exports = function(props) {
     Object.entries(props).forEach(([key, value], index) => {
         if (key === 'fontSize' && Array.isArray(value)) {
@@ -11,6 +13,10 @@ module.exports = function(props) {
             if (value[1] && value[1].lineHeight) {
                 props.lineHeight = value[1].lineHeight ?? '';
             }
+        }
+
+        if (key === 'fontFamily' && Array.isArray(value)) {
+            props.fontFamily = value.join(',');
         }
     });
 
