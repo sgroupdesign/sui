@@ -26,6 +26,7 @@ module.exports = {
                         { text: 'Introduction', link: '/' },
                         { text: 'Installation', link: '/getting-started/installation' },
                         { text: 'Installation (Docs)', link: '/getting-started/installation-docs' },
+                        { text: 'Fonts', link: '/getting-started/fonts' },
                     ],
                 },
                 {
@@ -91,6 +92,13 @@ module.exports = {
                         { text: 'Card', link: '/stencils/card' },
                         { text: 'Figures', link: '/stencils/figures' },
                         { text: 'Pagination', link: '/stencils/pagination' },
+                    ],
+                },
+                {
+                    text: 'Craft & Twig',
+                    children: [
+                        { text: 'Site Module', link: '/craft-twig/site-module' },
+                        { text: 'Site Scripts', link: '/craft-twig/site-scripts' },
                     ],
                 },
                 {
