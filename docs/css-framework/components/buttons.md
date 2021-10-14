@@ -132,6 +132,11 @@ theme: {
                     color: theme('textColor.primary.500'),
                     borderColor: theme('borderColor.primary.500'),
                 },
+
+                // Add styles to target a breakpoint
+                '@screen sm': {
+                    fontSize: theme('fontSize.xs'),
+                },
             };
         },
     },
