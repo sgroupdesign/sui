@@ -5,6 +5,8 @@
 const plugin = require('tailwindcss/plugin');
 
 module.exports = plugin(({ addComponents, theme }) => {
+    const values = theme('richtext');
+
     const components = {
         '.richtext': {
             h2: {
@@ -58,6 +60,9 @@ module.exports = plugin(({ addComponents, theme }) => {
             '> *:last-child': {
                 marginBottom: '0px',
             },
+
+            // Merge in any theme-level overrides
+            ...values,
         },
     };
 
