@@ -1,6 +1,6 @@
 {
     "name": "@sgroup/tailwind-plugins",
-    "version": "1.0.0-beta.5",
+    "version": "1.0.0",
     "license": "MIT",
     "repository": "https://github.com/sgroupdesign/sui",
     "exports": {
