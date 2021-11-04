@@ -97,6 +97,13 @@ module.exports = function(overrides = {}) {
             // Our default breakpoints
             xs: 520, sm: 640, md: 768, lg: 1024, xl: 1280, '2xl': 1536,
         },
+
+        // Allow purge options to be modified
+        purge: {
+            content: [],
+            safelist: [],
+            whitelist: [],
+        },
     });
 
     return {
@@ -107,12 +114,18 @@ module.exports = function(overrides = {}) {
                 // Scan the files in these directories for what _not_ to purge
                 './templates/**/*.{twig,html}',
                 './resources/**/*.{js,vue}',
+                ...config.purge.content,
+            ],
+
+            safelist: [
+                ...config.purge.safelist,
             ],
 
             options: {
                 whitelist: [
                     // Keep all vendor styles as they're always needed (why else would we add them?)
                     './resources/scss/vendor/*.scss',
+                    ...config.purge.whitelist,
                 ],
             },
         },
