@@ -23,6 +23,16 @@ As usual, you can also override any classes, but the `.link` class provides a go
     <a class="link text-red-500 no-underline hover:underline hover:text-red-800" href="#">Some link</a>
 </code-preview>
 
+There are also some themed links.
+
+<code-preview heading="Theme">
+    <a href="#" class="link link-primary">Primary</a>
+    <a href="#" class="link link-secondary">Secondary</a>
+    <a href="#" class="link link-green">Success</a>
+    <a href="#" class="link link-red">Danger</a>
+    <a href="#" class="link link-orange">Warning</a>
+</code-preview>
+
 ## Stretched link
 It's a common scenario to have a card layout with a CTA (button or link) and have the entire card be able to be clicked on. Rather than wrapping a `<a>` tag around the image, heading (and actual link), we can use our `stretched-link` utility.
 
@@ -91,3 +101,44 @@ Not only useful for cards, you can use it in a number of scenarios where you mig
         </div>
     </dl>
 </code-preview>
+
+
+### Configuration
+Configure the `@sgroup/tailwind-plugins/link` plugin using `theme` options.
+
+```js
+theme: {
+    extend: {
+        link: (theme) => {
+            return {
+                // Styles for all links e.g. `.link`.
+                DEFAULT: {
+                    textTransform: 'uppercase',
+                },
+
+                // Override or extend any themed links. Provide _any_ CSS property.
+                secondary: {
+                    color: theme('textColor.pink.500'),
+                    textTransform: 'uppercase',
+
+                    // Change the hover state
+                    hover: {
+                        textDecoration: 'underline',
+                    },
+                },
+
+                // Add new named items, like `.link-special`.
+                special: {
+                    color: theme('textColor.emerald.500'),
+                },
+
+                // Add styles to target a breakpoint
+                '@screen sm': {
+                    fontSize: theme('fontSize.xs'),
+                },
+            };
+        },
+    },
+},
+```
+
