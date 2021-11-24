@@ -82,10 +82,10 @@ for (let i = 0; i <= 100; i += 5) {
 // Prepare preset export
 // ================================================
 // presets: [
-//     require('@sui/tailwind-base'),
+//     require('@sgroup/tailwind-base'),
 //
 //     Or by passing a config object
-//     require('@sui/tailwind-base')({
+//     require('@sgroup/tailwind-base')({
 //         screens: { xs: 520 },
 //     }),
 // ],
