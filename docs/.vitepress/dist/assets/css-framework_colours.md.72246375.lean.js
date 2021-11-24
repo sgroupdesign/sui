@@ -1,1 +1,0 @@
-import{r as e,o,c as r,e as t,a}from"./app.0a68d308.js";const s='{"title":"Colours","description":"","frontmatter":{},"relativePath":"css-framework/colours.md","lastUpdated":1629439914663}',l={},n=a('',4);l.render=function(a,s,l,d,i,c){const u=e("color-blocks");return o(),r("div",null,[n,t(u)])};export{s as __pageData,l as default};

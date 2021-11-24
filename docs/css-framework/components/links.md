@@ -25,7 +25,7 @@ As usual, you can also override any classes, but the `.link` class provides a go
 
 There are also some themed links.
 
-<code-preview heading="Theme">
+<code-preview body-id="links-example" heading="Theme">
     <a href="#" class="link link-primary">Primary</a>
     <a href="#" class="link link-secondary">Secondary</a>
     <a href="#" class="link link-green">Success</a>
