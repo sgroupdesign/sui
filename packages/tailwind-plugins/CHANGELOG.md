@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/sgroupdesign/sui/compare/@sgroup/tailwind-plugins@1.0.1...@sgroup/tailwind-plugins@1.0.2) (2021-11-24)
+
+**Note:** Version bump only for package @sgroup/tailwind-plugins
+
+
+
+
+
 ## [1.0.1](https://github.com/sgroupdesign/sui/compare/@sgroup/tailwind-plugins@1.0.0-beta.5...@sgroup/tailwind-plugins@1.0.1) (2021-11-04)
 
 **Note:** Version bump only for package @sgroup/tailwind-plugins
