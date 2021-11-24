@@ -4,7 +4,7 @@
 
 const plugin = require('tailwindcss/plugin');
 
-module.exports = plugin(({ addComponents, theme }) => {
+module.exports = plugin(({ addComponents, theme, e }) => {
     const components = {};
 
     // Fetch all link definitions from the defaults or overridden config
