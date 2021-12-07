@@ -26,7 +26,7 @@ module.exports = plugin(({ addComponents, theme, e }) => {
 
     // Set .h1, .h2, .h3, .h4, .h5, .h6
     const baseSelectors = Object.entries(heading).map(([key, value]) => {
-        return (key !== 'DEFAULT') ? `.${e(`h${key}`)}` : false;
+        return (key !== 'DEFAULT') ? `.${e(`h${key}`)},\n.richtext ${e(`h${key}`)}` : false;
     }).filter(Boolean).join(',\n');
 
     const components = {
