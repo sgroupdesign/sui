@@ -1,14 +1,6 @@
 const defaultsDeep = require('lodash/defaultsDeep');
 
 // ================================================
-// Colors - default Tailwind (extended) colors
-// ================================================
-
-const colorsConfig = require('tailwindcss/colors');
-delete colorsConfig.lightBlue; // Temp fix until Tailwind 3.0, otherwise produces warning
-
-
-// ================================================
 // Responsive breakpoints - override the default, and add more.
 // ================================================
 
@@ -99,44 +91,32 @@ module.exports = function(overrides = {}) {
         },
 
         // Allow purge options to be modified
-        purge: {
-            content: [],
-            safelist: [],
-            whitelist: [],
-        },
+        content: [],
+        safelist: [],
     });
 
     return {
         mode: 'jit',
 
-        purge: {
-            content: [
-                // Scan the files in these directories for what _not_ to purge
-                './templates/**/*.{twig,html}',
-                './resources/**/*.{js,vue}',
-                ...config.purge.content,
-            ],
+        content: [
+            // Scan the files in these directories for what _not_ to purge
+            './templates/**/*.{twig,html}',
+            './resources/**/*.{js,vue}',
 
-            safelist: [
-                ...config.purge.safelist,
-            ],
+            // Keep all vendor styles as they're always needed (why else would we add them?)
+            './resources/scss/vendor/*.scss',
 
-            options: {
-                whitelist: [
-                    // Keep all vendor styles as they're always needed (why else would we add them?)
-                    './resources/scss/vendor/*.scss',
-                    ...config.purge.whitelist,
-                ],
-            },
-        },
+            ...config.content,
+        ],
+
+        safelist: [
+            ...config.safelist,
+        ],
 
         theme: {
             // Extend the default Tailwind config
             extend: {
                 colors: {
-                    // Import all (expanded) Tailwind colors
-                    ...colorsConfig,
-
                     // Use https://hihayk.github.io/scale to generate scales
                     primary: {
                         50: '#DEE1F7',

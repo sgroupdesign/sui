@@ -1,6 +1,6 @@
 {
     "name": "@sgroup/tailwind-plugins",
-    "version": "1.0.4",
+    "version": "2.0.0",
     "license": "MIT",
     "repository": "https://github.com/sgroupdesign/sui",
     "exports": {
@@ -8,7 +8,7 @@
         "./*": "./src/*/index.js"
     },
     "peerDependencies": {
-        "tailwindcss": ">=2.0.0"
+        "tailwindcss": ">=3.0.0"
     },
     "publishConfig": {
         "access": "public"
