@@ -38,13 +38,24 @@ function generateScreens(screenSizes) {
 
 
 // ================================================
-// Spacing - from *-1 to *-100 (including .25, .5, .75)
+// Padding - from *-1 to *-100 (including .25, .5, .75)
 // ================================================
 
-const spacingConfig = {};
+const paddingConfig = {};
 
 for (let i = 1; i <= 400; i++) {
-    spacingConfig[i / 4] = `${i / 16}rem`;
+    paddingConfig[i / 4] = `${i / 16}rem`;
+}
+
+
+// ================================================
+// Margin - from -*-100 to *-100 (including .25, .5, .75)
+// ================================================
+
+const marginConfig = {};
+
+for (let i = -400; i <= 400; i++) {
+    marginConfig[i / 4] = `${i / 16}rem`;
 }
 
 
@@ -154,7 +165,8 @@ module.exports = function(overrides = {}) {
                     heading: ['sans-serif'],
                 },
 
-                spacing: spacingConfig,
+                padding: paddingConfig,
+                margin: marginConfig,
                 zIndex: zIndexConfig,
                 opacity: opacityConfig,
             },
