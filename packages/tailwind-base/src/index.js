@@ -93,6 +93,9 @@ module.exports = function(overrides = {}) {
         // Allow purge options to be modified
         content: [],
         safelist: [],
+
+        // Allow plugin overrides
+        pluginForms: {},
     });
 
     return {
@@ -189,7 +192,7 @@ module.exports = function(overrides = {}) {
         plugins: [
             // A unopinionated forms reset
             // https://github.com/tailwindlabs/tailwindcss-forms
-            require('@tailwindcss/forms'),
+            require('@tailwindcss/forms')(config.pluginForms),
 
             // Truncated text helper
             // https://github.com/tailwindlabs/tailwindcss-line-clamp
