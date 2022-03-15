@@ -196,6 +196,11 @@ module.exports = function(overrides = {}) {
                     groupPrefix: 'html',
                 },
             },
+
+            // Ignore some breakpoints for the `tailwindcss-debug-screens` plugin
+            debugScreens: {
+                ignore: ['to-2xl', 'to-xl', 'to-lg', 'to-md', 'to-sm', 'sm-only', 'md-only', 'lg-only', 'xl-only'],
+            },
         },
 
         // ================================================
@@ -209,6 +214,10 @@ module.exports = function(overrides = {}) {
             // Truncated text helper
             // https://github.com/tailwindlabs/tailwindcss-line-clamp
             require('@tailwindcss/line-clamp'),
+
+            // Debug notice for breakpoints
+            // https://github.com/jorenvanhee/tailwindcss-debug-screens
+            require('tailwindcss-debug-screens'),
 
             // S.UI framework plugins for base, components and utilities
             // https://github.com/sgroupdesign/sui
