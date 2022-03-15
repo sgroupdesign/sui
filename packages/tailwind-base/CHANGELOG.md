@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/sgroupdesign/sui/compare/@sgroup/tailwind-base@2.0.3...@sgroup/tailwind-base@2.0.4) (2022-03-15)
+
+**Note:** Version bump only for package @sgroup/tailwind-base
+
+
+
+
+
 ## [2.0.3](https://github.com/sgroupdesign/sui/compare/@sgroup/tailwind-base@2.0.2...@sgroup/tailwind-base@2.0.3) (2021-12-14)
 
 **Note:** Version bump only for package @sgroup/tailwind-base
