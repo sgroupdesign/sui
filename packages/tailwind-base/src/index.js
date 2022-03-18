@@ -106,7 +106,9 @@ module.exports = function(overrides = {}) {
         safelist: [],
 
         // Allow plugin overrides
-        pluginForms: {},
+        pluginForms: {
+            strategy: 'base',
+        },
     });
 
     return {
