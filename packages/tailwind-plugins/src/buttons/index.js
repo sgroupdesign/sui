@@ -37,6 +37,8 @@
 
 const plugin = require('tailwindcss/plugin');
 
+const transformProperties = require('../utils/transformProperties');
+
 module.exports = plugin(({ addComponents, theme, e }) => {
     const components = {};
 
@@ -61,7 +63,7 @@ module.exports = plugin(({ addComponents, theme, e }) => {
         }
 
         // Output all classes and their props. `.button` and `.button-primary`, etc.
-        components[`.${e(`btn${key}`)}`] = props;
+        components[`.${e(`btn${key}`)}`] = transformProperties(props);
     });
 
     addComponents(components);
