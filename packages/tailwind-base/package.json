@@ -1,6 +1,6 @@
 {
     "name": "@sgroup/tailwind-base",
-    "version": "2.0.4",
+    "version": "2.0.5",
     "main": "src/index.js",
     "license": "MIT",
     "repository": "https://github.com/sgroupdesign/sui",
