@@ -2,7 +2,7 @@
 The build process for S.UI projects uses [Vite](https://vitejs.dev) as a super-fast ⚡️ development server, with hot module reloading (HMR) making changes to your Twig, JS and CSS almost instant, and without refreshing the page.
 
 ## Getting started
-Clone the [base-craft](https://github.com/sgroupdesign/base-craft3) repository to your computer, open a terminal in the root of this folder and run:
+Clone the [base-craft](https://github.com/sgroupdesign/base-craft) repository to your computer, open a terminal in the root of this folder and run:
 
 ```sh
 npm install
