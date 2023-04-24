@@ -213,10 +213,6 @@ module.exports = function(overrides = {}) {
             // https://github.com/tailwindlabs/tailwindcss-forms
             require('@tailwindcss/forms')(config.pluginForms),
 
-            // Truncated text helper
-            // https://github.com/tailwindlabs/tailwindcss-line-clamp
-            require('@tailwindcss/line-clamp'),
-
             // Debug notice for breakpoints
             // https://github.com/jorenvanhee/tailwindcss-debug-screens
             require('tailwindcss-debug-screens'),
