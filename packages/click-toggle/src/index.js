@@ -11,7 +11,7 @@
 // `clickAwaySelector` | `String` | `` | A valid element selector to detect when clicking away from. This will remove the `activeClass`.
 // `clickAwayRemoveListener` | `Boolean` | `true` | Whether to stop listening for click-away clicks once triggered.
 
-import clickOutside from 'vanilla-click-outside';
+import clickOutside from './vanilla-click-outside';
 
 export default class ClickToggle {
     constructor(config) {
